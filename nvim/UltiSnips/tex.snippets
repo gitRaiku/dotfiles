@@ -1,0 +1,227 @@
+global !p
+greek_letters = {
+'a': '\\alpha',
+'A': '\\Alpha',
+'o': '\\omega',
+'O': '\\Omega',
+'m': '\\mu',
+'M': '\\Mu',
+'r': '\\rho',
+'R': 'P',
+'p': '\\pi',
+'P': '\\Pi',
+'e': '\\eta',
+'E': '\\Eta',
+'f': '\\Phi',
+'F': '\\Phi',
+'l': '\\lambda',
+'L': '\\Lambda',
+'t': '\\tau',
+'T': 'T',
+'d': '\\delta',
+'D': '\\Delta',
+'s': '\\epsilon',
+'S': '\\Epsilon',
+'h': '\\theta',
+'H': '\\Theta'
+}
+endglobal
+
+snippet sdoc "Creates the boilerplate for a LaTeX document"
+\documentclass{article}
+
+\title{$1}
+\author{Pintilie Sebastian}
+\date{`LANG=en_GB.UTF-8 LC_ALL=en_GB.UTF-8 LANGUAGE=en_GB.UTF-8 date "+%d %b %Y"`}
+
+
+\begin{document}
+\maketitle
+$0
+
+\end{document}
+endsnippet
+
+snippet beg "Creates an environment"
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet enum "Creates an enumerated environment"
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet item "Creates an itemized environment"
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet center "Creates a center environment"
+\begin{center}
+	$0
+\end{center}
+endsnippet
+
+snippet tab "Creates a tabular environment"
+\begin{tabular}{$1}
+	$0
+\end{tabular}
+endsnippet
+
+snippet sub "Creates a subsection"
+\subsection{$1}
+$0
+endsnippet
+
+snippet subsub "Creates a subsubsection"
+\subsubsection{$1}
+$0
+endsnippet
+
+snippet sec "Creates a section"
+\section{$1}
+$0
+endsnippet
+
+snippet pack "Use a package"
+\usepackage[$1]{$2}
+$0
+endsnippet
+
+snippet simg "Add image functionaliti (Create ./Images)"
+\usepackage{graphicx}
+\graphicspath{ {./Images/} }
+`mkdir Images`
+endsnippet
+
+snippet img "Image"
+\includegraphics{$1}
+$0
+endsnippet
+
+snippet ma "Math" 
+\[ $1 \]
+$0
+endsnippet
+
+snippet "(mi)" "Inline Math" r
+$$1$$0
+endsnippet
+
+snippet "(fr)" "Fraction" r
+\frac{$1}{$2}$0
+endsnippet
+
+snippet flr "Flush Right"
+\begin{flushright}
+	$0
+\end{flushright}
+endsnippet
+
+snippet i "Item in a list"
+\item $0
+endsnippet
+
+snippet "(Om)" "Ohm symbol" r
+\Omega $0
+endsnippet
+snippet "(om)" "ohm symbol" r
+\omega $0
+endsnippet
+
+snippet "(\*)" "Star to cdot" r
+\cdot $0
+endsnippet
+
+snippet "(ul)" "Underlined text" r
+\underline{$1}$0
+endsnippet
+
+snippet "(bf)" "Boldface text" r
+\textbf{$1}$0
+endsnippet
+
+snippet "(mf)" "Boldface math" r
+\mathbf{$1}$0
+endsnippet
+
+snippet bib "Add bibliography support"
+\usepackage[backend=biber]{biblatex}
+\addbibresource{bibliography.bib}`touch bibliography.bib`
+endsnippet
+
+snippet "(cite)" "Cite from the bibliography" r
+\cite{$1}$0
+endsnippet
+
+snippet "(vec)" "Vector" r
+\vec{$1}$0
+endsnippet
+
+snippet "(gr)" "Greek letter" r
+${1}$0`!p 
+if len(t[1]) == 1 and t[1][0] != '\\':
+	try:
+		t[1] = greek_letters[t[1][0]]
+	except:
+		pass
+`
+endsnippet
+
+snippet "(tan)" "Tangent" r
+\tan$0
+endsnippet
+
+snippet "(sin)" "Sine" r
+\sin$0
+endsnippet
+
+snippet "(cos)" "Cosine" r
+\cos$0
+endsnippet
+
+snippet "(<)" "Less than" r
+\textless$0
+endsnippet
+
+snippet "(>)" "Greater than" r
+\textgreated$0
+endsnippet
+
+snippet "(sq)" "Square root" r
+\sqrt{$1}$0
+endsnippet
+
+snippet cl "Centered line"
+\begin{center}$1\end{center}
+$0
+endsnippet
+
+snippet "(na)" "Nable" r
+\nabla$0
+endsnippet
+
+snippet sprop "Prop"
+\newcommand{\prop}[1]{$/^{#1}$}
+endsnippet
+
+snippet eq "Equation"
+\begin{equation}
+	$0
+\end{equation}
+endsnippet
+
+snippet line "Line"
+\par\noindent\rule{\textwidth}{0.4pt}
+endsnippet
+
+
+# snippet ebib "Edit the bibliography"
+# `!v 
+# rightbelow split "bibliography.bib"
+# `
+# endsnippet
