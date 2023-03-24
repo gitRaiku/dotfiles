@@ -1,0 +1,17 @@
+*/
+pavucontrol.ini
+user-dirs.dirs
+user-dirs.locale
+zoomus.conf
+QtProject.conf
+kritadisplayrc
+kritarc
+ls_colours
+mimeapps.list
+
+!nvim/
+!sioyek/
+!fish/
+!qutebrowser/
+!mpv/
+!README.md
