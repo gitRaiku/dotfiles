@@ -10,6 +10,7 @@ dracula.draw.blood(c, {
     }
 )
 
+
 c.qt.args = [ "blink-settings=darkMode=4" ]  
 
 backend = "webengine"
