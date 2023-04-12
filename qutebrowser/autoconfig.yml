@@ -12,11 +12,15 @@ settings:
     global:
       normal:
         T: tab-next
+  colors.webpage.darkmode.contrast:
+    global: 0.0
+  colors.webpage.darkmode.enabled:
+    global: true
   content.geolocation:
     https://openweathermap.org: false
     https://www.speedtest.net: false
-  content.javascript.can_access_clipboard:
-    global: true
+  content.javascript.clipboard:
+    global: access
   content.media.audio_capture:
     https://discord.com: true
     https://jitsi.edus.ro: true
@@ -49,7 +53,7 @@ settings:
   downloads.remove_finished:
     global: 30000
   fonts.contextmenu:
-    global: JetBrains/Mono
+    global: JetBrains Mono
   fonts.default_family:
     global: jetbrainsmono
   fonts.hints:

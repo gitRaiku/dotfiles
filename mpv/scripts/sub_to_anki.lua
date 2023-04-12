@@ -99,7 +99,7 @@ local function sub_to_anki()
 
   os.execute(string.format('rm "%s"', fullPath))
   os.execute(string.format('rm "%s"', ffullPath))
-  os.execute(string.format('echo "%s" | xclip -selection clipboard -t text/plain', subText))
+  os.execute(string.format('echo "%s" | wl-copy -selection clipboard -t text/plain', subText))
   local cs5 = gettime()
   --print(commandString)
   --print(cs2 - cs1)
