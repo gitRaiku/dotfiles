@@ -62,13 +62,13 @@ augroup remember_folds
   autocmd BufWinEnter * silent! loadview
 augroup END
 
-for fpath in split(globpath('/home/raiku/.config/nvim/scripts/', '*.vim'), '\n')
+for fpath in split(globpath('/home/arch/.config/nvim/scripts/', '*.vim'), '\n')
   exe "source" fpath
 endfor
 
 
 " Plugins
-call plug#begin('/home/raiku/.config/nvim/plugins')
+call plug#begin('/home/arch/.config/nvim/plugins')
 
 Plug 'SirVer/ultisnips'
 

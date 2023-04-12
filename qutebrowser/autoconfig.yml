@@ -15,8 +15,8 @@ settings:
   content.geolocation:
     https://openweathermap.org: false
     https://www.speedtest.net: false
-  content.javascript.can_access_clipboard:
-    global: true
+  content.javascript.clipboard:
+    global: access
   content.media.audio_capture:
     https://discord.com: true
     https://jitsi.edus.ro: true
@@ -51,13 +51,19 @@ settings:
   fonts.contextmenu:
     global: JetBrains/Mono
   fonts.default_family:
-    global: jetbrainsmono
+    global: JetBrains Mono
+  fonts.default_size:
+    global: 8pt
   fonts.hints:
     global: normal jetbrains/mono
   fonts.prompts:
     global: JetBrainsMono
+  fonts.web.family.sans_serif:
+    global: Koruri
   fonts.web.family.standard:
-    global: JetBrains/Mono
+    global: JetBrains Mono
+  fonts.web.size.default:
+    global: 15
   qt.highdpi:
     global: true
   statusbar.show:
