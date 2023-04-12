@@ -42,7 +42,7 @@ SETUVAR _fish_abbr_jwine:LANG\x3dja_JP\x2eUTF\x2d8\x20wine
 SETUVAR _fish_abbr_k:doas\x20kill\x20\x2d9
 SETUVAR _fish_abbr_kill:doas\x20kill
 SETUVAR _fish_abbr_killall:doas\x20killall
-SETUVAR _fish_abbr_kx:killall\x20xinit
+SETUVAR _fish_abbr_kx:killall\x20dwl
 SETUVAR _fish_abbr_lj:LANG\x3dja_JP\x2eUTF\x2d8\x20LC_ALL\x3dja_JP\x2eUTF\x2d8\x20LC_CTYPE\x3dja_JP\x2eUTF\x2d8
 SETUVAR _fish_abbr_mak:doas\x20make\x20install\x20\x2dj8\x20\x2dl8
 SETUVAR _fish_abbr_make:make\x20\x2dj8\x20\x2dl8
@@ -57,7 +57,7 @@ SETUVAR _fish_abbr_neofetch:neofetch\x20\x2d\x2ddisable\x20icons\x20theme
 SETUVAR _fish_abbr_nin:nvim\x20/home/arch/\x2econfig/nvim/init\x2evim
 SETUVAR _fish_abbr_pac:doas\x20pacman\x20\x2dS
 SETUVAR _fish_abbr_pacman:doas\x20pacman
-SETUVAR _fish_abbr_pf:ps\x20aux\x20\x7c\x20grep
+SETUVAR _fish_abbr_pf:ps\x20aux\x20\x7c\x20rg\x20-i
 SETUVAR _fish_abbr_pig:ping\x20google\x2ecom
 SETUVAR _fish_abbr_pigg:ping\x208\x2e8\x2e8\x2e8
 SETUVAR _fish_abbr_pkgfile:doas\x20pkgfile
@@ -78,7 +78,7 @@ SETUVAR _fish_abbr_sin:nvim\x20/home/arch/Git/st\x2dluke/config\x2eh
 SETUVAR _fish_abbr_src:source\x20/home/arch/\x2econfig/fish/config\x2efish
 SETUVAR _fish_abbr_start__network:doas\x20start_network
 SETUVAR _fish_abbr_std:shutdown\x20now
-SETUVAR _fish_abbr_sx:startx
+SETUVAR _fish_abbr_sx:dwl
 SETUVAR _fish_abbr_sys:doas\x20systemctl
 SETUVAR _fish_abbr_syss:systemctl\x20\x2d\x2duser
 SETUVAR _fish_abbr_umount:doas\x20umount

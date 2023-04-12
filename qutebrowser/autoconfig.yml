@@ -12,6 +12,10 @@ settings:
     global:
       normal:
         T: tab-next
+  colors.webpage.darkmode.contrast:
+    global: 0.0
+  colors.webpage.darkmode.enabled:
+    global: true
   content.geolocation:
     https://openweathermap.org: false
     https://www.speedtest.net: false
@@ -49,7 +53,7 @@ settings:
   downloads.remove_finished:
     global: 30000
   fonts.contextmenu:
-    global: JetBrains/Mono
+    global: JetBrains Mono
   fonts.default_family:
     global: JetBrains Mono
   fonts.default_size:

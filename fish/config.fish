@@ -15,6 +15,8 @@ export LC_ALL=en_GB.UTF-8
 export SDL_AUDIODRIVER=jack
 export GNULIB_SRCDIR=/home/arch/Git/gnulib
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
+export XDG_CURRENT_DESKTOP=Sway
+export MOZ_ENABLE_WAYLAND=1
 # export DEBUGINFOD_URLS="https://debuginfod.elfutils.org/"
 
 
@@ -33,5 +35,6 @@ if [ "$A" = "1" ]
 end
 
 if [ "$ANKEEC" = "1" ]
+  sleep 0.1
   exec ankeec "$(cat /tmp/ankeect)" "$(cat /tmp/ankeecp)"
 end
