@@ -1,3 +1,3 @@
 function epdf
-zathura $argv[1] &;disown;exit
+sioyek $argv[1] &;disown;exit
 end
