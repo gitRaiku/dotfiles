@@ -1,7 +1,7 @@
 {
   "appearance": {
     "color_theme": "_builtin_default",
-    "left_frame_width": 250
+    "left_frame_width": 548
   },
   "color_picker": {
     "default_tab": 0
@@ -9,14 +9,18 @@
   "cross_probing": {
     "auto_highlight": true,
     "center_on_items": true,
+    "on_selection": true,
     "zoom_to_fit": true
   },
   "find_replace": {
     "find_history": [],
     "find_string": "",
     "flags": 1,
+    "match_case": false,
+    "match_mode": 0,
     "replace_history": [],
-    "replace_string": ""
+    "replace_string": "",
+    "search_and_replace": false
   },
   "graphics": {
     "canvas_type": 2,
@@ -25,13 +29,19 @@
     "select_factor": 0.75
   },
   "lib_tree": {
-    "column_width": 360
+    "column_width": 360,
+    "column_widths": null,
+    "columns": []
   },
   "meta": {
     "version": 0
   },
   "pcm": {
+    "check_for_updates": false,
     "last_download_dir": "",
+    "lib_auto_add": true,
+    "lib_auto_remove": true,
+    "lib_prefix": "PCM_",
     "repositories": [
       {
         "name": "KiCad official repository",
@@ -49,16 +59,19 @@
     "use_theme": false
   },
   "system": {
+    "check_for_updates": 1,
     "file_history": [
-      "/home/arch/Misc/KiCad/Levitator/Levitator.kicad_pro",
-      "/home/arch/Misc/KiCad/1/1.kicad_pro"
+      "/home/raiku/Misc/KiCad/EPD/EPD.kicad_pro",
+      "/home/raiku/Misc/KiCad/PMW3901MB-TXQT/PMW3901MB-TXQT.kicad_pro",
+      "/home/raiku/Misc/KiCad/Levitator/Levitator.kicad_pro",
+      "/home/raiku/Misc/KiCad/SC18IS602BIPW_S8HP/SC18IS602BIPW_S8HP/SC18IS602BIPW_S8HP.kicad_pro"
     ],
     "first_run_shown": false,
     "last_imperial_units": 0,
     "last_metric_units": 1,
     "max_undo_items": 0,
     "open_projects": [
-      "/home/arch/Misc/KiCad/Levitator/Levitator.kicad_pro"
+      "/home/raiku/Misc/KiCad/EPD/EPD.kicad_pro"
     ],
     "units": 1
   },
@@ -106,21 +119,12 @@
       "user_grid_y": "10 mil"
     },
     "maximized": false,
-<<<<<<< HEAD
-    "mru_path": "/home/arch/Misc/KiCad/Levitator/",
-    "perspective": "layout2|name=MainToolbar;caption=;state=139644;dir=4;layer=2;row=0;pos=0;prop=100000;bestw=34;besth=227;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=ProjectTree;caption=Project Files;state=1532;dir=4;layer=1;row=0;pos=0;prop=100000;bestw=250;besth=-1;minw=250;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Launcher;caption=Editors;state=508;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=614;besth=560;minw=614;minh=560;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(4,2,0)=34|dock_size(4,1,0)=250|dock_size(5,0,0)=614|",
-    "pos_x": 10,
-    "pos_y": 29,
+    "mru_path": "/home/raiku/Misc/KiCad/EPD/",
+    "perspective": "layout2|name=MainToolbar;caption=;state=139644;dir=4;layer=2;row=0;pos=0;prop=100000;bestw=34;besth=227;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=ProjectTree;caption=Project Files;state=1532;dir=4;layer=1;row=0;pos=0;prop=100000;bestw=548;besth=-1;minw=250;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Launcher;caption=Editors;state=508;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=614;besth=560;minw=614;minh=560;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(4,2,0)=34|dock_size(4,1,0)=548|dock_size(5,0,0)=614|",
+    "pos_x": 0,
+    "pos_y": 28,
     "size_x": 1034,
-    "size_y": 1039,
-=======
-    "mru_path": "/home/raiku/Misc/KiCad/Levitator/",
-    "perspective": "layout2|name=MainToolbar;caption=;state=139644;dir=4;layer=2;row=0;pos=0;prop=100000;bestw=34;besth=227;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=ProjectTree;caption=Project Files;state=1532;dir=4;layer=1;row=0;pos=0;prop=100000;bestw=250;besth=-1;minw=250;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Launcher;caption=Editors;state=508;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=614;besth=560;minw=614;minh=560;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(4,2,0)=34|dock_size(4,1,0)=250|dock_size(5,0,0)=614|",
-    "pos_x": 10,
-    "pos_y": 34,
-    "size_x": 1898,
-    "size_y": 1034,
->>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
+    "size_y": 1030,
     "zoom_factors": []
   }
 }

@@ -1,7 +1,9 @@
 {
   "appearance": {
-    "icon_scale": 0,
+    "hicontrast_dimming_factor": 0.8,
+    "icon_scale": -1,
     "icon_theme": 2,
+    "show_scrollbars": false,
     "text_editor_zoom": 0,
     "use_icons_in_menus": true
   },
@@ -14,6 +16,7 @@
     "min_interval": 300
   },
   "do_not_show_again": {
+    "data_collection_prompt": false,
     "env_var_overwrite_warning": false,
     "scaled_3d_models_warning": false,
     "zone_fill_warning": false
@@ -29,6 +32,7 @@
     "auto_pan": false,
     "auto_pan_acceleration": 5,
     "center_on_zoom": true,
+    "focus_follow_sch_pcb": false,
     "horizontal_pan": false,
     "immediate_actions": true,
     "mouse_left": -1,
@@ -43,7 +47,7 @@
     "zoom_speed_auto": true
   },
   "meta": {
-    "version": 2
+    "version": 3
   },
   "netclass_panel": {
     "sash_pos": 160
@@ -52,16 +56,18 @@
     "sash_pos": 380
   },
   "session": {
+    "pinned_fp_libs": [],
+    "pinned_symbol_libs": [],
     "remember_open_files": false
   },
   "system": {
     "autosave_interval": 600,
     "clear_3d_cache_interval": 30,
     "file_history_size": 9,
-    "language": "Default",
+    "language": "English",
     "pdf_viewer_name": "",
     "text_editor": "/bin/nvim",
     "use_system_pdf_viewer": true,
-    "working_dir": "/home/arch"
+    "working_dir": "/home/raiku"
   }
 }

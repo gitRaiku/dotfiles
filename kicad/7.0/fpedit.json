@@ -4,7 +4,7 @@
   },
   "aui": {
     "appearance_panel_tab": 0,
-    "right_panel_width": -1,
+    "right_panel_width": 250,
     "show_layer_manager": true
   },
   "color_picker": {
@@ -13,6 +13,7 @@
   "cross_probing": {
     "auto_highlight": true,
     "center_on_items": true,
+    "on_selection": true,
     "zoom_to_fit": true
   },
   "design_settings": {
@@ -57,9 +58,11 @@
     "silk_text_thickness": 0.15
   },
   "editing": {
+    "fp_use_45_degree_limit": false,
     "magnetic_graphics": true,
     "magnetic_pads": 2,
     "polar_coords": false,
+    "rotation_angle": 900,
     "selection_filter": {
       "dimensions": true,
       "footprints": true,
@@ -79,8 +82,11 @@
     "find_history": [],
     "find_string": "",
     "flags": 1,
+    "match_case": false,
+    "match_mode": 0,
     "replace_history": [],
-    "replace_string": ""
+    "replace_string": "",
+    "search_and_replace": false
   },
   "graphics": {
     "canvas_type": 2,
@@ -89,17 +95,16 @@
     "select_factor": 0.75
   },
   "lib_tree": {
-    "column_width": 360
+    "column_widths": {
+      "Item": 360
+    },
+    "columns": []
   },
   "meta": {
-    "version": 1
+    "version": 2
   },
   "pcb_display": {
-<<<<<<< HEAD
     "active_layer_preset": "All Layers",
-=======
-    "active_layer_preset": "",
->>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "graphic_items_fill": true,
     "layer_presets": [],
     "pad_fill": true,
@@ -116,11 +121,7 @@
   },
   "system": {
     "file_history": [],
-<<<<<<< HEAD
-    "first_run_shown": true,
-=======
     "first_run_shown": false,
->>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "last_imperial_units": 0,
     "last_import_export_path": "",
     "last_metric_units": 1,
@@ -135,11 +136,7 @@
     "display": 0,
     "footprint_text_shown_columns": "0 1 2 3 4 5 6",
     "grid": {
-<<<<<<< HEAD
       "axes_enabled": true,
-=======
-      "axes_enabled": false,
->>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
       "fast_grid_1": 4,
       "fast_grid_2": 5,
       "last_size": 4,
@@ -178,12 +175,11 @@
     "lib_width": 250,
     "maximized": false,
     "mru_path": "",
-<<<<<<< HEAD
-    "perspective": "layout2|name=InfoBar;caption=;state=131454;dir=1;layer=1;row=0;pos=0;prop=100000;bestw=20;besth=30;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MainToolbar;caption=;state=139632;dir=1;layer=6;row=0;pos=0;prop=100000;bestw=1324;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MsgPanel;caption=;state=131452;dir=3;layer=6;row=0;pos=0;prop=100000;bestw=400;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=OptToolbar;caption=;state=139596;dir=4;layer=3;row=0;pos=0;prop=100000;bestw=34;besth=410;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Footprints;caption=Libraries;state=2044;dir=4;layer=2;row=0;pos=0;prop=100000;bestw=250;besth=-1;minw=250;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=ToolsToolbar;caption=;state=139596;dir=2;layer=2;row=0;pos=0;prop=100000;bestw=34;besth=442;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=LayersManager;caption=Appearance;state=1532;dir=2;layer=3;row=0;pos=0;prop=100000;bestw=180;besth=-1;minw=180;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=SelectionFilter;caption=Selection Filter;state=1532;dir=2;layer=3;row=0;pos=1;prop=0;bestw=249;besth=148;minw=160;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=DrawFrame;caption=;state=1020;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=385;besth=173;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(1,6,0)=38|dock_size(3,6,0)=38|dock_size(4,3,0)=34|dock_size(4,2,0)=252|dock_size(2,2,0)=34|dock_size(2,3,0)=249|dock_size(5,0,0)=387|",
-    "pos_x": 10,
-    "pos_y": 29,
+    "perspective": "layout2|name=InfoBar;caption=;state=131454;dir=1;layer=1;row=0;pos=0;prop=100000;bestw=20;besth=30;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MainToolbar;caption=;state=139632;dir=1;layer=6;row=0;pos=0;prop=100000;bestw=1356;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MsgPanel;caption=;state=131452;dir=3;layer=6;row=0;pos=0;prop=100000;bestw=400;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Footprints;caption=Libraries;state=2044;dir=4;layer=3;row=0;pos=0;prop=100000;bestw=250;besth=-1;minw=250;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=OptToolbar;caption=;state=139596;dir=4;layer=2;row=0;pos=0;prop=100000;bestw=34;besth=451;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=ToolsToolbar;caption=;state=139596;dir=2;layer=2;row=0;pos=0;prop=100000;bestw=34;besth=547;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=LayersManager;caption=Appearance;state=1276;dir=2;layer=3;row=0;pos=0;prop=100000;bestw=180;besth=-1;minw=250;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=SelectionFilter;caption=Selection Filter;state=1532;dir=2;layer=3;row=0;pos=1;prop=0;bestw=238;besth=148;minw=160;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=DrawFrame;caption=;state=1020;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=188;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(1,6,0)=38|dock_size(3,6,0)=38|dock_size(4,3,0)=252|dock_size(4,2,0)=34|dock_size(2,2,0)=34|dock_size(2,3,0)=250|dock_size(5,0,0)=402|",
+    "pos_x": 442,
+    "pos_y": 34,
     "size_x": 1034,
-    "size_y": 1039,
+    "size_y": 1034,
     "zoom_factors": [
       0.13,
       0.22,
@@ -204,13 +200,5 @@
       220.0,
       300.0
     ]
-=======
-    "perspective": "",
-    "pos_x": 0,
-    "pos_y": 0,
-    "size_x": 0,
-    "size_y": 0,
-    "zoom_factors": []
->>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
   }
 }
