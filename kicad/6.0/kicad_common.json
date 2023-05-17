@@ -1,6 +1,6 @@
 {
   "appearance": {
-    "icon_scale": -1,
+    "icon_scale": 0,
     "icon_theme": 2,
     "text_editor_zoom": 0,
     "use_icons_in_menus": true
@@ -37,7 +37,7 @@
     "scroll_modifier_pan_h": 308,
     "scroll_modifier_pan_v": 306,
     "scroll_modifier_zoom": 0,
-    "warp_mouse_on_move": false,
+    "warp_mouse_on_move": true,
     "zoom_acceleration": false,
     "zoom_speed": 1,
     "zoom_speed_auto": true

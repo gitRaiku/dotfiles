@@ -39,7 +39,11 @@
         "path": "bom_csv_grouped_by_value_with_fp.py"
       }
     ],
+<<<<<<< HEAD
     "selected_plugin": "bom_csv_grouped_by_value"
+=======
+    "selected_plugin": ""
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
   },
   "color_picker": {
     "default_tab": 0
@@ -60,7 +64,11 @@
     "default_sheet_border_color": "rgba(0, 0, 0, 0.000)",
     "default_text_size": 50,
     "default_wire_thickness": 6,
+<<<<<<< HEAD
     "field_names": "(templatefields)",
+=======
+    "field_names": "",
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "hv_lines_only": true,
     "junction_size_choice": 3,
     "junction_size_mult_list": [
@@ -97,7 +105,11 @@
     "drag_is_move": false
   },
   "lib_tree": {
+<<<<<<< HEAD
     "column_width": 361
+=======
+    "column_width": 360
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
   },
   "lib_view": {
     "cmp_list_width": 150,
@@ -106,11 +118,19 @@
     "window": {
       "display": 0,
       "maximized": false,
+<<<<<<< HEAD
       "perspective": "layout2|name=MainToolbar;caption=;state=139632;dir=1;layer=6;row=0;pos=0;prop=100000;bestw=557;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MsgPanel;caption=;state=131452;dir=3;layer=6;row=0;pos=0;prop=100000;bestw=400;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Libraries;caption=;state=1020;dir=4;layer=2;row=0;pos=0;prop=100000;bestw=200;besth=-1;minw=100;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Symbols;caption=;state=1020;dir=4;layer=1;row=0;pos=0;prop=100000;bestw=300;besth=-1;minw=100;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=DrawFrame;caption=;state=1020;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=385;besth=173;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(1,6,0)=38|dock_size(3,6,0)=38|dock_size(4,2,0)=152|dock_size(4,1,0)=152|dock_size(5,0,0)=150|",
       "pos_x": 10,
       "pos_y": 29,
       "size_x": 1034,
       "size_y": 1039
+=======
+      "perspective": "",
+      "pos_x": 0,
+      "pos_y": 0,
+      "size_x": 500,
+      "size_y": 400
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     }
   },
   "meta": {
@@ -178,6 +198,7 @@
     }
   },
   "symbol_chooser": {
+<<<<<<< HEAD
     "height": 752,
     "keep_symbol": false,
     "place_all_units": true,
@@ -189,11 +210,27 @@
     "file_history": [
       "/home/arch/Misc/KiCad/Levitator/Levitator.kicad_sch",
       "/home/arch/Misc/KiCad/1/1.kicad_sch"
+=======
+    "height": 713,
+    "keep_symbol": false,
+    "place_all_units": true,
+    "sash_pos_h": 440,
+    "sash_pos_v": 546,
+    "width": 780
+  },
+  "system": {
+    "file_history": [
+      "/home/raiku/Misc/KiCad/Levitator/Levitator.kicad_sch"
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     ],
     "first_run_shown": true,
     "last_imperial_units": 0,
     "last_metric_units": 1,
+<<<<<<< HEAD
     "last_symbol_lib_dir": "",
+=======
+    "last_symbol_lib_dir": "/home/raiku/Misc/KiCad/Libs/LM324",
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "max_undo_items": 0,
     "never_show_rescue_dialog": false,
     "units": 1
@@ -229,10 +266,17 @@
     "maximized": false,
     "mru_path": "",
     "perspective": "layout2|name=InfoBar;caption=;state=131454;dir=1;layer=1;row=0;pos=0;prop=100000;bestw=20;besth=30;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MainToolbar;caption=;state=139632;dir=1;layer=6;row=0;pos=0;prop=100000;bestw=1140;besth=34;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=OptToolbar;caption=;state=139596;dir=4;layer=3;row=0;pos=0;prop=100000;bestw=34;besth=232;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=ToolsToolbar;caption=;state=139596;dir=2;layer=2;row=0;pos=0;prop=100000;bestw=34;besth=602;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=DrawFrame;caption=;state=1020;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=385;besth=173;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MsgPanel;caption=;state=131452;dir=3;layer=6;row=0;pos=0;prop=100000;bestw=400;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(1,6,0)=34|dock_size(4,3,0)=34|dock_size(2,2,0)=34|dock_size(5,0,0)=387|dock_size(3,6,0)=38|",
+<<<<<<< HEAD
     "pos_x": 442,
     "pos_y": 29,
     "size_x": 1034,
     "size_y": 1039,
+=======
+    "pos_x": 10,
+    "pos_y": 34,
+    "size_x": 1034,
+    "size_y": 1034,
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "zoom_factors": [
       0.05,
       0.07,

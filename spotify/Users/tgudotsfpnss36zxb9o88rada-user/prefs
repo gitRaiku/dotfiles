@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 audio.play_bitrate_non_metered_migrated=true
 audio.sync_bitrate_enumeration=3
 gaia.attached_device_id="7e1203bcfcc4bdff6b1e60ed51c1b248801203c9"
@@ -5,3 +6,10 @@ audio.play_bitrate_enumeration=3
 ui.hide_hpto=true
 audio.play_bitrate_non_metered_enumeration=3
 app.player.volume=36699
+=======
+audio.sync_bitrate_enumeration=3
+audio.play_bitrate_enumeration=3
+ui.hide_hpto=true
+audio.play_bitrate_non_metered_migrated=true
+ui.right_panel_content=0
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26

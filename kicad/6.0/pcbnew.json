@@ -137,12 +137,21 @@
     "lib_list_width": 0,
     "maximized": false,
     "mru_path": "",
+<<<<<<< HEAD
     "perspective": "layout2|name=MainToolbar;caption=;state=139632;dir=1;layer=6;row=0;pos=0;prop=100000;bestw=722;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=OptToolbar;caption=;state=139596;dir=4;layer=3;row=0;pos=0;prop=100000;bestw=34;besth=410;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MsgPanel;caption=;state=131452;dir=3;layer=6;row=0;pos=0;prop=100000;bestw=400;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Libraries;caption=;state=1020;dir=4;layer=2;row=0;pos=0;prop=100000;bestw=200;besth=-1;minw=100;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Footprints;caption=;state=1020;dir=4;layer=1;row=0;pos=0;prop=100000;bestw=300;besth=-1;minw=100;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=DrawFrame;caption=;state=1020;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=385;besth=173;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(1,6,0)=38|dock_size(4,3,0)=34|dock_size(3,6,0)=38|dock_size(4,2,0)=202|dock_size(4,1,0)=302|dock_size(5,0,0)=387|",
     "pos_x": 0,
     "pos_y": -6,
     "size_x": 1920,
     "size_y": 1080,
     "zoom": 3.482104600734624,
+=======
+    "perspective": "layout2|name=MainToolbar;caption=;state=139632;dir=1;layer=6;row=0;pos=0;prop=100000;bestw=722;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=OptToolbar;caption=;state=139596;dir=4;layer=3;row=0;pos=0;prop=100000;bestw=34;besth=410;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MsgPanel;caption=;state=131452;dir=3;layer=6;row=0;pos=0;prop=100000;bestw=400;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Libraries;caption=;state=1020;dir=4;layer=2;row=0;pos=0;prop=100000;bestw=200;besth=-1;minw=100;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=Footprints;caption=;state=1020;dir=4;layer=1;row=0;pos=0;prop=100000;bestw=300;besth=-1;minw=100;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=DrawFrame;caption=;state=1020;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=385;besth=173;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(1,6,0)=38|dock_size(4,3,0)=34|dock_size(3,6,0)=38|dock_size(4,2,0)=202|dock_size(4,1,0)=302|dock_size(5,0,0)=384|",
+    "pos_x": 630,
+    "pos_y": 289,
+    "size_x": 1280,
+    "size_y": 720,
+    "zoom": 4.191440155705069,
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "zoom_factors": []
   },
   "footprint_wizard": {
@@ -207,8 +216,13 @@
     "merge_pth_npth": false,
     "minimal_header": false,
     "mirror": false,
+<<<<<<< HEAD
     "unit_drill_is_inch": false,
     "use_route_for_oval_holes": false,
+=======
+    "unit_drill_is_inch": true,
+    "use_route_for_oval_holes": true,
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "zeros_format": 0
   },
   "graphics": {
@@ -274,8 +288,13 @@
     "all_layers_on_one_page": 1,
     "check_zones_before_plotting": true,
     "edgecut_on_all_layers": true,
+<<<<<<< HEAD
     "fine_scale_x": 1.0,
     "fine_scale_y": 1.0,
+=======
+    "fine_scale_x": 0.0,
+    "fine_scale_y": 0.0,
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "mirror": false,
     "pads_drill_mode": 2,
     "ps_fine_width_adjust": 0.0
@@ -307,12 +326,20 @@
   },
   "system": {
     "file_history": [
+<<<<<<< HEAD
       "/home/arch/Misc/KiCad/Levitator/Levitator.kicad_pcb",
       "/home/arch/Misc/KiCad/1/1.kicad_pcb"
     ],
     "first_run_shown": true,
     "last_footprint3d_dir": "/usr/share/kicad/3dmodels/",
     "last_footprint_lib_dir": "",
+=======
+      "/home/raiku/Misc/KiCad/Levitator/Levitator.kicad_pcb"
+    ],
+    "first_run_shown": true,
+    "last_footprint3d_dir": "/usr/share/kicad/3dmodels/",
+    "last_footprint_lib_dir": "/home/raiku/Misc/KiCad/Libs/LM324.pretty",
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "last_imperial_units": 0,
     "last_metric_units": 1,
     "max_undo_items": 0,
@@ -358,7 +385,11 @@
       "axes_enabled": false,
       "fast_grid_1": 4,
       "fast_grid_2": 5,
+<<<<<<< HEAD
       "last_size": 6,
+=======
+      "last_size": 4,
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
       "line_width": 1.0,
       "min_spacing": 10.0,
       "show": true,
@@ -393,11 +424,19 @@
     },
     "maximized": false,
     "mru_path": "",
+<<<<<<< HEAD
     "perspective": "layout2|name=InfoBar;caption=;state=131454;dir=1;layer=1;row=0;pos=0;prop=100000;bestw=20;besth=30;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MainToolbar;caption=;state=139632;dir=1;layer=6;row=0;pos=0;prop=100000;bestw=1144;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=AuxToolbar;caption=;state=139644;dir=1;layer=5;row=0;pos=0;prop=100000;bestw=861;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MsgPanel;caption=;state=131452;dir=3;layer=6;row=0;pos=0;prop=100000;bestw=400;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=OptToolbar;caption=;state=139596;dir=4;layer=3;row=0;pos=0;prop=100000;bestw=34;besth=565;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=ToolsToolbar;caption=;state=139596;dir=2;layer=3;row=0;pos=0;prop=100000;bestw=34;besth=643;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=LayersManager;caption=Appearance;state=1532;dir=2;layer=4;row=0;pos=0;prop=100000;bestw=180;besth=-1;minw=180;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=SelectionFilter;caption=Selection Filter;state=1532;dir=2;layer=4;row=0;pos=1;prop=0;bestw=180;besth=-1;minw=180;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=DrawFrame;caption=;state=1020;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=385;besth=173;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(1,6,0)=38|dock_size(1,5,0)=38|dock_size(3,6,0)=38|dock_size(4,3,0)=34|dock_size(2,3,0)=34|dock_size(2,4,0)=260|dock_size(5,0,0)=310|",
     "pos_x": 10,
     "pos_y": 29,
     "size_x": 1034,
     "size_y": 1039,
+=======
+    "perspective": "layout2|name=InfoBar;caption=;state=131454;dir=1;layer=1;row=0;pos=0;prop=100000;bestw=20;besth=30;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MainToolbar;caption=;state=139632;dir=1;layer=6;row=0;pos=0;prop=100000;bestw=1144;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=AuxToolbar;caption=;state=139644;dir=1;layer=5;row=0;pos=0;prop=100000;bestw=861;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=MsgPanel;caption=;state=131452;dir=3;layer=6;row=0;pos=0;prop=100000;bestw=400;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=OptToolbar;caption=;state=139596;dir=4;layer=3;row=0;pos=0;prop=100000;bestw=34;besth=565;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=ToolsToolbar;caption=;state=139596;dir=2;layer=3;row=0;pos=0;prop=100000;bestw=34;besth=643;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=LayersManager;caption=Appearance;state=1532;dir=2;layer=4;row=0;pos=0;prop=100000;bestw=180;besth=-1;minw=180;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=SelectionFilter;caption=Selection Filter;state=1532;dir=2;layer=4;row=0;pos=1;prop=0;bestw=180;besth=-1;minw=180;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=DrawFrame;caption=;state=1020;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=385;besth=173;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(1,6,0)=38|dock_size(1,5,0)=38|dock_size(3,6,0)=38|dock_size(4,3,0)=34|dock_size(2,3,0)=34|dock_size(2,4,0)=180|dock_size(5,0,0)=387|",
+    "pos_x": 10,
+    "pos_y": 34,
+    "size_x": 1034,
+    "size_y": 1034,
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "zoom_factors": [
       0.13,
       0.22,
@@ -421,9 +460,15 @@
   },
   "zones": {
     "clearance": 20.0,
+<<<<<<< HEAD
     "hatching_style": 2,
     "min_thickness": 10.0,
     "net_sort_mode": 1,
+=======
+    "hatching_style": 0,
+    "min_thickness": 10.0,
+    "net_sort_mode": -1,
+>>>>>>> e57e761ee89639cfce8983ee17b5ac78b5360a26
     "thermal_relief_copper_width": 20.0,
     "thermal_relief_gap": 20.0
   }

@@ -15,10 +15,6 @@ export LC_ALL=en_GB.UTF-8
 export SDL_AUDIODRIVER=jack
 export GNULIB_SRCDIR=/home/arch/Git/gnulib
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
-export XDG_CURRENT_DESKTOP=Sway
-export MOZ_ENABLE_WAYLAND=1
-# export DEBUGINFOD_URLS="https://debuginfod.elfutils.org/"
-
 
 export CFLAGS="-O3 -march=native -mtune=native -fmodulo-sched"
 export MAKEOPTS="-l16 -j16"
