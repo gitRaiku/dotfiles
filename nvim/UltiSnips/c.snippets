@@ -454,3 +454,18 @@ void manacher($1 *__restrict v, uint32_t *__restrict res, uint32_t vl) {
   }
 }$0
 endsnippet
+
+snippet cfile
+{
+	FILE *__restrict $1;
+#ifdef ONLINE_JUDGE
+		$1 = stdin;
+#else
+		$1 = fopen("$2", "$3");
+#endif
+
+	$0
+
+	fclose($1);
+}
+endsnippet

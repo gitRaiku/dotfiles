@@ -15,7 +15,7 @@ settings:
   colors.webpage.darkmode.contrast:
     global: 0.0
   colors.webpage.darkmode.enabled:
-    global: true
+    global: false
   content.geolocation:
     https://openweathermap.org: false
     https://www.speedtest.net: false
