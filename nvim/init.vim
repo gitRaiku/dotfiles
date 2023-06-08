@@ -41,10 +41,6 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-noremap <C-m> :tabn<CR>
-noremap <C-n> :tabpr<CR>
-noremap <C-space> :tabc<CR>:tabp<CR>
-
 
 noremap x "_x
 noremap X "_X
@@ -99,8 +95,6 @@ let g:moonflyTerminalColors = 1
 nnoremap <C-f> :FuzzyOpen<CR>
 nnoremap <C-s> :FuzzyGrep<CR>
 
-
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 
 " End Plugins

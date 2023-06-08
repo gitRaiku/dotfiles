@@ -1,5 +1,4 @@
-nnoremap <C-m> :call Change_Diacritics()<CR>
-" inoremap <C-m> :call Change_Diacritics()<CR>i
+nnoremap <C-p> :call Change_Diacritics()<CR>
 
 function Change_Diacritics()
   let chdict = {'a': 'ă', 'ă': 'â', 'â': 'a', 'i': 'î', 'î': 'i', 's': 'ş', 'ş': 's', 't': 'ţ', 'ţ': 't', 'A': 'Ă', 'Ă': 'Â', 'Â': 'A', 'I': 'Î', 'Î': 'I', 'S': 'Ş', 'Ş': 'S', 'T': 'Ţ', 'Ţ': 'T'}
