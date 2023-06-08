@@ -58,13 +58,13 @@ augroup remember_folds
   autocmd BufWinEnter * silent! loadview
 augroup END
 
-for fpath in split(globpath('/home/arch/.config/nvim/scripts/', '*.vim'), '\n')
+for fpath in split(globpath('~/.config/nvim/scripts/', '*.vim'), '\n')
   exe "source" fpath
 endfor
 
 
 " Plugins
-call plug#begin('/home/arch/.config/nvim/plugins')
+call plug#begin('~/.config/nvim/plugins')
 
 Plug 'SirVer/ultisnips'
 
