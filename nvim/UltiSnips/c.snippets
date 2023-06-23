@@ -457,15 +457,15 @@ endsnippet
 
 snippet cfile
 {
-	FILE *__restrict $1;
+	FILE *__restrict in;
 #ifdef ONLINE_JUDGE
-		$1 = stdin;
+		in = stdin;
 #else
-		$1 = fopen("$2", "$3");
+		in = fopen("in", "r");
 #endif
 
 	$0
 
-	fclose($1);
+	fclose(in);
 }
 endsnippet
