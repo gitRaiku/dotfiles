@@ -45,8 +45,8 @@ local function sub_to_anki()
   local ffullPath = string.format("/tmp/%s", ffname)
 
   local audioIndex = mp.get_property_osd('current-tracks/audio/ff-index')
-  local commandString   = string.format('ffmpeg -i "%s" -map "0:a:%u" -ss "%f" -to "%f" -c copy "%s"', filename, tonumber(audioIndex) - 1, subStart - 0.2, subEnd + 0.2, fullPath)
-  local commandffString = string.format('ffmpeg -i "%s" "%s"', fullPath, ffullPath);
+  local commandString   = string.format('ffmpeg -hwaccel auto -i "%s" -map "0:a:%u" -ss "%f" -to "%f" -vn -c copy "%s"', filename, tonumber(audioIndex) - 1, subStart - 0.2, subEnd + 0.2, fullPath)
+  local commandffString = string.format('ffmpeg -hwaccel auto -i "%s" "%s"', fullPath, ffullPath);
   os.execute(commandString)
   os.execute(commandffString)
 
