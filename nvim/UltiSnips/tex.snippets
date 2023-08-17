@@ -2,29 +2,34 @@ global !p
 greek_letters = {
 'a': '\\alpha',
 'A': '\\Alpha',
-'o': '\\omega',
-'O': '\\Omega',
-'n': '\\nu',
-'m': '\\mu',
-'M': '\\Mu',
-'r': '\\rho',
-'R': 'P',
-'p': '\\pi',
-'P': '\\Pi',
-'e': '\\eta',
-'E': '\\Eta',
-'f': '\\Phi',
-'F': '\\Phi',
+'b': '\\beta',
+'g': '\\gamma',
+'G': '\\Gamma',
+'ep': '\\epsilon',
+'z': '\\zeta',
+'et': '\\eta',
+'th': '\\theta',
+'Th': '\\Theta',
+'i': '\\iota',
 'l': '\\lambda',
 'L': '\\Lambda',
-'t': '\\tau',
-'T': 'T',
-'d': '\\delta',
-'D': '\\Delta',
-'s': '\\epsilon',
-'S': '\\Epsilon',
-'h': '\\theta',
-'H': '\\Theta'
+'m': '\\mu',
+'n': '\\nu',
+'x': '\\xi',
+'X': '\\Xi',
+'pi': '\\pi',
+'Pi': '\\Pi',
+'r': '\\rho',
+'s': '\\sigma',
+'S': '\\Sigma',
+'ta': '\\tau',
+'ph': '\\phi',
+'Ph': '\\Phi',
+'c': '\\chi',
+'ps': '\\psi',
+'Ps': '\\Psi',
+'o': '\\omega',
+'O': '\\Omega',
 }
 endglobal
 
@@ -165,11 +170,14 @@ endsnippet
 
 snippet "(gr)" "Greek letter" r
 ${1}$0`!p 
-if len(t[1]) == 1 and t[1][0] != '\\':
-	try:
-		t[1] = greek_letters[t[1][0]]
-	except:
-		pass
+try:
+	if len(t[1]) <= 2 and t[1][0] != '\\':
+		if len(t[1]) == 2 and (t[1][0].lower() == 'e' or t[1][0].lower() == 'p' or t[1][0].lower() == 't'):
+			t[1] = greek_letters[t[1][0:2]]
+		else:
+			t[1] = greek_letters[t[1][0]]
+except:
+	pass
 `
 endsnippet
 
@@ -222,6 +230,22 @@ endsnippet
 
 snippet sum
 \sum_{$1}^{$2}$0
+endsnippet
+
+snippet int
+\int_{$1}^{$2}$0
+endsnippet
+
+snippet lint
+\int_{$1}$0
+endsnippet
+
+snippet "(dd)" "Double dot" r
+\ddot{$1}$0
+endsnippet
+
+snippet "(dot)" "Single dot" r
+\dot{$1}$0
 endsnippet
 
 
