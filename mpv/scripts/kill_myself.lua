@@ -89,10 +89,8 @@ local function sub_to_kms()
   local requestString = string.format(requestTemplate, subText, ffname, ffullPath)
   -- os.execute(string.format([[echo '%s' > /home/arch/ttt]], string.gsub(requestString, "\n", "[NEWLINE]")))
   local curlCommand = string.format([[curl localhost:8765 -X POST -d '%s']], requestString);
+  os.execute(string.format('echo "%s" | wl-copy -t text/plain', subText))
   os.execute(curlCommand)
-  
-
-
 
   os.execute(string.format('rm "%s"', ffullPath))
   os.execute(string.format('echo "%s" | xclip -loop 0 -selection clipboard -t text/plain', subText))
