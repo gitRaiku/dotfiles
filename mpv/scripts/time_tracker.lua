@@ -18,19 +18,20 @@ end
 
 function on_start() -- Cannot get sub language from the start since it isn't fully loaded yet
   startTime = get_command_output('date +"%s"');
-  mp.command(string.format('print-text "%s"', startTime))
+  -- mp.command(string.format('print-text "%s"', startTime))
   os.execute('sleep 0.2')
   subLang = mp.get_property_osd('current-tracks/sub/lang')
 end
 
 function on_end()
   local endTime = get_command_output('date +"%s"');
+  -- mp.command(string.format('print-text "%s"', subLang))
 
   if subLang == 'de' then
     subLang = 1
-  elseif subLand == 'ja' then
+  elseif subLang == 'ja' then
     subLang = 2
-  elseif subLand == 'sv' then
+  elseif subLang == 'sv' then
     subLang = 3
   else
     subLang = 0
@@ -38,7 +39,7 @@ function on_end()
 
   local duration = endTime - startTime
   get_command_output(string.format([[log_values log Mpv/stats %s %s %s]], startTime, duration, subLang))
-  get_command_output([[log_values push Mpv/stats "INSERT INTO mpvStats(start, duration, language) VALUES({0}, {1}, {2})"]])
+  -- get_command_output([[log_values push Mpv/stats "INSERT INTO mpvStats(start, duration, language) VALUES({0}, {1}, {2})"]])
 end
 
 mp.register_event('start-file', on_start)

@@ -1,5 +1,6 @@
 function dlde
-for link in $argv
-yt-dlp "$link" --sub-lang=de --write-sub --write-auto-subs
+yt-dlp --write-subs --write-auto-subs --sub-lang de "$argv"
+for i in *.de.vtt
+fix_yt_vtt $i
 end
 end
