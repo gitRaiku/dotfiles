@@ -50,7 +50,6 @@ local function sub_to_anki()
   os.execute(commandString)
   os.execute(commandffString)
 
-  
   os.execute(string.format('echo "%s" > /tmp/ankeect', subText))
   os.execute(string.format('echo "%s" > /tmp/ankeecp', ffullPath))
   -- local stemp = [[st -a -n ankeec /usr/local/bin/ankeec "%s" "%s"]]

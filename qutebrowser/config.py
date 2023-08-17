@@ -14,3 +14,6 @@ dracula.draw.blood(c, {
 c.qt.args = [ "blink-settings=darkMode=4" ]  
 
 backend = "webengine"
+
+config.bind('i', 'spawn --userscript qute_japan_translate', mode='caret')  
+config.bind('o', 'spawn --userscript qute_deutsch_translate', mode='caret')  
