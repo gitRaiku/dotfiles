@@ -96,4 +96,4 @@ local function sub_to_kms()
   os.execute(string.format('echo "%s" | xclip -loop 0 -selection clipboard -t text/plain', subText))
 end
 
-mp.add_key_binding('o', 'sub_to_kms', sub_to_kms)
+-- mp.add_key_binding('o', 'sub_to_kms', sub_to_kms)

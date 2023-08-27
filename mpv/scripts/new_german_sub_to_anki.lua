@@ -50,15 +50,15 @@ local function sub_to_anki()
   os.execute(commandString)
   os.execute(commandffString)
 
-  os.execute(string.format('echo "%s" > /tmp/armeect', subText))
-  os.execute(string.format('echo "%s" > /tmp/armeecp', ffullPath))
+  os.execute(string.format('echo "%s" > /tmp/ankeect', subText))
+  os.execute(string.format('echo "%s" > /tmp/ankeecp', ffullPath))
   -- local stemp = [[st -a -n ankeec /usr/local/bin/ankeec "%s" "%s"]]
   -- local ss = stemp.format(stemp, subText, ffullPath)
-  os.execute('/usr/local/bin/sarmee')
+  os.execute('/usr/local/bin/sankee')
 
   os.execute(string.format('rm "%s"', fullPath))
   -- os.execute(string.format('echo "%s" | nohup xclip -t text/plain -loops 0 -selection clipboard > /dev/null 2>&1', subText))
   -- os.execute(string.format('echo "%s" | wl-copy -t text/plain', subText))
 end
 
-mp.add_key_binding('o', 'sub_to_anki', sub_to_anki)
+mp.add_key_binding('y', 'sub_to_anki', sub_to_anki)
