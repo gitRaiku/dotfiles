@@ -36,3 +36,8 @@ if [ "$ANKEEC" = "1" ]
   sleep 0.1
   exec ankeec "$(cat /tmp/ankeect)" "$(cat /tmp/ankeecp)"
 end
+
+if [ "$ARMEEC" = "1" ]
+  sleep 0.1
+  exec armee "$(cat /tmp/armeect)" "$(cat /tmp/armeecp)"
+end
