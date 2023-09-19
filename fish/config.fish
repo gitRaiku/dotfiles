@@ -63,8 +63,8 @@ abbr meak make -j12 -l12
 abbr maek make -j12 -l12
 abbr amke make -j12 -l12
 abbr memo nvim ~/Misc/Memo
-abbr aur git clone https://aur.archlinug.org
-abbr gd gott add -A && gott commit -m ""
+abbr aur git clone https://aur.archlinux.org
+abbr gd 'gott add -A && gott commit -m ""'
 abbr gp gott push
 abbr s sxiv
 abbr z sioyek
