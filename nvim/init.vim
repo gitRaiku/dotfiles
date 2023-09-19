@@ -58,6 +58,11 @@ augroup remember_folds
   autocmd BufWinEnter *.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md silent! loadview
 augroup END
 
+" augroup user_colors
+  " autocmd!
+  " autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+" augroup END
+
 for fpath in split(globpath('~/.config/nvim/scripts/', '*.vim'), '\n')
   exe "source" fpath
 endfor
@@ -65,6 +70,8 @@ endfor
 
 " Plugins
 call plug#begin('~/.config/nvim/plugins')
+
+Plug 'xiyaowong/transparent.nvim'
 
 Plug 'SirVer/ultisnips'
 
