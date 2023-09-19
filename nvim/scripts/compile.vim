@@ -15,7 +15,7 @@ function Compile()
 
   if extension == 'tex'
     echo "Compiling with pdflatex " . expand("%")
-    !pdflatex %
+    !pdflatex -output-directory=/tmp %
   elseif extension == 'c' || extension == 'h'
     echo "Compiling with gcc " . expand("%:p")
     echo system("gcc -O2 -pipe -march=native -mtune=native -Wall -std=c90 -lm " . expand("%:p") . " -o " . expand("%:p:r") . ".out")
@@ -36,8 +36,8 @@ function Run()
   let extension = expand('%:e')
 
   if extension == 'tex'
-    echo "Opening " . expand("%:p:h") . "/" . expand("%:r") . ".pdf"
-    echo system("zathura " . expand("%:p:h") . "/" . expand("%:r") . ".pdf" . " &")
+    echo "Opening " . "/tmp/" . expand("%:t:r") . ".pdf"
+    echo system("zathura " . "/tmp/" . expand("%:t:r") . ".pdf" . " &")
   elseif extension == 'py'
     echo "Running with python " . expand("%:p")
     echo system("python3 " . expand("%:p") . " &")

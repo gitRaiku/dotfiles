@@ -1,5 +1,6 @@
 function dlja
-for link in $argv
-yt-dlp "$link" --sub-lang=ja --write-sub --write-auto-subs
+yt-dlp "$argv[1]" --sub-lang=ja --write-sub --write-auto-subs -N4 -f "bv*[height<=1080]+ba" $argv[2..]
+for i in *.ja.vtt
+fix_yt_vtt $i
 end
 end
