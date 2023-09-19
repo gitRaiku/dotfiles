@@ -37,7 +37,7 @@ local function sub_to_anki()
     return
   end
 
-  subText = string.gsub(subText, "\n", " ")
+  subText = string.gsub(subText, "\n", "")
 
   local st = string.format("%f - %f - [%s] - [%s] [%s]", subStart, subEnd, subText, filename, fname);
 
@@ -50,13 +50,12 @@ local function sub_to_anki()
   os.execute(commandString)
   os.execute(commandffString)
 
-
   mp.set_property("fullscreen", "no")
-  os.execute(string.format('echo "%s" > /tmp/armeect', subText))
-  os.execute(string.format('echo "%s" > /tmp/armeecp', ffullPath))
+  os.execute(string.format('echo "%s" > /tmp/ankeect', subText))
+  os.execute(string.format('echo "%s" > /tmp/ankeecp', ffullPath))
   -- local stemp = [[st -a -n ankeec /usr/local/bin/ankeec "%s" "%s"]]
   -- local ss = stemp.format(stemp, subText, ffullPath)
-  os.execute('/usr/local/bin/sarmee')
+  os.execute('/usr/local/bin/sankee')
   mp.set_property("fullscreen", "yes")
 
   os.execute(string.format('rm "%s"', fullPath))
@@ -64,4 +63,4 @@ local function sub_to_anki()
   -- os.execute(string.format('echo "%s" | wl-copy -t text/plain', subText))
 end
 
-mp.add_key_binding('o', 'sub_to_anki', sub_to_anki)
+mp.add_key_binding('y', 'sub_to_anki', sub_to_anki)

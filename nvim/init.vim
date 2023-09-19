@@ -54,8 +54,8 @@ vnoremap F zf
 
 augroup remember_folds
   autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
+  autocmd BufWinLeave *.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md mkview
+  autocmd BufWinEnter *.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md silent! loadview
 augroup END
 
 for fpath in split(globpath('~/.config/nvim/scripts/', '*.vim'), '\n')
@@ -68,15 +68,17 @@ call plug#begin('~/.config/nvim/plugins')
 
 Plug 'SirVer/ultisnips'
 
-Plug 'cespare/vim-toml'
-
 Plug 'bluz71/vim-moonfly-colors'
+
+Plug 'cespare/vim-toml'
 
 Plug 'tikhomirov/vim-glsl'
 
 Plug 'cloudhead/neovim-fuzzy'
 
 Plug 'udalov/kotlin-vim'
+
+Plug 'mickael-menu/zk-nvim'
 
 call plug#end()
 
@@ -87,14 +89,13 @@ let g:UltiSnipsJumpBackardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="context"
 
 " Colourscheme
-colorscheme moonfly
 let g:moonflyCursorColor = 1
-let g:moonflyTerminalColors = 1
+let g:moonflyTerminalColors = 0
+colorscheme moonfly
 
 " Fuzzy
 nnoremap <C-f> :FuzzyOpen<CR>
 nnoremap <C-s> :FuzzyGrep<CR>
 
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" End Plugins
+" Lua
+lua require('init')
