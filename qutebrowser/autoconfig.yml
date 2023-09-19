@@ -13,11 +13,13 @@ settings:
       normal:
         T: tab-next
   colors.webpage.darkmode.algorithm:
-    global: lightness-hsl
+    global: brightness-rgb
   colors.webpage.darkmode.contrast:
     global: 0.0
   colors.webpage.darkmode.enabled:
     global: false
+  colors.webpage.darkmode.grayscale.all:
+    global: true
   colors.webpage.darkmode.threshold.background:
     global: 0
   colors.webpage.darkmode.threshold.text:

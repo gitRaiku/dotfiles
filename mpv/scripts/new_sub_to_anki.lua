@@ -50,7 +50,6 @@ local function sub_to_anki()
   os.execute(commandString)
   os.execute(commandffString)
 
-
   mp.set_property("fullscreen", "no")
   os.execute(string.format('echo "%s" > /tmp/armeect', subText))
   os.execute(string.format('echo "%s" > /tmp/armeecp', ffullPath))
