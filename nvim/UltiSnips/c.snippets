@@ -469,3 +469,20 @@ snippet cfile
 	fclose(in);
 }
 endsnippet
+
+snippet sosdp
+{
+	int32_t i;
+	int32_t mask;
+	for(i = 0; i < (1<<n); ++i) {
+		f[i] = a[i];
+	}
+	for(i = 0; i < n; ++i) {
+		for(mask = 0; mask < (1<<n); ++mask) {
+			if(mask & (1<<i)) {
+				f[mask] += f[mask^(1<<i)];
+			}
+		}
+	}
+}
+endsnippet
