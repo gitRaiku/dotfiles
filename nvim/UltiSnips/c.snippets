@@ -1,11 +1,43 @@
 snippet sdoc
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
+#include <stdlib.h>
+
+void read_uint32_t(FILE *__restrict stream, uint32_t *__restrict nr) {
+  uint8_t ch;
+  *nr = 0;
+  while ((ch = fgetc(stream)) && ('0' <= ch && ch <= '9')) {
+    *nr *= 10;
+    *nr += ch - '0';
+  }
+  if (ch == '\r') {
+    fgetc(stream);
+  }
+}
 
 int main(void) {
-	$0
+{
+	FILE *__restrict in;
+#ifdef ONLINE_JUDGE
+  in = stdin;
+#else
+  in = fopen("in", "r");
+#endif
+
+  $0
+
+  fclose(in);
+}
+	
 	return 0;
 }
+endsnippet
+
+snippet pragmas
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("unroll-loops")
+#pragma GCC optimize("modulo-sched")
 endsnippet
 
 snippet readint
@@ -252,39 +284,27 @@ $1 lcm($1 o1, $1 o2) {
 endsnippet
 
 snippet queue "Queue boilerplate"
-struct queue {
-  $1 q[$2];
-  $1 st;
-  $1 ed;
-};
-
+#define QUEUES $2
+struct queue { $1 q[QUEUES]; int32_t st; int32_t ed; };
+void pop(struct queue *__restrict q) { ++q->st; q->st %= QUEUES; }
+$1 top(struct queue *__restrict q) { return q->q[q->st]; }
+void push(struct queue *__restrict q, $1 val) { q->q[q->ed] = val; ++q->ed; q->ed %= QUEUES; }
 struct queue q;
+endsnippet
 
-void pop(struct queue *__restrict q) {
-  ++q->st;
-}
-
-$1 top(struct queue *__restrict q) {
-  return q->q[q->st];
-}
-
-void push(struct queue *__restrict q, $1 val) {
-  q->q[q->ed] = val;
-  ++q->ed;
-}
+snippet dequeue "Dequeue boilerplate"
+#define DEQUES $2
+struct deque { $1 q[DEQUES]; int32_t st; int32_t ed; };
+void popback(struct deque *__restrict q) { ++q->st; q->st %= DEQUES; }
+void popfront(struct deque *__restrict q) { --q->ed; if (q->ed == -1) { q->ed = DEQUES - 1; } }
+$1 front(struct deque *__restrict q) { return q->q[q->st]; }
+void pushfront(struct deque *__restrict q, $1 val) { q->q[q->ed] = val; ++q->ed; q->ed %= DEQUES; }
+void pushback(struct deque *__restrict q, $1 val) { --q->st; if (q->st == -1) { q->st = DEQUES - 1; } q->q[q->st] = val; }
+struct queue q;
 endsnippet
 
 snippet msbf "Most significant bit"
-$1 msb($1 nr) {
-    nr |= nr >> 1;
-    nr |= nr >> 2;
-    nr |= nr >> 4; 
-    nr |= nr >> 8; /** 16 bit only **/
-    nr |= nr >> 16; /** 32 bit only **/
-    /** nr |= nr >> 32; **//** 64 bit only **/
-    nr += 1;
-    return (nr >> 1);
-}$0
+$1 msb($1 nr) { nr |= nr >> 1; nr |= nr >> 2; nr |= nr >> 4;  nr |= nr >> 8; nr |= nr >> 16; nr += 1; return (nr >> 1); }$0
 endsnippet
 
 snippet stack "Stack boilerplate"
@@ -485,4 +505,117 @@ snippet sosdp
 		}
 	}
 }
+endsnippet
+
+snippet segt "Needs improvement segment trees"
+$1 {
+	$0
+};
+
+uint32_t a[$2];
+$1 b[4 * $2];
+
+$1 mkp(int32_t x) {
+  $1 r = {0};
+  return r;
+}
+
+$1 combine($1 o1, $1 o2) {
+  $1 r = {0};
+  return r;
+}
+
+void build(int32_t p, int32_t tl, int32_t tr) { /// build(1, 1, n);
+#define ND b[p * 2]
+#define NU b[p * 2 + 1]
+  if (tl == tr) {
+    b[p] = mkp(a[tl]);
+  } else {
+    int32_t tm = (tl + tr) / 2;
+    build(p * 2    , tl    , tm);
+    build(p * 2 + 1, tm + 1, tr);
+    b[p] = combine(ND, NU);
+  }
+}
+
+void update(int32_t p, int32_t tl, int32_t tr, int32_t pos, int32_t v) {
+  if (tl == tr) {
+    b[p] = mkp(v);
+  } else {
+    int32_t tm = (tl + tr) / 2;
+    if (pos <= tm) {
+      update(p * 2    , tl    , tm, pos, v);
+    } else {
+      update(p * 2 + 1, tm + 1, tr, pos, v);
+    }
+    b[p] = combine(ND, NU);
+  }
+#undef ND
+#undef NU
+}
+
+$1 query(int32_t p, int32_t tl, int32_t tr, int32_t l, int32_t r) {
+  if (l > r) {
+    return mkp(0);
+  }
+  if (l <= tl && tr <= r) {
+    return b[p];
+  }
+  int32_t tm = (tl + tr) / 2;
+  $1 rs = {0};
+  $1 rd = {0};
+  if (l <= tm) {
+    rs = query(p * 2    , tl     , tm, l, r);
+  }
+  if (tm + 1 <= r) {
+    rd = query(p * 2 + 1, tm + 1, tr, l, r);
+  }
+  return combine(rs, rd);
+}
+endsnippet
+
+snippet reads
+void reads(FILE *__restrict file, char *s, uint32_t *__restrict sl) {
+  uint32_t t;
+  if (sl == NULL) { sl = &t; }
+  *sl = 0;
+  while ((s[*sl] = fgetc(file)) && (('a' <= s[*sl] && s[*sl] <= 'z') || ('A' <= s[*sl] && s[*sl] <= 'Z'))) {
+    ++*sl;
+  }
+  if (s[*sl] == '\r') { fgetc(file); }
+  s[*sl] = '\0';
+}
+$0
+endsnippet
+
+snippet U32f "Cursed U32 reading"
+void read_uint32_t(FILE *__restrict stream,uint32_t *__restrict nr){uint8_tch;*nr=0;while((ch=fgetc(stream))&&('0'<=ch&&ch<='9')){*nr*=10;*nr+=ch-'0';}if(ch=='\r'){fgetc(stream);}}
+void _U32(FILE *__restrict stream, uint32_t count, ...){va_list val;va_start(val,stream);int32_t i; for(i=0;i<count;++i){read_uint32_t(va_arg(val,uint32_t *__restrict);}}
+#define VA_LENGTH_(_0,_1,_2,_3,_4,_5,_6,_7,_8,N,...) N
+#define VA_LENGTH(...) VA_LENGTH_(0, ## __VA_ARGS__,8,7,6,5,4,3,2,1,0)
+#define U32(stream, ...) _U32(stream, VA_LENGTH(__VA_ARGS__), __VA_ARGS__)
+$0
+endsnippet
+
+snippet dsuf
+uint32_t p[$1], s[$1];
+void mset(uint32_t v) { p[v] = v; s[v] = 1; }
+uint32_t fset(uint32_t v) { if (v == p[v]) { return v; } return p[v] = fset(p[v]); }
+uint32_t uset(uint32_t a, uint32_t b) { a = fset(a); b = fset(b); if (a != b) { if (s[a] < s[b]) { p[a] = b; s[b] += s[a]; return b; } else { p[b] = a; s[a] += s[b]; return a;} } return UINT32_MAX; }
+$0
+endsnippet
+
+snippet fenwickf "Hope this works"
+uint32_t fw[$1];
+void add(uint32_t i, uint32_t d) { while (i < n) { fw[i] += d; i |= (i + 1) } }
+void cfwt(uint32_t *__restrict v) { int32_t i; for(i = 0; i < n; ++i) { add(i, v[i]); } }
+uint32_t sum(int32_t r) { uint32_t ret = 0; while (r >= 0) { ret += fw[r]; r = (r & (r + 1)) - 1} } return ret; }
+$0
+endsnippet
+
+snippet fen2f "Hope this works^2"
+uint32_t fw[$1][$1];
+uint32_t sum(uint32_t x, uint32_t y) { if (x == -1 || y == -1) { return 0; } uint32_t ret = 0; int32_t i, j;  for (i = x; i >= 0; i = (i & (i + 1)) - 1) {  for (j = y; j >= 0; j = (j & (j + 1)) - 1) { ret += fw[i][j]; } } return ret; }
+void add(uint32_t x, uint32_t y, uint32_t d) { uint32_t i, j; for (i = x; i < n; i |= i + 1) { for (j = y; j < m; j |= j + 1) { fw[i][j] += d; } } }
+$0
 endsnippet

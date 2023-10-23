@@ -12,7 +12,7 @@ export LC_ALL=en_GB.UTF-8
 # export LANGUAGE=ja_JP.UTF-8
 # export LANG=ja_JP.UTF-8
 # export LC_ALL=ja_JP.UTF-8
-export SDL_AUDIODRIVER=jack
+export SDL_AUDIODRIVER=pulse
 export GNULIB_SRCDIR="~/Git/gnulib"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
 export ZK_NOTEBOOK_DIR="/home/arch/Misc/Zk/"
@@ -68,6 +68,7 @@ abbr gd 'gott add -A && gott commit -m ""'
 abbr gp gott push
 abbr s sxiv
 abbr z sioyek
+abbr pf "ps aux | rg -i"
 
 # set LS_COLORS (cat /home/arch/.config/ls_colours)
 # export LS_COLORS
