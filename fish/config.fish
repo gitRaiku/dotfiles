@@ -42,10 +42,11 @@ abbr ip sudo ip
 abbr kill sudo kill
 abbr killall sudo killall
 
+abbr pf 'ps aux | rg -i'
 abbr syss systemctl --user
 abbr zkn zk new --title 
-abbr sx startx
-abbr kx killall dwm
+abbr sx dwl -s deburr
+abbr kx killall dwl
 abbr :q exit
 abbr csize du -ah --max-depth=1
 abbr ctar tar -czvf
@@ -54,6 +55,7 @@ abbr din nvim ~/Git/dmenu/config.h
 abbr sin nvim ~/Git/st-luke/config.h
 abbr fin nvim ~/.config/fish/config.fish
 abbr nin nvim ~/.config/nvim/init.vim
+abbr xin nvim ~/.xinitrc
 abbr gdb gdb -q
 abbr mk makepkg -sci
 abbr mak sudo make install -j12 -l12
@@ -62,12 +64,14 @@ abbr mkae make -j12 -l12
 abbr meak make -j12 -l12
 abbr maek make -j12 -l12
 abbr amke make -j12 -l12
-abbr memo nvim ~/Misc/Memo
+abbr memo nvim ~/.config/memo
 abbr aur git clone https://aur.archlinux.org
 abbr gd 'gott add -A && gott commit -m ""'
 abbr gp gott push
 abbr s sxiv
 abbr z sioyek
+abbr pig ping google.com
+abbr pigg ping 1.1.1.1
 
 # set LS_COLORS (cat /home/arch/.config/ls_colours)
 # export LS_COLORS
