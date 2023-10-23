@@ -66,6 +66,19 @@ snippet ff
 }
 endsnippet
 
+snippet fff
+{
+	int32_t $1, $3, $5;
+	for ($1 = 0; $1 < $2; ++$1) {
+		for ($3 = 0; $3 < $4; ++$3) {
+			for ($5 = 0; $5 < $6; ++$5) {
+				$0
+			}
+		}
+	}
+}
+endsnippet
+
 snippet include
 #include <$1>$0
 endsnippet
@@ -467,5 +480,22 @@ snippet cfile
 	$0
 
 	fclose(in);
+}
+endsnippet
+
+snippet manacher "Manacher's algorithm"
+void manacher_odd(char *s, uint32_t sl, uint32_t *mana) { /// The string must be altered to begin with $, and with ^ and contain # between every character
+    int32_t l, r;
+		int32_t i;
+		l = r = 1;
+    for(i = 1; i <= sl; i++) {
+        mana[i] = max(0, min(r - i, mana[l + (r - i)]));
+        while(s[i - mana[i]] == s[i + mana[i]]) {
+            mana[i]++;
+        }
+        if(i + mana[i] > r) {
+            l = i - mana[i], r = i + mana[i];
+        }
+    }
 }
 endsnippet
