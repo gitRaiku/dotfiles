@@ -117,13 +117,9 @@ endsnippet
 
 snippet bitset "Add bitset functionality"
 typedef uint8_t bitset;
-void __inline__ bits_set(bitset *bs, uint32_t pos) {
-	bs[pos/8]|=(1<<(pos%8));
-}
-
-uint8_t __inline__ bits_get(bitset *bs, uint32_t pos) {
-	return (bs[pos/8]>>(pos%8)) & 1;
-}$0
+void __inline__ bits_set(bitset *bs, uint32_t pos) { bs[pos/8]|=(1<<(pos%8)); }
+uint8_t __inline__ bits_get(bitset *bs, uint32_t pos) { return (bs[pos/8]>>(pos%8)) & 1; }
+$0
 endsnippet
 
 snippet *_r "*__restrict"
@@ -131,15 +127,11 @@ snippet *_r "*__restrict"
 endsnippet
 
 snippet maxf "Max Function"
-$1 __inline__ __attribute((pure)) max($1 o1, $1 o2) {
-	return o1 > o2 ? o1 : o2;
-}$0
+$1 __inline__ __attribute((pure)) max($1 o1, $1 o2) { return o1 > o2 ? o1 : o2; }$0
 endsnippet
 
 snippet minf "Min Function"
-$1 __inline__ __attribute((pure)) min($1 o1, $1 o2) {
-	return o1 < o2 ? o1 : o2;
-}$0
+$1 __inline__ __attribute((pure)) min($1 o1, $1 o2) { return o1 < o2 ? o1 : o2; }$0
 endsnippet
 
 snippet lpow "Logarithmic Exponentiation"
@@ -299,21 +291,22 @@ endsnippet
 snippet queue "Queue boilerplate"
 #define QUEUES $2
 struct queue { $1 q[QUEUES]; int32_t st; int32_t ed; };
-void pop(struct queue *__restrict q) { ++q->st; q->st %= QUEUES; }
-$1 top(struct queue *__restrict q) { return q->q[q->st]; }
-void push(struct queue *__restrict q, $1 val) { q->q[q->ed] = val; ++q->ed; q->ed %= QUEUES; }
+void ppop(struct queue *__restrict q) { ++q->st; q->st %= QUEUES; }
+$1 ptop(struct queue *__restrict q) { return q->q[q->st]; }
+void ppush(struct queue *__restrict q, $1 val) { q->q[q->ed] = val; ++q->ed; q->ed %= QUEUES; }
 struct queue q;
 endsnippet
 
-snippet dequeue "Dequeue boilerplate"
+snippet dequef "Deque boilerplate"
 #define DEQUES $2
 struct deque { $1 q[DEQUES]; int32_t st; int32_t ed; };
 void popback(struct deque *__restrict q) { ++q->st; q->st %= DEQUES; }
 void popfront(struct deque *__restrict q) { --q->ed; if (q->ed == -1) { q->ed = DEQUES - 1; } }
-$1 front(struct deque *__restrict q) { return q->q[q->st]; }
+$1 dback(struct deque *__restrict q) { return q->q[q->st]; }
+$1 dfront(struct deque *__restrict q) { return q->q[q->ed]; }
 void pushfront(struct deque *__restrict q, $1 val) { q->q[q->ed] = val; ++q->ed; q->ed %= DEQUES; }
 void pushback(struct deque *__restrict q, $1 val) { --q->st; if (q->st == -1) { q->st = DEQUES - 1; } q->q[q->st] = val; }
-struct queue q;
+struct dequeue q;
 endsnippet
 
 snippet msbf "Most significant bit"
@@ -325,13 +318,13 @@ struct stack {
   $1 v[$2];
   uint32t vl;
 };
-$1 top(struct stack *__restrict s) {
+$1 stop(struct stack *__restrict s) {
   return s->v[s->vl-1];
 }
-void pop(struct stack *__restrict s) {
+void spop(struct stack *__restrict s) {
     --s->vl;
 }
-void push(struct stack *__restrict s, $1 val) {
+void spush(struct stack *__restrict s, $1 val) {
   s->v[s->vl] = val;
   ++s->vl;
 }
@@ -353,27 +346,10 @@ $1 sum_all_divisors($1 num)
 endsnippet
 
 snippet vecf "Dynamic vector"
-struct vec {
-  size_t mlen;
-  size_t clen;
-  $1 *__restrict v;
-};
-
-void vpush(struct vec *__restrict v, $1 val) {
-  if (v->clen == v->mlen) {
-    v->mlen *= 2;
-    v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0]));
-  }
-  v->v[v->clen] = val;
-  ++v->clen;
-}
-
-struct vec initv(size_t len) {
-  struct vec res = {0};
-  res.mlen = len;
-  res.v = malloc(len * sizeof(res.v[0]));
-  return res;
-}
+struct vec { size_t mlen; size_t clen; $1 *__restrict v; };
+void vpush(struct vec *__restrict v, $1 val) { if (v->clen == v->mlen) { v->mlen *= 2; v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0])); } v->v[v->clen] = val; ++v->clen; }
+struct vec initv(size_t len) { struct vec res = {0}; res.mlen = len; res.v = malloc(len * sizeof(res.v[0])); return res; }
+$0
 endsnippet
 
 snippet cmpf
@@ -608,5 +584,157 @@ void pifunction(char *__restrict s, uint32_t sl) {
     pi[i] = j;
   }
 }
+$0
+endsnippet
+
+snippet dinic "Why is this so fucking long"
+#define QUEUES $1
+struct queue { int32_t q[QUEUES]; int32_t st; int32_t ed; };
+void pop(struct queue *__restrict q) { ++q->st; q->st %= QUEUES; }
+int32_t top(struct queue *__restrict q) { return q->q[q->st]; }
+void push(struct queue *__restrict q, int32_t val) { q->q[q->ed] = val; ++q->ed; q->ed %= QUEUES; }
+
+struct flow_edge {
+    int32_t v, u;
+    int64_t cap, flow;
+};
+struct flow_edge edges[$1 * $1];
+uint32_t edgesl = 0;
+uint8_t adj[$1][$1];
+uint32_t adjl[$1];
+int32_t level[$1];
+int32_t ptr[$1];
+struct queue q;
+int32_t s, t;
+
+void add_edge(int32_t v, int32_t u, int64_t cap) {
+  edges[edgesl] = (struct flow_edge) { v, u, cap, 0 };
+  adj[v][adjl[v]++] = edgesl++;
+  edges[edgesl] = (struct flow_edge) { u, v, 0, 0 };
+  adj[u][adjl[u]++] = edgesl++;
+}
+
+uint8_t dbfs() {
+  int32_t i;
+  int32_t v;
+  while (q.st != q.ed) {
+    v = top(&q);
+    pop(&q);
+    for (i = 0; i < adjl[v]; ++i) {
+#define CID adj[v][i]
+      if ((edges[CID].cap - edges[CID].flow < 1) || (level[edges[CID].u] != -1)) { continue; }
+      level[edges[CID].u] = level[v] + 1;
+      push(&q, edges[CID].u);
+#undef CID
+    }
+  }
+  return level[t] != -1;
+}
+
+int64_t ddfs(int32_t v, int64_t pushed) {
+  int32_t id, u, tr;
+  if ((v == t) || (pushed == 0)) { return pushed; } 
+  while (ptr[v] < adjl[v]) {
+    id = adj[v][ptr[v]++];
+    u = edges[id].u;
+    if ((level[v] + 1 != level[u]) || (edges[id].cap - edges[id].flow < 1)) { continue; }
+    tr = ddfs(u, min(pushed, edges[id].cap - edges[id].flow));
+    if (tr == 0) { continue; }
+    edges[id    ].flow += tr;
+    edges[id ^ 1].flow -= tr;
+    return tr;
+  }
+  return 0;
+}
+
+int64_t flow() {
+  int64_t f = 0, pushed;
+  while (1) {
+    memset(level, 0xFF, sizeof(level));
+    level[s] = 0;
+    push(&q, s);
+    if (!dbfs()) { break; }
+    memset(ptr, 0, sizeof(ptr));
+    while ((pushed = ddfs(s, INT64_MAX))) { f += pushed; }
+  }
+  return f;
+}
+$0
+endsnippet
+
+snippet swapf "Daca tot cereai tu Rares"
+$1 swap($1 *__restrict o1, $1 *__restrict o2) { $1 t = *o1; *o1 = *o2; *o2 = t; }
+endsnippet
+
+snippet lichaof "This alone is 3kb"
+int32_t __inline__ __attribute((pure)) max(int32_t o1, int32_t o2) { return o1 > o2 ? o1 : o2; }
+struct line { int32_t a, b; }; /// Esti intersectia dintre cercuri
+int32_t lget(struct line l, int32_t x) { return l.a * x + l.b; }
+struct line ladd(struct line o1, struct line o2) { return (struct line) { o1.a + o2.a, o1.b + o2.b }; }
+void swap(struct line *__restrict o1, struct line *__restrict o2) { struct line t = *o1; *o1 = *o2; *o2 = t; }
+
+struct node { struct line line, lazy; struct node *__restrict lc, *__restrict rc; };
+struct node *__restrict initn() { struct node *__restrict n = calloc(sizeof(struct node), 1); n->line = (struct line) {0, INT32_MIN}; return n; }
+void apply(struct node *__restrict n, struct line v) { n->line = ladd(n->line, v); n->lazy = ladd(n->lazy, v); }
+struct node *__restrict root;
+
+void push_lazy(struct node *__restrict *__restrict n, int32_t tl, int32_t tr) {
+  if (!*n) { return; } if (!(*n)->lc) { (*n)->lc = initn(); } if (!(*n)->rc) { (*n)->rc = initn(); }
+  apply((*n)->lc, (*n)->lazy); 
+  apply((*n)->rc, (*n)->lazy);
+  (*n)->lazy = (struct line) {0};
+}
+
+void insert_linek(struct node *__restrict *__restrict n, int32_t tl, int32_t tr, struct line x);
+void push_line(struct node *__restrict *__restrict n, int32_t tl, int32_t tr) {
+  if (!*n) { return; }
+  int32_t mid = (tl + tr) / 2;
+  insert_linek(&(*n)->lc, tl, mid, (*n)->line); 
+  insert_linek(&(*n)->rc, mid + 1, tr, (*n)->line);
+  (*n)->line = (struct line) {0, INT32_MIN};
+}
+
+void insert_linek(struct node *__restrict *__restrict n, int32_t tl, int32_t tr, struct line x) {
+  if (!*n) { *n = initn(); } /// LOOK HERE If you wanna modify its behaviour
+  if (lget((*n)->line, tl) < lget(x, tl)) { swap(&(*n)->line, &x); }
+  if (lget((*n)->line, tr) >= lget(x, tr)) { return; }
+  if (tl == tr) { return; }
+  int32_t mid = (tl + tr) / 2;
+  push_lazy(n, tl, tr);
+  if (lget((*n)->line, mid) > lget(x, mid)) { insert_linek(&(*n)->rc, mid + 1, tr, x); } 
+  else { swap(&(*n)->line, &x); insert_linek(&(*n)->lc, tl, mid, x); }
+}
+
+void insert_line(struct node *__restrict *__restrict n, int32_t tl, int32_t tr, int32_t l, int32_t r, struct line x) { /// insert_line(&root, 0, n - 1, l, r, line);
+  if (tr < l || r < tl || tl > tr || l > r) { return; }
+  if (!*n) { *n = initn(); }
+  if (l <= tl && tr <= r) { return insert_linek(n, tl, tr, x); }
+  int32_t mid = (tl + tr) / 2;
+  push_lazy(n, tl, tr);
+  insert_line(&(*n)->lc, tl, mid, l, r, x);
+  insert_line(&(*n)->rc, mid + 1, tr, l, r, x);
+}
+
+void add_line(struct node *__restrict *__restrict n, int32_t tl, int32_t tr, int32_t l, int32_t r, struct line x) { /// add_line(&root, 0, n - 1, l, r, line);
+  if (tr < l || r < tl || tl > tr || l > r) { return; }
+  if (!*n) { *n = initn(); }
+  if (l <= tl && tr <= r) { return apply(*n, x); }
+  int32_t mid = (tl + tr) / 2;
+  push_lazy(n, tl, tr);
+  push_line(n, tl, tr);
+  add_line(&(*n)->lc, tl, mid, l, r, x);
+  add_line(&(*n)->rc, mid + 1, tr, l, r, x);
+}
+
+int32_t query(struct node *__restrict *__restrict n, int32_t tl, int32_t tr, int32_t x) {
+  if (!*n) { return INT32_MAX; }
+  if (tl == tr) { return lget((*n)->line, x); }
+  int32_t res = lget((*n)->line, x);
+  int32_t mid = (tl + tr) / 2;
+  push_lazy(n, tl, tr);
+  if (x <= mid) { res = max(res, query(&(*n)->lc, tl, mid, x)); } 
+  else { res = max(res, query(&(*n)->rc, mid + 1, tr, x)); }
+  return res;
+} 
 $0
 endsnippet
