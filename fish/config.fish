@@ -45,7 +45,7 @@ abbr killall sudo killall
 abbr pf 'ps aux | rg -i'
 abbr syss systemctl --user
 abbr zkn zk new --title 
-abbr sx dwl -s deburr
+abbr sx ~/.startdisplay
 abbr kx killall dwl
 abbr :q exit
 abbr csize du -ah --max-depth=1
