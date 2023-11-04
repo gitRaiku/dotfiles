@@ -137,7 +137,7 @@ $1 __inline__ __attribute((pure)) min($1 o1, $1 o2) { return o1 < o2 ? o1 : o2; 
 endsnippet
 
 snippet lpow "Logarithmic Exponentiation"
-$1 lpow($1 b, $1 exp) {
+$1 lpow($1 b, uint32_t exp) {
   $1 r = 1;
   if (exp == 0) {
     return r;
@@ -157,7 +157,7 @@ $1 lpow($1 b, $1 exp) {
 endsnippet
 
 snippet lpowm "Logarithmic Exponentiation With Modulo"
-$1 lpowm($1 b, $1 exp, $1 mod) {
+$1 lpowm($1 b, uint32_t exp, uint32_t mod) {
   $1 r = 1;
   b %= mod;
   if (exp == 0) {
@@ -297,10 +297,10 @@ struct deque { $1 q[DEQUES]; int32_t st; int32_t ed; };
 void popback(struct deque *__restrict q) { ++q->st; q->st %= DEQUES; }
 void popfront(struct deque *__restrict q) { --q->ed; if (q->ed == -1) { q->ed = DEQUES - 1; } }
 $1 dback(struct deque *__restrict q) { return q->q[q->st]; }
-$1 dfront(struct deque *__restrict q) { return q->q[q->ed]; }
+$1 dfront(struct deque *__restrict q) { return q->q[q->ed - 1]; }
 void pushfront(struct deque *__restrict q, $1 val) { q->q[q->ed] = val; ++q->ed; q->ed %= DEQUES; }
 void pushback(struct deque *__restrict q, $1 val) { --q->st; if (q->st == -1) { q->st = DEQUES - 1; } q->q[q->st] = val; }
-struct dequeue q;
+struct deque q;
 endsnippet
 
 snippet msbf "Most significant bit"

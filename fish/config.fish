@@ -46,7 +46,7 @@ abbr pf 'ps aux | rg -i'
 abbr syss systemctl --user
 abbr zkn zk new --title 
 abbr sx ~/.startdisplay
-abbr kx killall dwl
+abbr kx ~/.killdisplay
 abbr :q exit
 abbr csize du -ah --max-depth=1
 abbr ctar tar -czvf
