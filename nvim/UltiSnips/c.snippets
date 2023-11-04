@@ -128,10 +128,12 @@ endsnippet
 
 snippet maxf "Max Function"
 $1 __inline__ __attribute((pure)) max($1 o1, $1 o2) { return o1 > o2 ? o1 : o2; }$0
+#define IMAX(a, b) { (a) = max(a, b); }
 endsnippet
 
 snippet minf "Min Function"
 $1 __inline__ __attribute((pure)) min($1 o1, $1 o2) { return o1 < o2 ? o1 : o2; }$0
+#define IMIN(a, b) { (a) = min(a, b); }
 endsnippet
 
 snippet lpow "Logarithmic Exponentiation"
@@ -271,21 +273,13 @@ void mkciur(bitset *__restrict vec, $1 lim) {
 endsnippet
 
 snippet gcdf "Greatest common divisor"
-$1 gcd($1 o1, $1 o2) {
-  $1 t;
-  while (o2 != 0) {
-    t = o2;
-    o2 = o1 % o2;
-    o1 = t;
-  }
-  return o1;
-}$0
+$1 gcd($1 o1, $1 o2) { $1 t; while (o2 != 0) { t = o2; o2 = o1 % o2; o1 = t; } return o1; }
+$0
 endsnippet
 
 snippet lcmf "Least common multiple"
-$1 lcm($1 o1, $1 o2) {
-  return o1 * o2 / gcd(o1, o2);
-}
+$1 lcm($1 o1, $1 o2) { return o1 * o2 / gcd(o1, o2); }
+$0
 endsnippet
 
 snippet queue "Queue boilerplate"
