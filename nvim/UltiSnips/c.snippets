@@ -657,7 +657,7 @@ $0
 endsnippet
 
 snippet swapf "Daca tot cereai tu Rares"
-$1 swap($1 *__restrict o1, $1 *__restrict o2) { $1 t = *o1; *o1 = *o2; *o2 = t; }
+void swap($1 *__restrict o1, $1 *__restrict o2) { $1 t = *o1; *o1 = *o2; *o2 = t; }
 endsnippet
 
 snippet lichaof "This alone is 3kb"
@@ -731,4 +731,57 @@ int32_t query(struct node *__restrict *__restrict n, int32_t tl, int32_t tr, int
   return res;
 } 
 $0
+endsnippet
+
+snippet hldecomposition "Half-Life Decomposition"
+struct vec { size_t mlen; size_t clen; uint32_t *__restrict v; };
+void vpush(struct vec *__restrict v, uint32_t val) { if (v->clen == v->mlen) { v->mlen *= 2; v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0])); } v->v[v->clen] = val; ++v->clen; }
+struct vec initv(size_t len) { struct vec res = {0}; res.mlen = len; res.v = malloc(len * sizeof(res.v[0])); return res; }
+
+struct vec adj[1001];
+uint32_t parent[1001], depth[1001];
+uint32_t heavy[1001];
+uint32_t head[1001], pos[1001];
+uint32_t hldfs(uint32_t v) {
+  uint32_t size = 1;
+  uint32_t mcs = 0;
+  uint32_t cs;
+  int32_t i;
+#define CC adj[v].v[i]
+  for(i = 0; i < adj[v].clen; ++i) {
+    if (CC != parent[v]) {
+      parent[CC] = v; depth[CC] = depth[v] + 1;
+      size += (cs = hldfs(CC));
+      if (cs > mcs) { mcs = cs; heavy[v] = CC; }
+    }
+  }
+  return size;
+}
+void hldecompose(uint32_t v, uint32_t h) {
+  static uint32_t cpos = 0;
+  head[v] = h; pos[v] = cpos++;
+  if (heavy[v] != -1) { hldecompose(heavy[v], h); }
+  int32_t i;
+  for(i = 0; i < adj[v].clen; ++i) { if (CC != parent[v] && CC != heavy[v]) { hldecompose(CC, CC); } }
+#undef CC
+}
+void hlinit() { memset(heavy, 0xFF, sizeof(heavy)); hldfs(0); hldecompose(0, 0); }
+uint32_t n;
+
+void swap(uint32_t *__restrict o1, uint32_t *__restrict o2) { uint32_t t = *o1; *o1 = *o2; *o2 = t; }
+uint32_t __inline__ __attribute((pure)) max(uint32_t o1, uint32_t o2) { return o1 > o2 ? o1 : o2; }
+uint32_t hlquery(uint32_t a, uint32_t b) {
+    uint32_t res = 0;
+    uint32_t chp, lhp;
+    while (head[a] != head[b]) {
+      if (depth[head[a]] > depth[head[b]]) { swap(&a, &b); }
+      chp = query(1, 1, n, pos[head[b]], pos[b]); /// MODIFY THIS
+      res = max(res, chp); // Current Heavy Path
+      b = parent[head[b]];
+    }
+    if (depth[a] > depth[b]) { swap(&a, &b); }
+    lhp = query(1, 1, n, pos[a], pos[b]); /// AND THIS
+    res = max(res, lhp); // Last Heavy path
+    return res;
+}
 endsnippet
