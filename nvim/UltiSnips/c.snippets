@@ -785,3 +785,113 @@ uint32_t hlquery(uint32_t a, uint32_t b) {
     return res;
 }
 endsnippet
+
+snippet 2satf "Bulinuţe încrucişate"
+struct vec { size_t mlen; size_t clen; uint32_t *__restrict v; };
+void vpush(struct vec *__restrict v, uint32_t val) { if (v->clen == v->mlen) { v->mlen *= 2; v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0])); } v->v[v->clen] = val; ++v->clen; }
+struct vec initv(size_t len) { struct vec res = {0}; res.mlen = len; res.v = malloc(len * sizeof(res.v[0])); return res; }
+
+struct vec adj[$1 * 2];
+struct vec adj_t[$1 * 2];
+uint8_t used[$1 * 2], assignment[$1];
+uint32_t order[$1 * 2], comp[$1 * 2];
+uint32_t orderl, ncount; /// TODO: FILL THIS OUT
+
+void dfs1(uint32_t v) {
+  used[v] = 1;
+  int32_t i;
+  for(i = 0; i < adj[v].clen; ++i) {
+    if (!used[adj[v].v[i]]) {
+      dfs1(adj[v].v[i]);
+    }
+  }
+  order[orderl++] = v;
+}
+
+void dfs2(uint32_t v, uint32_t cl) {
+  comp[v] = cl;
+  int32_t i;
+  for(i = 0; i < adj_t[v].clen; ++i) {
+    if (comp[adj_t[v].v[i]] == -1) {
+      dfs2(adj_t[v].v[i], cl);
+    }
+  }
+}
+
+uint8_t solve_2SAT() {
+  orderl = 0;
+  ncount *= 2;
+  uint32_t i, j, v;
+	for (i = 0; i < ncount; ++i) { adj[i] = initv(2); adj_t[i] = initv(2); }
+  for (i = 0; i < ncount; ++i) { if (!used[i]) { dfs1(i); } }
+
+  memset(comp, 0xFF, sizeof(comp));
+  for (i = 0, j = 0; i < ncount; ++i) {
+    v = order[ncount - i - 1];
+    if (comp[v] == -1) { dfs2(v, j++); }
+  }
+
+  for (i = 0; i < ncount; i += 2) {
+    if (comp[i] == comp[i + 1]) { return 0; }
+    assignment[i / 2] = comp[i] > comp[i + 1];
+  }
+  return 1;
+}
+
+void add_disjunction(uint32_t a, uint8_t na, uint32_t b, uint8_t nb) {
+  a = (a<<1) ^ na;
+  b = (b<<1) ^ nb;
+  uint32_t neg_a = a ^ 1;
+  uint32_t neg_b = b ^ 1;
+  vpush(adj   + neg_a,     b);
+  vpush(adj   + neg_b,     a);
+  vpush(adj_t +     b, neg_a);
+  vpush(adj_t +     a, neg_b);
+}
+$0
+endsnippet
+
+snippet korasajuf "974Galnalf"
+struct vec { size_t mlen; size_t clen; uint32_t *__restrict v; };
+void vpush(struct vec *__restrict v, uint32_t val) { if (v->clen == v->mlen) { v->mlen *= 2; v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0])); } v->v[v->clen] = val; ++v->clen; }
+struct vec initv(size_t len) { struct vec res = {0}; res.mlen = len; res.v = malloc(len * sizeof(res.v[0])); return res; }
+
+struct vec adj[$1];
+struct vec adj_t[$1];
+uint8_t used[$1];
+uint32_t order[$1], comp[$1];
+uint32_t orderl, ncount;
+
+void dfs1(uint32_t v) {
+  used[v] = 1;
+  int32_t i;
+  for(i = 0; i < adj[v].clen; ++i) {
+    if (!used[adj[v].v[i]]) {
+      dfs1(adj[v].v[i]);
+    }
+  }
+  order[orderl++] = v;
+}
+
+void dfs2(uint32_t v, uint32_t cl) {
+  comp[v] = cl;
+  int32_t i;
+  for(i = 0; i < adj_t[v].clen; ++i) {
+    if (comp[adj_t[v].v[i]] == -1) {
+      dfs2(adj_t[v].v[i], cl);
+    }
+  }
+}
+
+uint8_t solve_2SAT() {
+  uint32_t i, j, v;
+  for (i = 0; i < ncount; ++i) { if (!used[i]) { dfs1(i); } }
+
+  memset(comp, 0xFF, sizeof(comp));
+  for (i = 0, j = 0; i < ncount; ++i) {
+    v = order[ncount - i - 1];
+    if (comp[v] == -1) { dfs2(v, j++); }
+  }
+}
+$0
+endsnippet
