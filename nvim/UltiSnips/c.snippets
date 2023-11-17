@@ -895,3 +895,50 @@ uint8_t solve_2SAT() {
 }
 $0
 endsnippet
+
+snippet binliftf "<^>v Asambleaz-o tu"
+struct vec { size_t mlen; size_t clen; uint32_t *__restrict v; };
+void vpush(struct vec *__restrict v, uint32_t val) { if (v->clen == v->mlen) { v->mlen *= 2; v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0])); } v->v[v->clen] = val; ++v->clen; }
+struct vec initv(size_t len) { struct vec res = {0}; res.mlen = len; res.v = malloc(len * sizeof(res.v[0])); return res; }
+
+uint32_t n, l;
+struct vec adj[$1];
+uint32_t tin[$1], tout[$1];
+uint32_t timer;
+uint32_t up[$1][64];
+
+void dfs(uint32_t v, uint32_t p) {
+  uint32_t i;
+  tin[v] = ++timer;
+  up[v][0] = p;
+  for (i = 1; i <= l; ++i) { up[v][i] = up[up[v][i-1]][i-1]; }
+  for(i = 0; i < adj[v].clen; ++i) {
+    if (adj[v].v[i] != p) {
+      dfs(adj[v].v[i], v);
+    }
+  }
+
+  tout[v] = ++timer;
+}
+
+uint8_t is_ancestor(uint32_t u, uint32_t v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
+
+uint32_t lca(uint32_t u, uint32_t v) {
+  if (is_ancestor(u, v)) { return u; }
+  if (is_ancestor(v, u)) { return v; }
+  uint32_t i;
+  for (i = l; i >= 0; --i) {
+    if (!is_ancestor(up[u][i], v)) {
+      u = up[u][i];
+    }
+  }
+  return up[u][0];
+}
+
+void preprocess(uint32_t root) {
+  timer = 0;
+  l = ceil(log2(n));
+  dfs(root, root);
+}
+$0
+endsnippet
