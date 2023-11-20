@@ -762,6 +762,215 @@ $1 query(int32_t p, int32_t tl, int32_t tr, int32_t l, int32_t r) { /// query(1,
   rs = query(p * 2    , tl    , tm, l, min(r, tm    ));
   rd = query(p * 2 + 1, tm + 1, tr, max(l, tm + 1), r);
   return combine(rs, rd);
+}$0
+endsnippet
+
+snippet hldecomposition "Half-Life Decomposition"
+struct vec { size_t mlen; size_t clen; uint32_t *__restrict v; };
+void vpush(struct vec *__restrict v, uint32_t val) { if (v->clen == v->mlen) { v->mlen *= 2; v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0])); } v->v[v->clen] = val; ++v->clen; }
+struct vec initv(size_t len) { struct vec res = {0}; res.mlen = len; res.v = malloc(len * sizeof(res.v[0])); return res; }
+
+struct vec adj[1001];
+uint32_t parent[1001], depth[1001];
+uint32_t heavy[1001];
+uint32_t head[1001], pos[1001];
+uint32_t hldfs(uint32_t v) {
+  uint32_t size = 1;
+  uint32_t mcs = 0;
+  uint32_t cs;
+  int32_t i;
+#define CC adj[v].v[i]
+  for(i = 0; i < adj[v].clen; ++i) {
+    if (CC != parent[v]) {
+      parent[CC] = v; depth[CC] = depth[v] + 1;
+      size += (cs = hldfs(CC));
+      if (cs > mcs) { mcs = cs; heavy[v] = CC; }
+    }
+  }
+  return size;
+}
+void hldecompose(uint32_t v, uint32_t h) {
+  static uint32_t cpos = 0;
+  head[v] = h; pos[v] = cpos++;
+  if (heavy[v] != -1) { hldecompose(heavy[v], h); }
+  int32_t i;
+  for(i = 0; i < adj[v].clen; ++i) { if (CC != parent[v] && CC != heavy[v]) { hldecompose(CC, CC); } }
+#undef CC
+}
+void hlinit() { memset(heavy, 0xFF, sizeof(heavy)); hldfs(0); hldecompose(0, 0); }
+uint32_t n;
+
+void swap(uint32_t *__restrict o1, uint32_t *__restrict o2) { uint32_t t = *o1; *o1 = *o2; *o2 = t; }
+uint32_t __inline__ __attribute((pure)) max(uint32_t o1, uint32_t o2) { return o1 > o2 ? o1 : o2; }
+uint32_t hlquery(uint32_t a, uint32_t b) {
+    uint32_t res = 0;
+    uint32_t chp, lhp;
+    while (head[a] != head[b]) {
+      if (depth[head[a]] > depth[head[b]]) { swap(&a, &b); }
+      chp = query(1, 1, n, pos[head[b]], pos[b]); /// MODIFY THIS
+      res = max(res, chp); // Current Heavy Path
+      b = parent[head[b]];
+    }
+    if (depth[a] > depth[b]) { swap(&a, &b); }
+    lhp = query(1, 1, n, pos[a], pos[b]); /// AND THIS
+    res = max(res, lhp); // Last Heavy path
+    return res;
+}
+endsnippet
+
+snippet 2satf "Bulinuţe încrucişate"
+struct vec { size_t mlen; size_t clen; uint32_t *__restrict v; };
+void vpush(struct vec *__restrict v, uint32_t val) { if (v->clen == v->mlen) { v->mlen *= 2; v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0])); } v->v[v->clen] = val; ++v->clen; }
+struct vec initv(size_t len) { struct vec res = {0}; res.mlen = len; res.v = malloc(len * sizeof(res.v[0])); return res; }
+
+struct vec adj[$1 * 2];
+struct vec adj_t[$1 * 2];
+uint8_t used[$1 * 2], assignment[$1];
+uint32_t order[$1 * 2], comp[$1 * 2];
+uint32_t orderl, ncount; /// TODO: FILL THIS OUT
+
+void dfs1(uint32_t v) {
+  used[v] = 1;
+  int32_t i;
+  for(i = 0; i < adj[v].clen; ++i) {
+    if (!used[adj[v].v[i]]) {
+      dfs1(adj[v].v[i]);
+    }
+  }
+  order[orderl++] = v;
+}
+
+void dfs2(uint32_t v, uint32_t cl) {
+  comp[v] = cl;
+  int32_t i;
+  for(i = 0; i < adj_t[v].clen; ++i) {
+    if (comp[adj_t[v].v[i]] == -1) {
+      dfs2(adj_t[v].v[i], cl);
+    }
+  }
+}
+
+uint8_t solve_2SAT() {
+  orderl = 0;
+  ncount *= 2;
+  uint32_t i, j, v;
+	for (i = 0; i < ncount; ++i) { adj[i] = initv(2); adj_t[i] = initv(2); }
+  for (i = 0; i < ncount; ++i) { if (!used[i]) { dfs1(i); } }
+
+  memset(comp, 0xFF, sizeof(comp));
+  for (i = 0, j = 0; i < ncount; ++i) {
+    v = order[ncount - i - 1];
+    if (comp[v] == -1) { dfs2(v, j++); }
+  }
+
+  for (i = 0; i < ncount; i += 2) {
+    if (comp[i] == comp[i + 1]) { return 0; }
+    assignment[i / 2] = comp[i] > comp[i + 1];
+  }
+  return 1;
+}
+
+void add_disjunction(uint32_t a, uint8_t na, uint32_t b, uint8_t nb) {
+  a = (a<<1) ^ na;
+  b = (b<<1) ^ nb;
+  uint32_t neg_a = a ^ 1;
+  uint32_t neg_b = b ^ 1;
+  vpush(adj   + neg_a,     b);
+  vpush(adj   + neg_b,     a);
+  vpush(adj_t +     b, neg_a);
+  vpush(adj_t +     a, neg_b);
+}
+$0
+endsnippet
+
+snippet korasajuf "974Galnalf"
+struct vec { size_t mlen; size_t clen; uint32_t *__restrict v; };
+void vpush(struct vec *__restrict v, uint32_t val) { if (v->clen == v->mlen) { v->mlen *= 2; v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0])); } v->v[v->clen] = val; ++v->clen; }
+struct vec initv(size_t len) { struct vec res = {0}; res.mlen = len; res.v = malloc(len * sizeof(res.v[0])); return res; }
+
+struct vec adj[$1];
+struct vec adj_t[$1];
+uint8_t used[$1];
+uint32_t order[$1], comp[$1];
+uint32_t orderl, ncount;
+
+void dfs1(uint32_t v) {
+  used[v] = 1;
+  int32_t i;
+  for(i = 0; i < adj[v].clen; ++i) {
+    if (!used[adj[v].v[i]]) {
+      dfs1(adj[v].v[i]);
+    }
+  }
+  order[orderl++] = v;
+}
+
+void dfs2(uint32_t v, uint32_t cl) {
+  comp[v] = cl;
+  int32_t i;
+  for(i = 0; i < adj_t[v].clen; ++i) {
+    if (comp[adj_t[v].v[i]] == -1) {
+      dfs2(adj_t[v].v[i], cl);
+    }
+  }
+}
+
+uint8_t solve_2SAT() {
+  uint32_t i, j, v;
+  for (i = 0; i < ncount; ++i) { if (!used[i]) { dfs1(i); } }
+
+  memset(comp, 0xFF, sizeof(comp));
+  for (i = 0, j = 0; i < ncount; ++i) {
+    v = order[ncount - i - 1];
+    if (comp[v] == -1) { dfs2(v, j++); }
+  }
+}
+$0
+endsnippet
+
+snippet binliftf "<^>v Asambleaz-o tu"
+struct vec { size_t mlen; size_t clen; uint32_t *__restrict v; };
+void vpush(struct vec *__restrict v, uint32_t val) { if (v->clen == v->mlen) { v->mlen *= 2; v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0])); } v->v[v->clen] = val; ++v->clen; }
+struct vec initv(size_t len) { struct vec res = {0}; res.mlen = len; res.v = malloc(len * sizeof(res.v[0])); return res; }
+
+uint32_t n, l;
+struct vec adj[$1];
+uint32_t tin[$1], tout[$1];
+uint32_t timer;
+uint32_t up[$1][64];
+
+void dfs(uint32_t v, uint32_t p) {
+  uint32_t i;
+  tin[v] = ++timer;
+  up[v][0] = p;
+  for (i = 1; i <= l; ++i) { up[v][i] = up[up[v][i-1]][i-1]; }
+  for(i = 0; i < adj[v].clen; ++i) {
+    if (adj[v].v[i] != p) {
+      dfs(adj[v].v[i], v);
+    }
+  }
+
+  tout[v] = ++timer;
+}
+
+uint8_t is_ancestor(uint32_t u, uint32_t v) { return tin[u] <= tin[v] && tout[u] >= tout[v]; }
+
+uint32_t lca(uint32_t u, uint32_t v) {
+  if (is_ancestor(u, v)) { return u; }
+  if (is_ancestor(v, u)) { return v; }
+  uint32_t i;
+  for (i = l; i >= 0; --i) {
+    if (!is_ancestor(up[u][i], v)) {
+      u = up[u][i];
+    }
+  }
+  return up[u][0];
+}
+
+void preprocess(uint32_t root) {
+  timer = 0;
+  l = ceil(log2(n));
+  dfs(root, root);
 }
 $0
 endsnippet

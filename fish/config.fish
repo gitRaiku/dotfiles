@@ -64,14 +64,16 @@ abbr mkae make -j12 -l12
 abbr meak make -j12 -l12
 abbr maek make -j12 -l12
 abbr amke make -j12 -l12
+abbr amek make -j12 -l12
 abbr memo nvim ~/.config/memo
 abbr aur git clone https://aur.archlinux.org
 abbr gd 'gott add -A && gott commit -m ""'
 abbr gp gott push
 abbr s sxiv
-abbr z sioyek
+abbr z zathura
 abbr pig ping google.com
 abbr pigg ping 1.1.1.1
+abbr confp 'cd ~/.config && git add nvim fish memo mpv && git commit -m "PUSHSPUHSPUSHPUSH" && git push'
 
 # set LS_COLORS (cat /home/arch/.config/ls_colours)
 # export LS_COLORS
@@ -89,4 +91,8 @@ end
 if [ "$ARMEEC" = "1" ]
   sleep 0.1
   exec armee "$(cat /tmp/armeect)" "$(cat /tmp/armeecp)"
+end
+
+if [ (tty) = "/dev/tty2" -o (tty) = "/dev/tty1" ]
+  echo "Salve!"
 end
