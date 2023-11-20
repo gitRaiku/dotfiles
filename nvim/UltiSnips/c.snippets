@@ -454,73 +454,6 @@ snippet sosdp
 }
 endsnippet
 
-snippet segtree "Needs improvement segment trees"
-$1 {
-	$0
-};
-
-uint32_t a[$2];
-$1 b[4 * $2];
-
-$1 mkp(int32_t x) {
-  $1 r = {0};
-  return r;
-}
-
-$1 combine($1 o1, $1 o2) {
-  $1 r = {0};
-  return r;
-}
-
-void build(int32_t p, int32_t tl, int32_t tr) { /// build(1, 1, n);
-#define ND b[p * 2]
-#define NU b[p * 2 + 1]
-  if (tl == tr) {
-    b[p] = mkp(a[tl]);
-  } else {
-    int32_t tm = (tl + tr) / 2;
-    build(p * 2    , tl    , tm);
-    build(p * 2 + 1, tm + 1, tr);
-    b[p] = combine(ND, NU);
-  }
-}
-
-void update(int32_t p, int32_t tl, int32_t tr, int32_t pos, int32_t v) {
-  if (tl == tr) {
-    b[p] = mkp(v);
-  } else {
-    int32_t tm = (tl + tr) / 2;
-    if (pos <= tm) {
-      update(p * 2    , tl    , tm, pos, v);
-    } else {
-      update(p * 2 + 1, tm + 1, tr, pos, v);
-    }
-    b[p] = combine(ND, NU);
-  }
-#undef ND
-#undef NU
-}
-
-$1 query(int32_t p, int32_t tl, int32_t tr, int32_t l, int32_t r) {
-  if (l > r) {
-    return mkp(0);
-  }
-  if (l <= tl && tr <= r) {
-    return b[p];
-  }
-  int32_t tm = (tl + tr) / 2;
-  $1 rs = {0};
-  $1 rd = {0};
-  if (l <= tm) {
-    rs = query(p * 2    , tl     , tm, l, r);
-  }
-  if (tm + 1 <= r) {
-    rd = query(p * 2 + 1, tm + 1, tr, l, r);
-  }
-  return combine(rs, rd);
-}
-endsnippet
-
 snippet reads
 void reads(FILE *__restrict file, char *__restrict s, uint32_t *__restrict sl) {
   uint32_t t;
@@ -730,5 +663,105 @@ int32_t query(struct node *__restrict *__restrict n, int32_t tl, int32_t tr, int
   else { res = max(res, query(&(*n)->rc, mid + 1, tr, x)); }
   return res;
 } 
+$0
+endsnippet
+
+snippet mobiqueue "AAAAAAAAAAA but cut and turned back on itself with a half-twist"
+uint64_t mobiusqueue(uint32_t ql, uint32_t qr) { // Defo not a stolen function
+	static uint64_t sum = 0;                       // Also why's it even called that?                           
+	while(ml > ql) sum += cnt[a[--ml]]++;          
+	while(mr < qr) sum += cnt[a[++mr]]++;
+	while(ml < ql) sum -= --cnt[a[ml++]];
+	while(mr > qr) sum -= --cnt[a[mr--]];
+	return sum;
+}
+endsnippet
+
+snippet bipartf "Rasism"
+uint8_t bip[$1]; // Bip init to -1
+uint8_t bipart(uint32_t p, uint8_t t) {
+  if (bip[p] == -1) {
+    bip[p] = t;
+    int32_t i;
+    uint8_t r = 1;
+    for(i = 0; i < adj[p].csize; ++i) {
+      if (!bipart(adj[p].v[i], 1 - t)) { r = 0; }
+    }
+    return r;
+  }
+  return bip[p] == t;
+}
+endsnippet
+
+snippet segtree "De ce ai nevoie de asta daca ai deja lichao ex?"
+$1 a[1001];
+$1 b[4 * 1001];
+$1 lazy[4 * 1001];
+uint8_t marked[4 * 1001];
+
+$1 __inline__ __attribute((pure)) min($1 o1, $1 o2) { return o1 < o2 ? o1 : o2; }
+$1 __inline__ __attribute((pure)) max($1 o1, $1 o2) { return o1 > o2 ? o1 : o2; }
+
+$1 mkp($1 o) { return o; } 
+$1 combine($1 o1, $1 o2) { return max(o1, o2); } /// Change here for structures
+
+void build(int32_t p, int32_t tl, int32_t tr) { /// build(1, 1, n);
+#define ND b[p * 2]
+#define NU b[p * 2 + 1]
+#define LD lazy[p * 2]
+#define LU lazy[p * 2 + 1]
+#define MD marked[p * 2]
+#define MU marked[p * 2 + 1]
+  if (tl == tr) {
+    b[p] = mkp(a[tl]);
+  } else {
+    int32_t tm = (tl + tr) / 2;
+    build(p * 2    , tl    , tm);
+    build(p * 2 + 1, tm + 1, tr);
+    b[p] = combine(ND, NU);
+  }
+}
+
+void push(int32_t p) { /// Change here for addition
+  /// This is addition 
+  /// ND += lazy[p]; LD += lazy[p]; NU += lazy[p]; LU += lazy[p]; lazy[p] = 0;
+  /// This is setting 
+  if (marked[p]) {
+    ND = NU = b[p];
+    MD = MU = 1;
+    marked[p] = 0;
+  }
+}
+
+void update(int32_t p, int32_t tl, int32_t tr, int32_t l, int32_t r, int32_t v) { // update(1, 1, n, left, right, val)
+  if (l > r) { return; }
+  if (l == tl && tr == r) {
+    b[p] = mkp(v);
+    marked[p] = 1;
+  } else {
+    push(p);
+    int32_t tm = (tl + tr) / 2;
+    update(p * 2    , tl    , tm, l, min(r, tm), v);
+    update(p * 2 + 1, tm + 1, tr, max(l, tm + 1), r, v);
+    b[p] = combine(ND, NU);
+  }
+#undef ND
+#undef NU
+#undef LD
+#undef LU
+#undef MD
+#undef MU
+}
+
+$1 query(int32_t p, int32_t tl, int32_t tr, int32_t l, int32_t r) { /// query(1, 1, n, left, right);
+  if (l > r) { return mkp(0); }
+  if (l <= tl && tr <= r) { return b[p]; }
+  push(p);
+  int32_t tm = (tl + tr) / 2;
+  $1 rs = 0, rd = 0;
+  rs = query(p * 2    , tl    , tm, l, min(r, tm    ));
+  rd = query(p * 2 + 1, tm + 1, tr, max(l, tm + 1), r);
+  return combine(rs, rd);
+}
 $0
 endsnippet
