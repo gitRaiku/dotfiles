@@ -30,6 +30,7 @@ settings:
   content.javascript.clipboard:
     global: access
   content.media.audio_capture:
+    https://app.zoom.us: false
     https://discord.com: true
     https://jitsi.edus.ro: true
     https://meet.google.com: true
