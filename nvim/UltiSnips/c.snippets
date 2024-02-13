@@ -486,10 +486,10 @@ $0
 endsnippet
 
 snippet fenwickf "Hope this works"
-uint32_t fw[$1];
-void add(uint32_t i, uint32_t d) { while (i < n) { fw[i] += d; i |= (i + 1) } }
-void cfwt(uint32_t *__restrict v) { int32_t i; for(i = 0; i < n; ++i) { add(i, v[i]); } }
-uint32_t sum(int32_t r) { uint32_t ret = 0; while (r >= 0) { ret += fw[r]; r = (r & (r + 1)) - 1} } return ret; }
+int32_t fw[$1];
+void add(uint32_t i, int32_t d) { while (i < n) { fw[i] += d; i |= (i + 1); } }
+void cfwt(int32_t *__restrict v) { int32_t i; for(i = 0; i < n; ++i) { add(i, v[i]); } }
+int32_t sum(int32_t r) { uint32_t ret = 0; while (r >= 0) { ret += fw[r]; r = (r & (r + 1)) - 1; } return ret; }
 $0
 endsnippet
 
@@ -693,11 +693,11 @@ uint8_t bipart(uint32_t p, uint8_t t) {
 }
 endsnippet
 
-snippet segtree "De ce ai nevoie de asta daca ai deja lichao ex?"
-$1 a[1001];
-$1 b[4 * 1001];
-$1 lazy[4 * 1001];
-uint8_t marked[4 * 1001];
+snippet segfault_set "Chiar ca de ce ai nevoie de asta daca ai deja lichao ex"
+$1 a[$2];
+$1 b[4 * $2];
+$1 lazy[4 * $2];
+uint8_t marked[4 * $2];
 
 $1 __inline__ __attribute((pure)) min($1 o1, $1 o2) { return o1 < o2 ? o1 : o2; }
 $1 __inline__ __attribute((pure)) max($1 o1, $1 o2) { return o1 > o2 ? o1 : o2; }
@@ -722,10 +722,7 @@ void build(int32_t p, int32_t tl, int32_t tr) { /// build(1, 1, n);
   }
 }
 
-void push(int32_t p) { /// Change here for addition
-  /// This is addition 
-  /// ND += lazy[p]; LD += lazy[p]; NU += lazy[p]; LU += lazy[p]; lazy[p] = 0;
-  /// This is setting 
+void push(int32_t p) {
   if (marked[p]) {
     ND = NU = b[p];
     MD = MU = 1;
@@ -751,6 +748,64 @@ void update(int32_t p, int32_t tl, int32_t tr, int32_t l, int32_t r, int32_t v) 
 #undef LU
 #undef MD
 #undef MU
+}
+
+$1 query(int32_t p, int32_t tl, int32_t tr, int32_t l, int32_t r) { /// query(1, 1, n, left, right);
+  if (l > r) { return mkp(0); }
+  if (l <= tl && tr <= r) { return b[p]; }
+  push(p);
+  int32_t tm = (tl + tr) / 2;
+  $1 rs = 0, rd = 0;
+  rs = query(p * 2    , tl    , tm, l, min(r, tm    ));
+  rd = query(p * 2 + 1, tm + 1, tr, max(l, tm + 1), r);
+  return combine(rs, rd);
+}$0
+endsnippet
+
+snippet segfault "De ce ai nevoie de asta daca ai deja lichao ex?"
+$1 a[$2];
+$1 b[4 * $2];
+$1 lazy[4 * $2];
+
+$1 __inline__ __attribute((pure)) min($1 o1, $1 o2) { return o1 < o2 ? o1 : o2; }
+$1 __inline__ __attribute((pure)) max($1 o1, $1 o2) { return o1 > o2 ? o1 : o2; }
+
+$1 mkp($1 o) { return o; } 
+$1 combine($1 o1, $1 o2) { return max(o1, o2); } /// Change here for structures
+
+void build(int32_t p, int32_t tl, int32_t tr) { /// build(1, 1, n);
+#define ND b[p * 2]
+#define NU b[p * 2 + 1]
+#define LD lazy[p * 2]
+#define LU lazy[p * 2 + 1]
+  if (tl == tr) {
+    b[p] = mkp(a[tl]);
+  } else {
+    int32_t tm = (tl + tr) / 2;
+    build(p * 2    , tl    , tm);
+    build(p * 2 + 1, tm + 1, tr);
+    b[p] = combine(ND, NU);
+  }
+}
+
+void push(int32_t p) { ND += lazy[p]; LD += lazy[p]; NU += lazy[p]; LU += lazy[p]; lazy[p] = 0; }
+
+void update(int32_t p, int32_t tl, int32_t tr, int32_t l, int32_t r, int32_t v) { // update(1, 1, n, left, right, val)
+  if (l > r) { return; }
+  if (l == tl && tr == r) {
+    b[p] += mkp(v);
+    lazy[p] += v;
+  } else {
+    push(p);
+    int32_t tm = (tl + tr) / 2;
+    update(p * 2    , tl    , tm, l, min(r, tm), v);
+    update(p * 2 + 1, tm + 1, tr, max(l, tm + 1), r, v);
+    b[p] = combine(ND, NU);
+  }
+#undef ND
+#undef NU
+#undef LD
+#undef LU
 }
 
 $1 query(int32_t p, int32_t tl, int32_t tr, int32_t l, int32_t r) { /// query(1, 1, n, left, right);
@@ -973,4 +1028,46 @@ void preprocess(uint32_t root) {
   dfs(root, root);
 }
 $0
+endsnippet
+
+snippet MOD "Ba da prost mai esti robert...."
+#define MOD(a) ((a)%(M))
+endsnippet
+
+snippet adjf "Adjuncta matricei sigur sigur"
+struct vec { size_t mlen; size_t clen; $1 *__restrict v; };
+void vpush(struct vec *__restrict v, $1 val) { if (v->clen == v->mlen) { v->mlen *= 2; v->v = realloc(v->v, (v->mlen) * sizeof(v->v[0])); } v->v[v->clen] = val; ++v->clen; }
+struct vec initv(size_t len) { struct vec res = {0}; res.mlen = len; res.v = malloc(len * sizeof(res.v[0])); return res; }
+struct vec adj[$2];
+$0
+endsnippet
+
+snippet dijkstra "Pull my dijkstra trigger"
+std::vector<std::vector<std::pair<$1, $1>>> adj; /// {Target, Weight}
+$1 d[$2];
+$1 p[$2];
+
+void dijkstra(uint32_t start) {
+  uint32_t i;
+  for(i = 0; i < n; ++i) { d[i] = p[i] = INT32_MAX; }
+  d[start] = 0;
+
+  std::set<std::pair<$1, $1>> q;
+  q.insert({0, start});
+  while (!q.empty()) {
+    auto qb = q.begin(); $1 v = qb->second; q.erase(qb);
+
+    for (auto edge : adj[v]) {
+      $1 to = edge.first;
+      $1 len = edge.second;
+
+      if (d[v] + len < d[to]) {
+        q.erase({d[to], to});
+        d[to] = d[v] + len;
+        p[to] = v;
+        q.insert({d[to], to});
+      }
+    }
+  }
+}
 endsnippet
