@@ -41,6 +41,7 @@ abbr reboot sudo reboot
 abbr ip sudo ip
 abbr kill sudo kill
 abbr killall sudo killall
+abbr odas doas
 
 abbr pf 'ps aux | rg -i'
 abbr syss systemctl --user
@@ -65,12 +66,16 @@ abbr meak make -j12 -l12
 abbr maek make -j12 -l12
 abbr amke make -j12 -l12
 abbr amek make -j12 -l12
+abbr nvi nvim
+abbr nivm nvim
+abbr nim nvim
+abbr nvmi nvim
 abbr memo nvim ~/.config/memo
 abbr aur git clone https://aur.archlinux.org
 abbr gd 'gott add -A && gott commit -m ""'
 abbr gp gott push
 abbr s sxiv
-abbr z zathura
+abbr z sioyek
 abbr pig ping google.com
 abbr pigg ping 1.1.1.1
 abbr confp 'cd ~/.config && git add nvim fish memo mpv && git commit -m "PUSHSPUHSPUSHPUSH" && git push'
