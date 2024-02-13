@@ -1,3 +1,3 @@
 function comp
-gcc -O3 -march=native -mtune=native -Wall -o $argv[1] $argv[2]
+gcc -march=native -mtune=native -Og -ggdb3 -pipe -fmodulo-sched -Wall -o out $argv
 end
