@@ -37,7 +37,7 @@ function Run()
 
   if extension == 'tex'
     echo "Opening " . "/tmp/" . expand("%:t:r") . ".pdf"
-    echo system("zathura " . "/tmp/" . expand("%:t:r") . ".pdf" . " &")
+    echo system("sioyek " . "/tmp/" . expand("%:t:r") . ".pdf" . " &")
   elseif extension == 'py'
     echo "Running with python " . expand("%:p")
     echo system("python3 " . expand("%:p") . " &")

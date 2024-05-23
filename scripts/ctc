@@ -1,0 +1,4 @@
+#!/bin/sh
+
+FILE_TYPE=$(file --brief --mime-type --dereference $1)
+wl-copy -t $FILE_TYPE < $1

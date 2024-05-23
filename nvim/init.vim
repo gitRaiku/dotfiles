@@ -54,8 +54,8 @@ vnoremap F zf
 
 augroup remember_folds
   autocmd!
-  autocmd BufWinLeave *.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md mkview
-  autocmd BufWinEnter *.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md silent! loadview
+  autocmd BufWinLeave *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md mkview
+  autocmd BufWinEnter *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md silent! loadview
 augroup END
 
 " augroup user_colors

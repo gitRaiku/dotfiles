@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$1" = "deschide-te" ]; then
+  dwl -s deburr
+elif [ "$1" = "inchide-te" ]; then
+  poweroff
+fi

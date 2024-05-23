@@ -1,0 +1,13 @@
+#!/bin/sh
+
+nm="$(date +"%Y-%m-%d-%H%M%S")_grim.png"
+grim /tmp/$nm
+ctc /tmp/$nm
+if [ "$1" = "2" ]; then
+  gimp /tmp/$nm 
+elif [ "$1" = "1" ]; then
+  rm /tmp/$nm
+else
+  mv /tmp/$nm /home/raiku/Misc/Screenshots/
+fi
+
