@@ -1,0 +1,27 @@
+#!/bin/sh
+
+case $1 in
+  ++)
+    VOL=$(amixer -D sysdefault:1 sset Master Playback 10%+);VOL=${VOL#*[};VOL=${VOL%%]*};
+    herbe "" "The volume is now $VOL" "" &
+    ;;
+  --)
+    VOL=$(amixer -D sysdefault:1 sset Master Playback 10%-);VOL=${VOL#*[};VOL=${VOL%%]*};
+    herbe "" "The volume is now $VOL" "" &
+    ;;
+  +)
+    VOL=$(amixer -D sysdefault:1 sset Master Playback 3%+);VOL=${VOL#*[};VOL=${VOL%%]*};
+    herbe "" "The volume is now $VOL" "" &
+    ;;
+  -)
+    VOL=$(amixer -D sysdefault:1 sset Master Playback 3%-);VOL=${VOL#*[};VOL=${VOL%%]*};
+    herbe "" "The volume is now $VOL" "" &
+    ;;
+  t)
+    amixer -D pulse set Master 1+ toggle
+    herbe "" "Toggled the sound" "" &
+    ;;
+  *)
+    echo "INVALID COMMAND"
+    ;;
+esac

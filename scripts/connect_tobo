@@ -1,0 +1,19 @@
+#!/bin/sh
+
+WPAPID=$(_get_wdpid wpa0)
+DCPPID=$(_get_wdpid dhcp0)
+sudo ip a flush dev wlan0
+kill $WPAPID &> /dev/null
+kill $DCPPID &> /dev/null
+sleep 0.5
+rm /run/wpa_supplicant/wlan0
+kill $WPAPID &> /dev/null
+kill $DCPPID &> /dev/null
+sleep 0.5
+rm /run/wpa_supplicant/wlan0
+
+doas wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_tobot.conf &
+disown
+sleep 3.6
+
+dhcpcd wlan0

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ "$1" = "test" ]; then
+if [ "$2" = "with" ]; then
+if [ "$3" = "the" ]; then
+if [ "$4" = "coin" ]; then
+  graf coin
+fi
+fi
+fi
+fi

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+POWER="$(cat /sys/class/power_supply/BAT0/capacity)"
+POWER_STATUS="$(cat /sys/class/power_supply/BAT0/status)"
+echo "Current battery level $POWER%, $POWER_STATUS"

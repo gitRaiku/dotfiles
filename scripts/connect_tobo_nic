@@ -1,0 +1,18 @@
+#!/bin/sh
+
+WPAPID=$(_get_wdpid wpa1)
+DCPPID=$(_get_wdpid dhcp1)
+sudo ip a flush dev wlan1
+kill $WPAPID &> /dev/null
+kill $DCPPID &> /dev/null
+sleep 0.2
+rm /run/wpa_supplicant/wlan1
+kill $WPAPID &> /dev/null
+kill $DCPPID &> /dev/null
+sleep 0.2
+rm /run/wpa_supplicant/wlan1
+
+sudo ip route add 192.168.43.0/24 dev wlan1
+wpa_supplicant -B -i wlan1 -c /etc/wpa_supplicant/wpa_robo.conf
+
+dhcpcd wlan1

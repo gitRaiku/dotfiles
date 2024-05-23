@@ -1,0 +1,13 @@
+#!/bin/sh
+
+killall wpa_supplicant
+killall dhcpcd
+sleep 0.2
+killall dhcpcd
+rm /run/wpa_supplicant/wlan*
+
+sleep 0.2
+
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_tobot_tomi.conf
+
+dhcpcd wlan0

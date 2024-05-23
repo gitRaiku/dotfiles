@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for i in "ls" "dircolors" "rm"; do
+  cp /home/raiku/Git/coreutils/src/$i /usr/bin/$i
+done
+

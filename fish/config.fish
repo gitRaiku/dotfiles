@@ -42,6 +42,7 @@ abbr ip sudo ip
 abbr kill sudo kill
 abbr killall sudo killall
 abbr odas doas
+abbr daos doas
 
 abbr pf 'ps aux | rg -i'
 abbr syss systemctl --user
@@ -59,13 +60,13 @@ abbr nin nvim ~/.config/nvim/init.vim
 abbr xin nvim ~/.xinitrc
 abbr gdb gdb -q
 abbr mk makepkg -sci
-abbr mak sudo make install -j12 -l12
-abbr make make -j12 -l12
-abbr mkae make -j12 -l12
-abbr meak make -j12 -l12
-abbr maek make -j12 -l12
-abbr amke make -j12 -l12
-abbr amek make -j12 -l12
+abbr mak sudo make install -j16 -l16
+abbr make make -j16 -l16
+abbr mkae make -j16 -l16
+abbr meak make -j16 -l16
+abbr maek make -j16 -l16
+abbr amke make -j16 -l16
+abbr amek make -j16 -l16
 abbr nvi nvim
 abbr nivm nvim
 abbr nim nvim
