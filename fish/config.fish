@@ -79,7 +79,7 @@ abbr s sxiv
 abbr z sioyek
 abbr pig ping google.com
 abbr pigg ping 1.1.1.1
-abbr confp 'cd ~/.config && git add nvim fish memo mpv && git commit -m "PUSHSPUHSPUSHPUSH" && git push'
+abbr confp 'cd ~/.config && git add scripts nvim fish memo mpv && git commit -m "PUSHSPUHSPUSHPUSH" && git push'
 abbr hfs 'sudo mount -t nfs -o port=4949 192.168.1.99:/hard/nfs /mnt'
 
 # set LS_COLORS (cat /home/arch/.config/ls_colours)
