@@ -1,5 +1,4 @@
 #!/bin/bash
-
 doas systemctl restart bluetooth.service
 sleep 1
 echo "zzzzzz...."

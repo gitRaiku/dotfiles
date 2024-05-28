@@ -1,24 +1,33 @@
 #!/bin/sh
 
+
+printvol() {
+  VOL=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+  VOL=${VOL#* }
+  VOL=$(echo "$VOL * 100" | bc -l)
+  VOL=${VOL%.*} 
+  herbe "" "The volume is now $VOL%" "" &
+}
+
 case $1 in
   ++)
-    VOL=$(amixer -D sysdefault:1 sset Master Playback 10%+);VOL=${VOL#*[};VOL=${VOL%%]*};
-    herbe "" "The volume is now $VOL" "" &
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+
+    printvol
     ;;
   --)
-    VOL=$(amixer -D sysdefault:1 sset Master Playback 10%-);VOL=${VOL#*[};VOL=${VOL%%]*};
-    herbe "" "The volume is now $VOL" "" &
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-
+    printvol
     ;;
   +)
-    VOL=$(amixer -D sysdefault:1 sset Master Playback 3%+);VOL=${VOL#*[};VOL=${VOL%%]*};
-    herbe "" "The volume is now $VOL" "" &
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+
+    printvol
     ;;
   -)
-    VOL=$(amixer -D sysdefault:1 sset Master Playback 3%-);VOL=${VOL#*[};VOL=${VOL%%]*};
-    herbe "" "The volume is now $VOL" "" &
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-
+    printvol
     ;;
   t)
-    amixer -D pulse set Master 1+ toggle
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     herbe "" "Toggled the sound" "" &
     ;;
   *)

@@ -36,6 +36,8 @@ abbr fdisk sudo fdisk
 abbr chgrp sudo chgrp
 abbr mount sudo mount
 abbr umount sudo umount
+abbr modprobe sudo modprobe
+abbr rmmod sudo rmmod
 abbr poweroff sudo poweroff
 abbr reboot sudo reboot
 abbr ip sudo ip
@@ -81,6 +83,8 @@ abbr pig ping google.com
 abbr pigg ping 1.1.1.1
 abbr confp 'cd ~/.config && git add scripts nvim fish memo mpv && git commit -m "PUSHSPUHSPUSHPUSH" && git push'
 abbr hfs 'sudo mount -t nfs -o port=4949 192.168.1.99:/hard/nfs /mnt'
+
+sed 's/\x00//g' -i ~/.local/share/fish/fish_history
 
 # set LS_COLORS (cat /home/arch/.config/ls_colours)
 # export LS_COLORS
