@@ -12,7 +12,7 @@ export LC_ALL=en_GB.UTF-8
 # export LANGUAGE=ja_JP.UTF-8
 # export LANG=ja_JP.UTF-8
 # export LC_ALL=ja_JP.UTF-8
-export SDL_AUDIODRIVER=pulse
+export SDL_AUDIODRIVER=alsa
 export GNULIB_SRCDIR="~/Git/gnulib"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
 export ZK_NOTEBOOK_DIR="/home/arch/Misc/Zk/"
@@ -45,6 +45,7 @@ abbr kill sudo kill
 abbr killall sudo killall
 abbr odas doas
 abbr daos doas
+abbr pip3 doas pip3 install --break-system-packages
 
 abbr pf 'ps aux | rg -i'
 abbr syss systemctl --user
@@ -83,6 +84,7 @@ abbr pig ping google.com
 abbr pigg ping 1.1.1.1
 abbr confp 'cd ~/.config && git add scripts nvim fish memo mpv && git commit -m "PUSHSPUHSPUSHPUSH" && git push'
 abbr hfs 'sudo mount -t nfs -o port=4949 192.168.1.99:/hard/nfs /mnt'
+abbr seeping sudo tcpdump ip proto \\\\icmp
 
 sed 's/\x00//g' -i ~/.local/share/fish/fish_history
 
