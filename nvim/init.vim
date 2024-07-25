@@ -18,6 +18,7 @@ set ignorecase
 set smartcase
 set lazyredraw
 set mouse=
+set tw=0
 
 set updatetime=300
 set shortmess+=c
