@@ -55,8 +55,8 @@ vnoremap F zf
 
 augroup remember_folds
   autocmd!
-  autocmd BufWinLeave *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md mkview
-  autocmd BufWinEnter *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md silent! loadview
+  autocmd BufWinLeave *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md,lograpoarte mkview
+  autocmd BufWinEnter *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md,lograpoarte silent! loadview
 augroup END
 
 " augroup user_colors
@@ -105,5 +105,39 @@ colorscheme moonfly
 nnoremap <C-f> :FuzzyOpen<CR>
 nnoremap <C-s> :FuzzyGrep<CR>
 
+" Conceals
+function! ToggleConcealLevel()
+    if &conceallevel == 0
+        setlocal conceallevel=2
+    else
+        setlocal conceallevel=0
+    endif
+endfunction
+
+nnoremap <silent> <C-y> :call ToggleConcealLevel()<CR>
+
+function MakeVerilogReadable()
+  setlocal conceallevel=1
+  hi Conceal ctermbg=None guifg='#e2637f'
+  call matchadd('Conceal', 'begin',    10, -1, {'conceal':'{'})
+  call matchadd('Conceal', 'end',      10, -1, {'conceal':'}'})
+  " call matchadd('Conceal', 'begin ',    10, -1, {'conceal':'{'})
+  " call matchadd('Conceal', 'begin$',    10, -1, {'conceal':'{'})
+  " call matchadd('Conceal', 'end ',      10, -1, {'conceal':'}'})
+  " call matchadd('Conceal', 'end$',      10, -1, {'conceal':'}'})
+endfunction
+
+augroup your_group
+  autocmd! 
+  autocmd FileType verilog call MakeVerilogReadable()
+augroup END
+
+
+
+" augroup betterVerilog
+  " autocmd!
+  " autocmd FileType verilog
+" augroup END
+
 " Lua
-lua require('init')
+" lua require('init')

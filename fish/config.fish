@@ -1,21 +1,19 @@
 #!/bin/fish
 
-if [ "$SSH_CLIENT" = "" ]
-  # cat /home/arch/.cache/wal/sequences &
-  # nvim xxx.c
+if [ "$SSH_CLIENT" != "" ]
+  export DISPLAY=:0
+  export WAYLAND_DISPLAY=wayland-0
 end
 
-export TZ=Europe/Bucharest
+export TZ=Europe/Amsterdam
 export LANGUAGE=en_GB.UTF-8
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
-# export LANGUAGE=ja_JP.UTF-8
-# export LANG=ja_JP.UTF-8
-# export LC_ALL=ja_JP.UTF-8
 export SDL_AUDIODRIVER=alsa
 export GNULIB_SRCDIR="~/Git/gnulib"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
 export ZK_NOTEBOOK_DIR="/home/arch/Misc/Zk/"
+export EDITOR=/usr/bin/nvim
 
 export CFLAGS="-O3 -march=native -mtune=native -fmodulo-sched"
 export MAKEOPTS="-l16 -j16"
@@ -25,28 +23,23 @@ export DISABLE_QT5_COMPAT=1
 export MOZ_ENABLE_WAYLAND=1
 export LIBSEAT_BACKEND=logind
 export WLR_NO_HARDWARE_CURSORS=1
+export NO_AT_BRIDGE=1
+export GTK_THEME=Snow
 
 source ~/.config/fish/ls_colours
 
+
+for i in chmod chown fdisk chgrp mount umount modprobe rmmod poweroff reboot ip kill killall connect_milena wg-quick tcpdump iw cpupower
+  abbr $i sudo $i
+end
+
 abbr sys sudo systemctl
 abbr pac sudo pacman -S
-abbr chmod sudo chmod
-abbr chown sudo chown
-abbr fdisk sudo fdisk
-abbr chgrp sudo chgrp
-abbr mount sudo mount
-abbr umount sudo umount
-abbr modprobe sudo modprobe
-abbr rmmod sudo rmmod
-abbr poweroff sudo poweroff
-abbr reboot sudo reboot
-abbr ip sudo ip
-abbr kill sudo kill
-abbr killall sudo killall
 abbr odas doas
 abbr daos doas
 abbr pip3 doas pip3 install --break-system-packages
 
+abbr lw libreoffice
 abbr pf 'ps aux | rg -i'
 abbr syss systemctl --user
 abbr zkn zk new --title 
