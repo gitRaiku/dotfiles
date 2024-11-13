@@ -1,0 +1,6 @@
+#!/bin/bash
+
+hwm=$(cat /sys/class/hwmon/*/name | rg -n asus | cut -d ':' -f1)
+hwm=$((hwm - 1))
+
+echo $@ | sudo tee /sys/class/hwmon/hwmon$hwm/pwm1_enable

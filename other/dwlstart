@@ -1,0 +1,75 @@
+#!/bin/sh
+
+if [ ! -f /tmp/dwlinit ]; then
+  dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+
+  while true; do
+    LOCALTIME=$(date +"%d/%m/%Y %H:%M")
+    
+    POWER="$(cat /sys/class/power_supply/BAT0/capacity)"
+    POWER_STATUS="$(cat /sys/class/power_supply/BAT0/status)"
+    SPOTIFY_STATUS="$(/usr/local/bin/get_spotify_song)"
+    VPN="$(get_vpn) "
+    case $POWER_STATUS in
+      Charging)
+        POWER_STATUS="+"
+        ;;
+      Discharging)
+        POWER_STATUS="-"
+        ;;
+      *)
+        POWER_STATUS="="
+        ;;
+    esac
+
+    deburr status "$VPN$SPOTIFY_STATUS$LOCALTIME │ $POWER%$POWER_STATUS" &> /dev/null
+    sleep 5s 
+  done &
+
+  # if true; then
+  #  ping 192.168.1.100 -c 1 -w 1
+  #  if [ $? != 0 ]; then
+  #    doas start_network
+  #    sleep 5
+  #    doas systemctl start openntpd
+  #  fi
+  # fi &
+  
+  if ! pgrep wpa_supplicant; then
+    doas start_network
+    sleep 5
+    doas systemctl start openntpd
+  fi &
+
+  # /home/raiku/.dwm/start_jack.py &
+
+  doas powertop --auto-tune &
+
+  touch /tmp/dwlinit
+fi
+
+  if ! pgrep r2kd &> /dev/null; then
+    r2kd &
+  fi
+
+  # if ! pgrep ankeed &> /dev/null; then
+    # ankeed &
+  # fi
+
+  # if ! pgrep sarmale &> /dev/null; then
+    # sarmale &
+  # fi
+
+  # if ! pgrep log_fstats &> /dev/null; then
+    # log_fstats &
+  # fi
+
+  if ! pgrep funckeysd &> /dev/null; then
+    funckeysd &
+  fi
+
+  if ! pgrep wl-paste &> /dev/null; then
+    wl-paste --watch clipcelld store &
+  fi
+swaybg -i /home/raiku/Misc/Downloads/Bgs/kappashiro2.jpeg &
+# swaybg -i /home/raiku/Misc/Downloads/Bgs/Mandelbrot.png &

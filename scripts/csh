@@ -1,0 +1,20 @@
+#!/bin/sh
+
+args=$(echo "$@ " | cut -f 2- -d ' ')
+case $1 in
+  inuke)ssh mpin@10.10.10.110 $args ;;
+  mpin) ssh mpin@10.10.10.110 $args ;;
+  wfs)  ssh  wfs@10.10.10.113 $args ;;
+  xcp)  ssh root@10.10.10.140 $args ;;
+  xoa)  ssh  xoa@10.10.10.141 $args ;;
+  soni) ssh soni@10.10.10.142 $args ;;
+  waz)  ssh  waz@10.10.10.143 $args ;;
+
+  sonifi) ssh sonifi@10.10.10.145 $args ;;
+
+  ff   )  ssh  arch@192.168.1.111 $args ;; 
+  raiku)  ssh raiku@192.168.1.112 $args ;; 
+  hfs)    ssh raiku@192.168.1.99  $args ;; 
+  router) ssh  root@192.168.1.100 $args ;;
+  *) echo "inuke mpin wfs xcp xoa waz soni sonifi raiku router"
+esac

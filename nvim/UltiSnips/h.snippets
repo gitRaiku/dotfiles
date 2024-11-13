@@ -1,0 +1,12 @@
+extends c
+priority 1
+snippet sdoc
+`!p 
+fn = f'{snip.fn.split('.')[0].upper()}_H'
+snip.rv = f'#ifndef {fn}\n#define {fn}'`
+
+$0
+
+#endif
+endsnippet
+

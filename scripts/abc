@@ -1,4 +1,0 @@
-#!/bin/sh
-
-/home/raiku/Git/vtr-verilog-to-routing/abc/abc $@
-

@@ -1,0 +1,62 @@
+#!/bin/sh
+
+export QT_QPA_PLATFORM=xcb
+
+xset -b # disable bell
+
+if ! pgrep r2kd &> /dev/null; then
+  r2kd
+fi
+
+#if ! pgrep ankeed &> /dev/null; then
+  # ankeed &
+#fi
+
+# if ! pgrep spotifyd &> /dev/null; then
+	# spotifyd --no-daemon &> /dev/null &
+# fi
+
+while true; do
+	LOCALTIME=$(date +"%d/%m/%Y %H:%M")
+	
+	POWER="$(cat /sys/class/power_supply/BAT0/capacity)"
+	POWER_STATUS="$(cat /sys/class/power_supply/BAT0/status)"
+  SPOTIFY_STATUS="$(/usr/local/bin/get_spotify_song)"
+	case $POWER_STATUS in
+		Charging)
+			POWER_STATUS="+"
+			;;
+		Discharging)
+			POWER_STATUS="-"
+			;;
+		*)
+			POWER_STATUS="="
+			;;
+	esac
+
+	xsetroot -name "$SPOTIFY_STATUS$LOCALTIME │ $POWER%$POWER_STATUS"
+	sleep 5s 
+done &
+
+if true; then
+  ping 1.1.1.1 -c 1
+  if [ $? != 0 ]; then
+    #doas start_network
+    # mbsync -a &
+    sleep 5
+    # doas systemctl start openntpd.service
+    # doas systemctl restart openntpd.service
+    # doas systemctl restart openntpd.service
+    # doas systemctl restart openntpd.service
+  fi
+fi &
+
+hsetroot -fill /home/raiku/Misc/Downloads/Bgs/FallenTemple.png
+
+doas powertop --auto-tune &
+
+if ! pgrep log_fstats &> /dev/null; then
+  log_fstats &
+fi
+
+exec dwm

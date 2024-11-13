@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# wine64 /opt/winbox/winbox64.exe
+/opt/winbox4/WinBox

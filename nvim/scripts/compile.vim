@@ -10,6 +10,14 @@ nnoremap <F10> :call Compile_And_Run()<CR>
 vnoremap <F10> :call Compile_And_Run()<CR>
 inoremap <F10> :call Compile_And_Run()<CR>
 
+nnoremap <F11> :call Make()<CR>
+vnoremap <F11> :call Make()<CR>
+inoremap <F11> :call Make()<CR>
+
+function Make()
+  echo system("make -j16 -l16")
+endfunction
+
 function Compile()
   let extension = expand('%:e')
 

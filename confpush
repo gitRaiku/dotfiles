@@ -1,0 +1,25 @@
+#!/bin/bash
+
+cd ~/.config
+
+cp ~/.dwlstart other/dwlstart
+cp ~/.xinitrc other/xinitrc
+cp ~/.dwm/autostart.sh other/dwmstart
+
+for i in $(find /usr/local/bin/ -type f); do
+    head -n 1 $i | rg -e '^#!/bin/(bash|sh)$' &> /dev/null
+    if [ "$?" -eq "0" ]; then
+      cp $i scripts/
+    fi
+done
+
+NR=$(cat ./other/pushcount)
+
+git add .gitignore scripts other confpush \
+  nvim fish memo mpv sioyek foot \
+  qutebrowser/config.py
+git commit -m "Why am i keeping count of my $NR-th push?"
+git push
+if [ "$?" -eq "0" ]; then
+  echo $((NR + 1)) > ./other/pushcount
+fi

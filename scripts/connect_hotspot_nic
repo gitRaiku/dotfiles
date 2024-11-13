@@ -15,4 +15,4 @@ rm /run/wpa_supplicant/wlan1
 wpa_supplicant -B -i wlan1 -c /etc/wpa_supplicant/wpa_supplicant_hotspot.conf
 
 
-dhcpcd wlan1
+dhcpcd -4 wlan1

@@ -15,4 +15,4 @@ doas rm /run/wpa_supplicant/wlan0
 
 doas wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant_hotspot.conf &
 
-doas dhcpcd wlan0
+doas dhcpcd -4 wlan0

@@ -6,7 +6,7 @@ printvol() {
   VOL=${VOL#* }
   VOL=$(echo "$VOL * 100" | bc -l)
   VOL=${VOL%.*} 
-  herbe "" "The volume is now $VOL%" "" &
+  herbe "" "The volume is now $VOL%" "" &> /dev/null &
 }
 
 case $1 in

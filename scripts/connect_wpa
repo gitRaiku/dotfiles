@@ -16,4 +16,4 @@ doas wpa_supplicant -i wlan0 -c $1 &
 disown
 sleep 3.6
 
-dhcpcd wlan0
+dhcpcd -4 wlan0

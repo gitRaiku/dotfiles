@@ -1,5 +1,6 @@
 #!/bin/sh
 
+doas wg-quick down vergil
 sudo ip a flush dev wlan0
 killall wpa_supplicant &> /dev/null
 killall dhcpcd &> /dev/null

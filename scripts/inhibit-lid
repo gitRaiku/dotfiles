@@ -1,0 +1,8 @@
+#!/bin/sh
+systemd-inhibit \
+   --what="handle-lid-switch" \
+   --who="Mata" \
+   --why="Ca vreau" \
+   sleep 10000000000000000000 &
+disown
+

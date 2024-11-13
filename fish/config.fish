@@ -5,7 +5,7 @@ if [ "$SSH_CLIENT" != "" ]
   export WAYLAND_DISPLAY=wayland-0
 end
 
-export TZ=Europe/Amsterdam
+export TZ=Europe/Bucharest
 export LANGUAGE=en_GB.UTF-8
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
@@ -29,7 +29,7 @@ export GTK_THEME=Snow
 source ~/.config/fish/ls_colours
 
 
-for i in chmod chown fdisk chgrp mount umount modprobe rmmod poweroff reboot ip kill killall connect_milena wg-quick tcpdump iw cpupower
+for i in chmod chown fdisk chgrp mount umount modprobe rmmod poweroff reboot ip kill killall connect_milena wg-quick tcpdump iw cpupower wg
   abbr $i sudo $i
 end
 
@@ -74,10 +74,12 @@ abbr gp gott push
 abbr s sxiv
 abbr z sioyek
 abbr pig ping google.com
+abbr piv ping 192.168.1.100
 abbr pigg ping 1.1.1.1
 abbr confp 'cd ~/.config && git add scripts nvim fish memo mpv && git commit -m "PUSHSPUHSPUSHPUSH" && git push'
 abbr hfs 'sudo mount -t nfs -o port=4949 192.168.1.99:/hard/nfs /mnt'
 abbr seeping sudo tcpdump ip proto \\\\icmp
+abbr gic git clone --depth=1
 
 sed 's/\x00//g' -i ~/.local/share/fish/fish_history
 
