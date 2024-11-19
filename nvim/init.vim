@@ -55,8 +55,8 @@ vnoremap F zf
 
 augroup remember_folds
   autocmd!
-  autocmd BufWinLeave *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md,lograpoarte mkview
-  autocmd BufWinEnter *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md,lograpoarte silent! loadview
+  autocmd BufWinLeave *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md,lograpoarte,*.py,*.txt mkview
+  autocmd BufWinEnter *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md,lograpoarte,*.py,*.txt silent! loadview
 augroup END
 
 " augroup user_colors
@@ -118,7 +118,7 @@ nnoremap <silent> <C-y> :call ToggleConcealLevel()<CR>
 
 function MakeVerilogReadable()
   setlocal conceallevel=1
-  hi Conceal ctermbg=None guifg='#e2637f'
+  hi Conceal ctermbg=None ctermfg=14 guifg='#e2637f'
   call matchadd('Conceal', 'begin',    10, -1, {'conceal':'{'})
   call matchadd('Conceal', 'end',      10, -1, {'conceal':'}'})
   " call matchadd('Conceal', 'begin ',    10, -1, {'conceal':'{'})
