@@ -105,4 +105,8 @@ end
 
 if [ (tty) = "/dev/tty2" -o (tty) = "/dev/tty1" ]
   echo "Salve!"
+  if [ (hostname) = "FF"] 
+    start_pc &> /dev/null &
+    disown
+  end
 end
