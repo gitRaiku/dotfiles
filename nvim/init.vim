@@ -132,7 +132,9 @@ augroup your_group
   autocmd FileType verilog call MakeVerilogReadable()
 augroup END
 
-
+function MakeUltisnipsUnderstandHVsCPP()
+  UltiSnipsAddFiletypes h
+endfunction
 
 " augroup betterVerilog
   " autocmd!

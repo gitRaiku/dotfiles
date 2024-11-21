@@ -46,8 +46,8 @@ $(L_OBJ): $(OBJ_DIR)/%.o : $(LIB_DIR)/%.c
 	@mkdir -p $(@D)
 	$(CC) -c -fPIC $(CCFLAGS) $< -o $@
 
-$(BIN_DIR)/$(TARGET): $(SRC_DIR)/main.c $(L_OBJ)
-	$(CC) -o $(BIN_DIR)/$(TARGET) $(CCFLAGS) $(LFLAGS) $(L_OBJ) $<
+$(BIN_DIR)/$(TARGET): $(C_OBJ) $(L_OBJ)
+	$(CC) -o $(BIN_DIR)/$(TARGET) $(CCFLAGS) $(LFLAGS) $(L_OBJ) $(C_OBJ) $<
 
 run: build
 	./$(BIN_DIR)/$(TARGET)
