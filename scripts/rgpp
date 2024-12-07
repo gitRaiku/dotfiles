@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bname=$(basename $1)
+gpp $1 > /tmp/$bname.gpp
+python /tmp/$bname.gpp

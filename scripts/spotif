@@ -1,5 +1,4 @@
 #!/bin/sh
-
 spotify &
 sleep 1
-rm -r ~/Downloads
+rm -r /home/arch/Downloads

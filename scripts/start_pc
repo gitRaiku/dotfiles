@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Sping"
+ping 192.168.1.100 -c 1 &> /dev/null
+if [ $? != 0 ]; then
+  echo "Snet"
+  doas start_network &> /dev/null
+  echo "vmnet"
+  doas /usr/local/bin/vm-network &> /dev/null
+  # doas mount 10.10.10.52:/ /nfs
+  sleep 8
+  echo "mount"
+  doas mount -t nfs 192.168.1.99:/hard/nfs /hfs &> /dev/null
+  sleep 8 
+  echo "sysctl"
+  doas systemctl restart openntpd.service &> /dev/null
+  echo "hwclock"
+  doas hwclock --systohc &> /dev/null
+fi

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cd /home/arch/Misc
+wget "https://github.com/ppy/osu/releases/latest/download/osu.AppImage" -O osu.AppImage
+chmod +x osu.AppImage
+mv osu.AppImage /home/arch/Misc/
+rm -r /home/arch/Misc/Osu/
+./osu.AppImage --appimage-extract
+mv squashfs-root Osu
+mv osu.AppImage Osu
+herbe "Updated Osu!"
+

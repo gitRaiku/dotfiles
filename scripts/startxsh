@@ -1,0 +1,7 @@
+#!/bin/sh
+
+doas chmod 666 /dev/tty2
+openvt startx
+sleep 6
+/usr/bin/x11vnc -many -display :0 -no6 -rfbport 5901 &
+disown

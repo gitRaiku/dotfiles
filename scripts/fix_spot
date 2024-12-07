@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sed -i "s/proxy.mode=./proxy.mode=1/" /home/raiku/.config/spotify/prefs
+sed -i "s/proxy.mode=./proxy.mode=1/" /home/arch/.config/spotify/prefs

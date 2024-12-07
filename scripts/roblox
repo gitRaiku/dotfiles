@@ -1,3 +1,3 @@
 #!/bin/bash
 
-strace --syscall-limit=1000000 -f -o /dev/null flatpak run org.vinegarhq.Sober
+strace --syscall-limit=100000 -f -o /dev/null flatpak run org.vinegarhq.Sober

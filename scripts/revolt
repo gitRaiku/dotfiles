@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /opt/rvgl
-./rvgl
+/home/arch/.local/share/rvmm/packs/rvgl_linux/rvgl -basepath "/home/arch/.local/share/rvmm" -prefpath "/home/arch/.local/share/rvmm/save" -packlist "default"
+

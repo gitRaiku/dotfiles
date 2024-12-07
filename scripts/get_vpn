@@ -3,8 +3,9 @@
 VPN="$(ip a | rg "1420" | cut -d ':' -f2 | cut -b 2-)"
 
 if [ "$VPN" != "" ]; then
-  VPN="$VPN │"
+  VPN="$VPN │ "
 fi
 
 echo $VPN
+
 

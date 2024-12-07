@@ -2,14 +2,16 @@
 
 if [ "$SSH_CLIENT" != "" ]
   export DISPLAY=:0
-  export WAYLAND_DISPLAY=wayland-0
+  if [ (hostname) != "FF" ] 
+    export WAYLAND_DISPLAY=wayland-0
+  end
 end
 
 export TZ=Europe/Bucharest
 export LANGUAGE=en_GB.UTF-8
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
-export SDL_AUDIODRIVER=alsa
+export SDL_AUDIODRIVER=pipewire
 export GNULIB_SRCDIR="~/Git/gnulib"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
 export ZK_NOTEBOOK_DIR="/home/arch/Misc/Zk/"
@@ -103,7 +105,7 @@ end
 
 if [ (tty) = "/dev/tty2" -o (tty) = "/dev/tty1" ]
   echo "Salve!"
-  if [ (hostname) = "FF"] 
+  if [ (hostname) = "FF" ] 
     start_pc &> /dev/null &
     disown
   end

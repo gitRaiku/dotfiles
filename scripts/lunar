@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /home/arch/Misc/Games/Lunar
+./lunarclient
