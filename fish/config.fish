@@ -18,6 +18,7 @@ export ZK_NOTEBOOK_DIR="/home/arch/Misc/Zk/"
 export EDITOR=/usr/bin/nvim
 
 export CFLAGS="-O3 -march=native -mtune=native -fmodulo-sched"
+export CXXFLAGS="-O3 -march=native -mtune=native -fmodulo-sched"
 export MAKEOPTS="-l16 -j16"
 export CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"
 
@@ -26,6 +27,7 @@ export MOZ_ENABLE_WAYLAND=1
 export LIBSEAT_BACKEND=logind
 export WLR_NO_HARDWARE_CURSORS=1
 export NO_AT_BRIDGE=1
+export QT_QPA_PLATFORM=wayland
 export GTK_THEME=Snow
 
 source ~/.config/fish/ls_colours
@@ -70,7 +72,7 @@ abbr nivm nvim
 abbr nim nvim
 abbr nvmi nvim
 abbr memo nvim ~/.config/memo
-abbr aur git clone https://aur.archlinux.org
+abbr aur git clone --depth=1 https://aur.archlinux.org
 abbr gd 'gott add -A && gott commit -m ""'
 abbr gp gott push
 abbr s sxiv

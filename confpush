@@ -22,7 +22,7 @@ NR=$(cat ./other/pushcount)
 git add .gitignore scripts other confpush \
   nvim fish memo mpv sioyek foot \
   qutebrowser/config.py scripts/* \
-  confpush ./other/*
+  confpush ./other/* linux
 git commit -m "Why am i keeping count of my $NR-th push?"
 # git push
 if [ "$?" -eq "0" ]; then

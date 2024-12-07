@@ -280,6 +280,31 @@ snippet -> "Fuck"
 $\to$$0
 endsnippet
 
+snippet "(inn)" "kms" r
+\int $0
+endsnippet
+
+snippet "P.*" "Super" r
+`!p 
+res = match[0][1:len(match[0])]
+if len(res) == 1:
+	snip.rv = f'^{res}'
+else:
+	snip.rv = f'^{{{res}}}'
+`
+endsnippet
+
+snippet "S.*" "Sub" r
+`!p 
+res = match[0][1:len(match[0])]
+if len(res) == 1:
+	snip.rv = f'_{res}'
+else:
+	snip.rv = f'_{{{res}}}'
+`
+endsnippet
+
+#endif
 
 # snippet ebib "Edit the bibliography"
 # `!v 

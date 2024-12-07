@@ -1,4 +1,4 @@
 #!/bin/bash
 
-doas efibootmgr -o 0000,0001,0002,0003,0004
+doas efibootmgr -o 0004,0000,0002,0003,0001
 reboot
