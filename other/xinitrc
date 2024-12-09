@@ -1,64 +1,62 @@
 #!/bin/sh
 
+export QT_QPA_PLATFORM=xcb
+
 xset -b # disable bell
 
-xrandr --output DP-0 --mode 1920x1080 --rate 240 &
+# if ! pgrep r2kd &> /dev/null; then
+  # r2kd
+# fi
 
-setxkbmap -option caps:swapescape
-xset r rate 200 50
+#if ! pgrep ankeed &> /dev/null; then
+  # ankeed &
+#fi
 
-if ! pgrep r2kd &> /dev/null; then
-  r2kd
-fi
-if ! pgrep ankeed &> /dev/null; then
-  ankeed &
-fi
-if ! pgrep sarmale &> /dev/null; then
-  sarmale &
-fi
-if ! pgrep vmware-usbarbitrator &> /dev/null; then
-  sudo vmware-usbarbitrator
-fi
 # if ! pgrep spotifyd &> /dev/null; then
-  # spotifyd --no-daemon &> /dev/null &
+	# spotifyd --no-daemon &> /dev/null &
 # fi
 
 while true; do
-  LOCALTIME=$(date +"%d/%m/%Y %H:%M")
-  
+	LOCALTIME=$(date +"%d/%m/%Y %H:%M")
+	
+	POWER="$(cat /sys/class/power_supply/BAT0/capacity)"
+	POWER_STATUS="$(cat /sys/class/power_supply/BAT0/status)"
   SPOTIFY_STATUS="$(/usr/local/bin/get_spotify_song)"
+	case $POWER_STATUS in
+		Charging)
+			POWER_STATUS="+"
+			;;
+		Discharging)
+			POWER_STATUS="-"
+			;;
+		*)
+			POWER_STATUS="="
+			;;
+	esac
 
-  VPN="$(get_vpn)"
-  
-  xsetroot -name "$VPN$SPOTIFY_STATUS$LOCALTIME"
-  sleep 5s 
+	xsetroot -name "$SPOTIFY_STATUS$LOCALTIME │ $POWER%$POWER_STATUS"
+	sleep 5s 
 done &
 
-hsetroot -fill /home/arch/Misc/Bgs/Mandelbrot.png
-doas sysctl abi.vsyscall32=0
-nvidia-modprobe
-
 if true; then
-  xset r rate 200 50
-  setxkbmap -option caps:swapescape
-  sleep 1
-  xset r rate 200 50
-  setxkbmap -option caps:swapescape
-  sleep 1
-  xset r rate 200 50
-  setxkbmap -option caps:swapescape
-  sleep 1
-  xset r rate 200 50
-  setxkbmap -option caps:swapescape
-  sleep 1
-  xset r rate 200 50
-  setxkbmap -option caps:swapescape
-  sleep 1
-  xset r rate 200 50
-  setxkbmap -option caps:swapescape
-  sleep 1
-  xset r rate 200 50
-  setxkbmap -option caps:swapescape
+  ping 1.1.1.1 -c 1
+  if [ $? != 0 ]; then
+    #doas start_network
+    # mbsync -a &
+    sleep 5
+    # doas systemctl start openntpd.service
+    # doas systemctl restart openntpd.service
+    # doas systemctl restart openntpd.service
+    # doas systemctl restart openntpd.service
+  fi
 fi &
+
+hsetroot -fill /home/raiku/Misc/Downloads/Bgs/FallenTemple.png
+
+doas powertop --auto-tune &
+
+if ! pgrep log_fstats &> /dev/null; then
+  log_fstats &
+fi
 
 exec dwm

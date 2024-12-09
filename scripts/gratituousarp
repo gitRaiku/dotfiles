@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "$#" != 3 ]; then
+  echo "Usage: graituousarp <interface> <ip> <mac>"
+  exit 1
+fi
+
+IP1=$(printf "%02x" $(echo $2 | cut -d '.' -f1))
+IP2=$(printf "%02x" $(echo $2 | cut -d '.' -f2))
+IP3=$(printf "%02x" $(echo $2 | cut -d '.' -f3))
+IP4=$(printf "%02x" $(echo $2 | cut -d '.' -f4))
+IP="$IP1$IP2$IP3$IP4"
+
+MAC=$(echo "$3" | tr '[:upper:]' '[:lower:]' | tr -d ':')
+
+echo /tool traffic-generator inject interface=$1 data=\""ffffffffffff"$MAC"08060001080006040001"$MAC$IP"ffffffffffff"$IP"000000000000000000000000000000000000"\"
+

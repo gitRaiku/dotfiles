@@ -48,9 +48,9 @@ if [ ! -f /tmp/dwlinit ]; then
   touch /tmp/dwlinit
 fi
 
-  if ! pgrep r2kd &> /dev/null; then
-    r2kd &
-  fi
+  # if ! pgrep r2kd &> /dev/null; then
+    # r2kd &
+  # fi
 
   # if ! pgrep ankeed &> /dev/null; then
     # ankeed &

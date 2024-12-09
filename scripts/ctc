@@ -1,4 +1,4 @@
 #!/bin/sh
 
 FILE_TYPE=$(file --brief --mime-type --dereference $1)
-xclip -loops 0 -selection clipboard -t $FILE_TYPE -i $1
+wl-copy -t $FILE_TYPE < $1
