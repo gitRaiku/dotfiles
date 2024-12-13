@@ -5,6 +5,9 @@ if [ "$SSH_CLIENT" != "" ]
   if [ (hostname) != "FF" ] 
     export WAYLAND_DISPLAY=wayland-0
   end
+  abbr poweroff poweroff_ssh_guard
+else
+  abbr poweroff sudo poweroff
 end
 
 export TZ=Europe/Bucharest
@@ -22,18 +25,22 @@ export CXXFLAGS="-O3 -march=native -mtune=native -fmodulo-sched"
 export MAKEOPTS="-l16 -j16"
 export CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"
 
-export DISABLE_QT5_COMPAT=1
-export MOZ_ENABLE_WAYLAND=1
-export LIBSEAT_BACKEND=logind
-export WLR_NO_HARDWARE_CURSORS=1
-export NO_AT_BRIDGE=1
-export QT_QPA_PLATFORM=wayland
 export GTK_THEME=Snow
+fish_add_path ~/.nix-profile/bin
+
+if [ (hostname) != "FF" ]
+  export DISABLE_QT5_COMPAT=1
+  export MOZ_ENABLE_WAYLAND=1
+  export LIBSEAT_BACKEND=logind
+  export WLR_NO_HARDWARE_CURSORS=1
+  export NO_AT_BRIDGE=1
+  export QT_QPA_PLATFORM=wayland
+end
 
 source ~/.config/fish/ls_colours
 
 
-for i in chmod chown fdisk chgrp mount umount modprobe rmmod poweroff reboot ip kill killall connect_milena wg-quick tcpdump iw cpupower wg
+for i in chmod chown fdisk chgrp mount umount modprobe rmmod reboot ip kill killall connect_milena wg-quick tcpdump iw cpupower wg
   abbr $i sudo $i
 end
 

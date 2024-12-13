@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd /opt/winbox4
-./WinBox
+QT_QPA_PLATFORM=xcb ./WinBox
 # wine64 /opt/winbox/winbox64.exe

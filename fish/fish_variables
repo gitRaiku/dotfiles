@@ -1,13 +1,5 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-# raiku@Raiku ~> (Incorrect command) (Correct command) "String $VAR"
-#   |   |     ||  |                                            Operator
-#   |   host  ||
-#             |     
-#             Cwd                     
-#
-#
-#
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
@@ -19,18 +11,16 @@ SETUVAR fish_color_end:AAB3AE
 SETUVAR fish_color_error:f93863
 SETUVAR fish_color_escape:5793ae
 SETUVAR fish_color_history_current:\x2d\x2dbold
-SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
 SETUVAR fish_color_host:C29695
 SETUVAR fish_color_host_remote:C29695
+SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
 SETUVAR fish_color_normal:a6c2e8
 SETUVAR fish_color_operator:8ce1f1
 SETUVAR fish_color_param:a6c2e8
 SETUVAR fish_color_quote:66d700
 SETUVAR fish_color_redirection:ff00ff
-SETUVAR fish_color_seraiku_match:000000
 SETUVAR fish_color_selection:000000
-# SETUVAR fish_color_seraiku_match:bryellow\x1e\x2d\x2dbackground\x3d808080
-# SETUVAR fish_color_selection:000000\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_seraiku_match:000000
 SETUVAR fish_color_status:c86060
 SETUVAR fish_color_user:ffb2bf
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
@@ -40,3 +30,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/home/arch/\x2enix\x2dprofile/bin
