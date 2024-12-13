@@ -1,5 +1,20 @@
 #!/bin/sh
 
-ip a add 192.168.1.111/24 broadcast 192.168.1.255 dev enp0s31f6
-ip link set enp0s31f6 up
-ip route add default via 192.168.1.100
+doas wg-quick down vergil
+sudo ip a flush dev wlan0
+killall wpa_supplicant &> /dev/null
+killall dhcpcd &> /dev/null
+sleep 0.2
+rm /run/wpa_supplicant/wlan*
+killall wpa_supplicant &> /dev/null
+killall dhcpcd &> /dev/null
+sleep 0.2
+rm /run/wpa_supplicant/wlan*
+
+
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+ip a add 192.168.1.112/24 broadcast 192.168.1.255 dev wlan0
+ip route add default via 192.168.1.100 dev wlan0
+
+echo "nameserver 192.168.1.100" > /etc/resolv.conf
+echo "nameserver 1.1.1.1" >> /etc/resolv.conf

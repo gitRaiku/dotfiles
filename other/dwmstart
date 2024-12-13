@@ -2,24 +2,28 @@
 
 #exec xwinwrap -ov -g 1920x1080+0+0 -- mpv -wid WID /home/raiku/Misc/McShaders.mp4 --no-osc --no-osd-bar --loop-file --no-audio --player-operation-mode=cplayer --panscan=1.0 --no-input-default-bindings --gpu-api=opengl --vo=gpu --hwdec=vaapi
 
-# if true; then
-  # sleep 2
-  # .home/arch/.dwm/start_jack.py
-  # sleep 4
-  # systemctl --user start pulseuadio
-  # jack_disconnect system:capture_1 "PulseAudio JACK Source:front-left"
-  # jack_disconnect system:capture_2 "PulseAudio JACK Source:front-right"
-  # carla /home/arch/Misc/Carla/1.carxp --nogui &
-  # alsa_out -j "Speakers" -d hdmi:NVidia,0 &
-  # systemctl --user start fluidsynth
-# fi &
-
-for i in $(seq 20); do 
-  wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.18
-  sleep 1
-done &
-
 if ! pgrep funckeysd &> /dev/null; then
   /usr/local/bin/funckeysd
-fi
+fi &
+
+xset r rate 200 50
+setxkbmap -option caps:swapescape
+if true; then
+  sleep 5
+  xset r rate 200 50
+  setxkbmap -option caps:swapescape
+fi &
+
+POWERED="0"
+while true; do
+  POWER="$(cat /sys/class/power_supply/BAT1/capacity)"
+  POWER_STATUS="$(cat /sys/class/power_supply/BAT1/status)"
+  if [ $POWER -le "5" -a $POWERED = "0"  -a $POWER_STATUS != "+"]; then
+    herbe "Low on power!"
+    POWERED="1"
+  elif [ $POWER -gt "10" ]; then
+    POWERED="0"
+  fi
+  sleep 5s
+done
 

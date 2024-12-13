@@ -2,31 +2,43 @@
 
 
 printvol() {
-  local VOL=$(wpctl get-volume $1)
+  VOL=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
   VOL=${VOL#* }
   VOL=$(echo "$VOL * 100" | bc -l)
   VOL=${VOL%.*} 
-  herbe "" "The volume is now $VOL%" "" &
-}
-
-moni() {
-  local ID=$(wpctl status | rg "GM206 High Definition Audio Controller Digital Stereo")
-  ID=${ID%%\.*}
-  ID=${ID##* }
-  echo $ID
+  if [ -n $XDG_SEAT ]; then
+    plant "" "The volume is now $VOL%" "" &> /dev/null &
+  else
+    herbe "" "The volume is now $VOL%" "" &> /dev/null &
+  fi
 }
 
 case $1 in
-   ++) wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+; printvol @DEFAULT_AUDIO_SINK@;;
-   --) wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-; printvol @DEFAULT_AUDIO_SINK@;;
-    +) wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+; printvol @DEFAULT_AUDIO_SINK@;;
-    -) wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-; printvol @DEFAULT_AUDIO_SINK@;;
-    t) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; herbe "" "Toggled the sound" "" & ;;
-
-    m++) wpctl set-volume $(moni) 0.05+; printvol $(moni);;
-    m--) wpctl set-volume $(moni) 0.05-; printvol $(moni);;
-    m+) wpctl set-volume $(moni) 0.02+; printvol $(moni);;
-    m-) wpctl set-volume $(moni) 0.02-; printvol $(moni);;
-    mt) wpctl set-mute $(moni) toggle; herbe "" "Toggled the sound" "" & ;;
-     *) echo "INVALID COMMAND" ;;
+  ++)
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+
+    printvol
+    ;;
+  --)
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-
+    printvol
+    ;;
+  +)
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+
+    printvol
+    ;;
+  -)
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-
+    printvol
+    ;;
+  t)
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    if [ -n $XDG_SEAT ]; then
+      plant "" "Toggled the sound" "" &> /dev/null &
+    else
+      herbe "" "Toggled the sound" "" &> /dev/null &
+    fi
+    ;;
+  *)
+    echo "INVALID COMMAND"
+    ;;
 esac

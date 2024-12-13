@@ -9,10 +9,12 @@ case $1 in
   xoa)  ssh  xoa@10.10.10.141 $args ;;
   soni) ssh soni@10.10.10.142 $args ;;
   waz)  ssh  waz@10.10.10.143 $args ;;
-  wazi) ssh wazi@10.10.10.145 $args ;;
 
-  hfs)    ssh raiku@192.168.1.99  $args ;; 
+  sonifi) ssh sonifi@10.10.10.145 $args ;;
+
+  ff   )  ssh  arch@192.168.1.111 $args ;; 
   raiku)  ssh raiku@192.168.1.112 $args ;; 
+  hfs)    ssh raiku@192.168.1.99  $args ;; 
   router) ssh  root@192.168.1.100 $args ;;
-  *) echo "inuke mpin wfs xcp xoa soni raiku hfs router"
+  *) echo "inuke mpin wfs xcp xoa waz soni sonifi raiku router"
 esac
