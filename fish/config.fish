@@ -6,8 +6,10 @@ if [ "$SSH_CLIENT" != "" ]
     export WAYLAND_DISPLAY=wayland-0
   end
   abbr poweroff poweroff_ssh_guard
+  abbr reboot reboot_ssh_guard
 else
   abbr poweroff sudo poweroff
+  abbr reboot sudo reboot
 end
 
 export TZ=Europe/Bucharest
@@ -40,7 +42,7 @@ end
 source ~/.config/fish/ls_colours
 
 
-for i in chmod chown fdisk chgrp mount umount modprobe rmmod reboot ip kill killall connect_milena wg-quick tcpdump iw cpupower wg
+for i in chmod chown fdisk chgrp mount umount modprobe rmmod ip kill killall connect_milena wg-quick tcpdump iw cpupower wg
   abbr $i sudo $i
 end
 
