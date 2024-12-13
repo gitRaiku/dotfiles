@@ -10,3 +10,10 @@
 !scripts/*
 !sioyek/*
 config.tar
+nvim/plugins/neovim-fuzzy
+nvim/plugins/transparent.nvim
+nvim/plugins/ultisnips
+nvim/plugins/vim-glsl
+nvim/plugins/vim-toml
+nvim/plugins/zk-nvim
+
