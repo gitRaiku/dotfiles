@@ -2,5 +2,16 @@
 
 p=$(pwd)
 for i in fish nvim sxiv mpv sioyek; do
-  ln -s $p/$i ~/.config/$i 
+  if [ ! -e "~/.config/$i" ]; then
+    echo "~/.config/$i exists. Delete? y/N"
+    read i
+    if [ "$i" = "y" -o "$i" = "Y" ]; then
+      rm -rf ~/.config/$i
+      ln -s $p/$i ~/.config/$i 
+    else
+      continue
+    fi
+  else
+    ln -s $p/$i ~/.config/$i 
+  fi
 done
