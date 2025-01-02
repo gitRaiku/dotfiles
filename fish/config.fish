@@ -13,9 +13,9 @@ else
 end
 
 export TZ=Europe/Bucharest
-export LANGUAGE=en_GB.UTF-8
-export LANG=en_GB.UTF-8
-export LC_ALL=en_GB.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export SDL_AUDIODRIVER=pipewire
 export GNULIB_SRCDIR="~/Git/gnulib"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"

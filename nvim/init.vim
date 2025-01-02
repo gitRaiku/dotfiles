@@ -135,6 +135,7 @@ endfunction
 augroup your_group
   autocmd! 
   autocmd FileType verilog call MakeVerilogReadable()
+  " autocmd FileType systemverilog call MakeVerilogReadable()
 augroup END
 
 function MakeUltisnipsUnderstandHVsCPP()
