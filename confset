@@ -1,0 +1,6 @@
+#!/bin/bash
+
+p=$(pwd)
+for i in fish nvim sxiv mpv sioyek; do
+  ln -s $p/$i ~/.config/$i 
+done
