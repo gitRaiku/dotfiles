@@ -1,7 +1,11 @@
 #!/bin/sh
 
+export QT_QPA_PLATFORM=xcb
+
 if [ ! -f /tmp/dwlinit ]; then
   dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+
+  doas cpupower frequency-set -u 3000MHz
 
   while true; do
     LOCALTIME=$(date +"%d/%m/%Y %H:%M")
@@ -73,3 +77,6 @@ fi
   fi
 swaybg -i /home/raiku/Misc/Downloads/Bgs/kappashiro2.jpeg &
 # swaybg -i /home/raiku/Misc/Downloads/Bgs/Mandelbrot.png &
+#
+
+doas chown -R raiku:raiku /home/raiku/.config/pulse

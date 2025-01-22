@@ -16,7 +16,7 @@ if [ "$1" != "" ]; then
 fi
 
 sudo ip a flush dev $ADDR
-ip a add 10.10.10.224/24 broadcast 10.10.10.255 dev $ADDR
+ip a add 10.10.10.128/24 broadcast 10.10.10.255 dev $ADDR
 ip link set up $ADDR
 ip route add default via 10.10.10.2 dev $ADDR
 ip route add 10.10.0.0/16 via 10.10.10.100 dev $ADDR

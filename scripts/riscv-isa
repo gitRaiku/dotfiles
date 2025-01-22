@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /home/raiku/Misc/Webdownloads/data/20250118002018886/
+qutebrowser index.html

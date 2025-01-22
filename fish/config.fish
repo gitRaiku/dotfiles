@@ -28,6 +28,7 @@ export MAKEOPTS="-l16 -j16"
 export CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"
 
 export GTK_THEME=Snow
+export _JAVA_AWT_WM_NONREPARENTING=1
 fish_add_path ~/.nix-profile/bin
 
 if [ (hostname) != "FF" ]
@@ -89,6 +90,7 @@ abbr z sioyek
 abbr pig ping google.com
 abbr piv ping 192.168.1.100
 abbr pigg ping 1.1.1.1
+abbr cal cal -m
 abbr confp 'cd ~/.config && git add scripts nvim fish memo mpv && git commit -m "PUSHSPUHSPUSHPUSH" && git push'
 abbr hfs 'sudo mount -t nfs -o port=4949 192.168.1.99:/hard/nfs /mnt'
 abbr seeping sudo tcpdump ip proto \\\\icmp

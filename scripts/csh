@@ -10,6 +10,11 @@ case $1 in
   soni) ssh soni@10.10.10.142 $args ;;
   waz)  ssh  waz@10.10.10.143 $args ;;
 
+  xcphq)  ssh root@10.10.1.140 $args ;;
+  xoahq)  ssh  xoa@10.10.1.141 $args ;;
+  sonihq) ssh sonihq@10.10.1.142 $args ;;
+  wazhq)  ssh wazuh@10.10.1.143 $args ;;
+
   sonifi) ssh sonifi@10.10.10.145 $args ;;
 
   ff   )  ssh  arch@192.168.1.111 $args ;; 

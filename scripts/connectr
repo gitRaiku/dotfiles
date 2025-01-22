@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ "$#" != "1" ]; then
+  echo "Usage: "
+  echo " robo, robonet, ceceva, neggwaat"
+fi
+
+case $1 in
+  robo) connect_milena 21455-RC robotica21455 ;;
+  robonet) connect_milena DIGI_e7bff0 989d1840 ;;
+  *) echo "Usage: "
+     echo " robo, robonet, ceceva, neggwaat" ;;
+esac

@@ -132,9 +132,15 @@ function MakeVerilogReadable()
   " call matchadd('Conceal', 'end$',      10, -1, {'conceal':'}'})
 endfunction
 
+function Rer()
+  nnoremap UU :sp /home/raiku/Git/Benzaiten/vivado/vivado.sim/sim_1/behav/xsim/xvlog.log<CR>
+  nnoremap UE :sp /home/raiku/Git/Benzaiten/vivado/vivado.sim/sim_1/behav/xsim/elaborate.log<CR>
+endfunction
+
 augroup your_group
   autocmd! 
   autocmd FileType verilog call MakeVerilogReadable()
+  autocmd FileType systemverilog call Rer()
   " autocmd FileType systemverilog call MakeVerilogReadable()
 augroup END
 

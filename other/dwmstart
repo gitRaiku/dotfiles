@@ -14,6 +14,7 @@ if true; then
   setxkbmap -option caps:swapescape
 fi &
 
+export QT_QPA_PLATFORM=xcb
 POWERED="0"
 while true; do
   POWER="$(cat /sys/class/power_supply/BAT1/capacity)"
