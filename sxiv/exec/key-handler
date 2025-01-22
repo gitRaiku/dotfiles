@@ -4,7 +4,7 @@ while read file; do
   fullpath="$(pwd)/$file"
   case "$1" in
     "c") 
-      filetype=$(file --mime-type "$fullpath" | cut -d: -f2) && 
+      wl-copy --type "image/png" < $fullpath
   esac
 done
 
