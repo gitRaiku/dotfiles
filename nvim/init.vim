@@ -93,6 +93,8 @@ Plug 'udalov/kotlin-vim'
 
 Plug 'mickael-menu/zk-nvim'
 
+Plug 'neovim/nvim-lspconfig'
+
 call plug#end()
 
 " UltiSnips
@@ -148,10 +150,13 @@ function MakeUltisnipsUnderstandHVsCPP()
   UltiSnipsAddFiletypes h
 endfunction
 
+
+
 " augroup betterVerilog
   " autocmd!
   " autocmd FileType verilog
 " augroup END
 
 " Lua
-" lua require('init')
+lua require('init')
+nnoremap <A-S-Return> <cmd>lua vim.lsp.buf.code_action()<CR>

@@ -1,3 +1,22 @@
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    update_in_insert = true,
+  }
+)
+
+require('lspconfig').verible.setup{}
+
+local opts = { noremap=true, silent=true }
+local function quickfix()
+    vim.diagnostic.goto_next()
+    vim.lsp.buf.code_action({
+        filter = function(a) return a.isPreferred end,
+        apply = true
+    })
+end
+vim.keymap.set('n', '<A-Return>', quickfix, opts)
+
+--[[
 require("zk").setup({
   picker = "fzf",
   lsp = {
@@ -11,3 +30,4 @@ require("zk").setup({
     },
   },
 })
+--]]
