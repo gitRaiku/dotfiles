@@ -38,6 +38,7 @@ if [ (hostname) != "FF" ]
   export WLR_NO_HARDWARE_CURSORS=1
   export NO_AT_BRIDGE=1
   export QT_QPA_PLATFORM=wayland
+  export GDK_BACKEND=wayland
 end
 
 source ~/.config/fish/ls_colours

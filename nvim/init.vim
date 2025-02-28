@@ -146,6 +146,11 @@ augroup your_group
   " autocmd FileType systemverilog call MakeVerilogReadable()
 augroup END
 
+augroup my_group
+  autocmd! 
+  autocmd FileType svelte set filetype=html
+augroup END
+
 function MakeUltisnipsUnderstandHVsCPP()
   UltiSnipsAddFiletypes h
 endfunction

@@ -24,6 +24,8 @@ settings:
     global: 256
   colors.webpage.preferred_color_scheme:
     global: dark
+  content.desktop_capture:
+    https://euro.pruefster.com: true
   content.geolocation:
     https://openweathermap.org: false
     https://wizzair.com: false
@@ -34,11 +36,13 @@ settings:
   content.media.audio_capture:
     https://app.zoom.us: false
     https://discord.com: true
+    https://euro.pruefster.com: true
     https://jitsi.edus.ro: true
     https://kingnish-opengpt-4o.hf.space: false
     https://meet.google.com: true
     https://us06web.zoom.us: true
   content.media.audio_video_capture:
+    https://euro.pruefster.com: true
     https://jitsi.edus.ro: true
     https://meet.google.com: true
     https://us06web.zoom.us: false
@@ -61,6 +65,8 @@ settings:
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: false
     https://mail.proton.me#mailto=%25s: false
+  downloads.location.directory:
+    global: /home/raiku/
   downloads.prevent_mixed_content:
     global: false
   downloads.remove_finished:
