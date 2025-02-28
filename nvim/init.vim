@@ -93,6 +93,8 @@ Plug 'udalov/kotlin-vim'
 
 Plug 'mickael-menu/zk-nvim'
 
+Plug 'neovim/nvim-lspconfig'
+
 call plug#end()
 
 " UltiSnips
@@ -144,9 +146,16 @@ augroup your_group
   " autocmd FileType systemverilog call MakeVerilogReadable()
 augroup END
 
+augroup my_group
+  autocmd! 
+  autocmd FileType svelte set filetype=html
+augroup END
+
 function MakeUltisnipsUnderstandHVsCPP()
   UltiSnipsAddFiletypes h
 endfunction
+
+
 
 " augroup betterVerilog
   " autocmd!
@@ -154,4 +163,5 @@ endfunction
 " augroup END
 
 " Lua
-" lua require('init')
+lua require('init')
+nnoremap <A-S-Return> <cmd>lua vim.lsp.buf.code_action()<CR>
