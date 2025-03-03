@@ -5,6 +5,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 require('lspconfig').verible.setup{}
+require('lspconfig').quick_lint_js.setup{}
 
 local opts = { noremap=true, silent=true }
 local function quickfix()
