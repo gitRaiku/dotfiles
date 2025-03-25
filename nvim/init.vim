@@ -149,6 +149,7 @@ augroup END
 augroup my_group
   autocmd! 
   autocmd FileType svelte set filetype=html
+  autocmd FileType sage set filetype=python
 augroup END
 
 function MakeUltisnipsUnderstandHVsCPP()
