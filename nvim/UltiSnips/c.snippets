@@ -57,6 +57,7 @@ endsnippet
 
 snippet readint
 void read_$1(FILE *__restrict stream, $1 *__restrict nr) {
+	fscanf(stream, "%u", nr); return;
 	uint8_t ch;
 	*nr = 0;
 	while ((ch = fgetc(stream)) && ('0' <= ch && ch <= '9')) {
@@ -325,7 +326,7 @@ endsnippet
 snippet stack "Stack boilerplate"
 struct stack {
   $1 v[$2];
-  uint32t vl;
+  uint32_t vl;
 };
 $1 stop(struct stack *__restrict s) {
   return s->v[s->vl-1];
@@ -471,6 +472,7 @@ endsnippet
 
 snippet reads
 void reads(FILE *__restrict file, char *__restrict s, uint32_t *__restrict sl) {
+	fscanf(file, "%s", s); return;
   uint32_t t;
   if (sl == NULL) { sl = &t; }
   *sl = 0;
