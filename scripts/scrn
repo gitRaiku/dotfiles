@@ -4,10 +4,14 @@ nm="$(date +"%Y-%m-%d-%H%M%S")_grim.png"
 grim /tmp/$nm
 ctc /tmp/$nm
 if [ "$1" = "2" ]; then
-  gimp /tmp/$nm 
+  grimblast save area /tmp/$nm
+  ctc /tmp/$nm
 elif [ "$1" = "1" ]; then
-  rm /tmp/$nm
+  grimblast save screen /tmp/$nm
+  ctc /tmp/$nm
 else
+  grimblast save screen /home/raiku/Misc/Screenshots/$nm
+  ctc /home/raiku/Misc/Screenshots/$nm
   mv /tmp/$nm /home/raiku/Misc/Screenshots/
 fi
 
