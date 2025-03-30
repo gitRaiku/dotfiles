@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:e9e2e1
@@ -19,6 +19,7 @@ SETUVAR fish_color_operator:8ce1f1
 SETUVAR fish_color_param:a6c2e8
 SETUVAR fish_color_quote:66d700
 SETUVAR fish_color_redirection:ff00ff
+SETUVAR fish_color_search_match:white\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_selection:000000
 SETUVAR fish_color_seraiku_match:000000
 SETUVAR fish_color_status:c86060
