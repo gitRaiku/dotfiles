@@ -10,6 +10,7 @@
 !scripts/*
 !sioyek/*
 config.tar
+qutebrowser/qsettings/QtProject.conf
 nvim/plugins/neovim-fuzzy
 nvim/plugins/transparent.nvim
 nvim/plugins/ultisnips

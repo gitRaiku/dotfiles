@@ -63,6 +63,8 @@ settings:
     https://ytmp3.cc: false
   content.notifications.presenter:
     global: herbe
+  content.proxy:
+    global: system
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: false
     https://mail.proton.me#mailto=%25s: false

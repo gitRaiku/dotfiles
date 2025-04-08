@@ -2,9 +2,7 @@
 
 if [ "$SSH_CLIENT" != "" ]
   export DISPLAY=:0
-  if [ (hostname) != "FF" ] 
-    export WAYLAND_DISPLAY=wayland-0
-  end
+  export WAYLAND_DISPLAY=wayland-0
   abbr poweroff poweroff_ssh_guard
   abbr reboot reboot_ssh_guard
 else
@@ -31,18 +29,15 @@ export GTK_THEME=Snow
 export _JAVA_AWT_WM_NONREPARENTING=1
 fish_add_path ~/.nix-profile/bin
 
-if [ (hostname) != "FF" ]
-  # export DISABLE_QT5_COMPAT=1
-  # export MOZ_ENABLE_WAYLAND=1
-  # export LIBSEAT_BACKEND=logind
-  # export WLR_NO_HARDWARE_CURSORS=1
-  # export NO_AT_BRIDGE=1
-  ## export QT_QPA_PLATFORM=wayland
-  # export GDK_BACKEND=wayland
-end
+# export DISABLE_QT5_COMPAT=1
+# export MOZ_ENABLE_WAYLAND=1
+# export LIBSEAT_BACKEND=logind
+# export WLR_NO_HARDWARE_CURSORS=1
+# export NO_AT_BRIDGE=1
+# export QT_QPA_PLATFORM=xcb
+# export GDK_BACKEND=wayland
 
 source ~/.config/fish/ls_colours
-
 
 for i in chmod chown fdisk chgrp mount umount modprobe rmmod ip kill killall connect_milena wg-quick tcpdump iw cpupower wg
   abbr $i sudo $i
