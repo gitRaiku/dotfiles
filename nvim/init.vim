@@ -85,6 +85,8 @@ Plug 'bluz71/vim-moonfly-colors'
 
 Plug 'cespare/vim-toml'
 
+Plug 'fidian/hexmode'
+
 Plug 'tikhomirov/vim-glsl'
 
 Plug 'cloudhead/neovim-fuzzy'
