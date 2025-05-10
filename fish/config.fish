@@ -31,17 +31,6 @@ export GTK_THEME=Snow
 export _JAVA_AWT_WM_NONREPARENTING=1
 fish_add_path ~/.nix-profile/bin
 
-<<<<<<< HEAD
-if [ (hostname) != "FF" ]
-  export DISABLE_QT5_COMPAT=1
-  export MOZ_ENABLE_WAYLAND=1
-  export LIBSEAT_BACKEND=logind
-  export WLR_NO_HARDWARE_CURSORS=1
-  export NO_AT_BRIDGE=1
-  ## export QT_QPA_PLATFORM=wayland
-  export GDK_BACKEND=wayland
-end
-=======
 # export DISABLE_QT5_COMPAT=1
 # export MOZ_ENABLE_WAYLAND=1
 # export LIBSEAT_BACKEND=logind
@@ -49,7 +38,6 @@ end
 # export NO_AT_BRIDGE=1
 # export QT_QPA_PLATFORM=xcb
 # export GDK_BACKEND=wayland
->>>>>>> 139a88aa1faa299b0ed835527cb8edd69e45a3d9
 
 source ~/.config/fish/ls_colours
 
