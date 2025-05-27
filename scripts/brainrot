@@ -1,0 +1,25 @@
+#!/bin/bash
+
+DEFAULT="/home/raiku/Misc/Downloads/1HourBrainrot.webm"
+if [ ! -z "$1" ]; then
+  DEFAULT=""
+fi
+
+echo "# mpv EDL v0" > /tmp/brainrot.edl
+
+for F in "${@}" "$DEFAULT"; do
+  if [ ! -z "$F" ]; then
+    RF=$(realpath "$F")
+    DUR=$(ffmpeg -i "$RF" 2>&1 | rg -i DURATION | tail -1)
+    HOUR=$(echo "$DUR" | cut -d ':' -f2)
+    MINUTE=$(echo "$DUR" | cut -d ':' -f3)
+    SECOND=$(echo "$DUR" | cut -d ':' -f4 | cut -d '.' -f1)
+    LEN=$((HOUR * 60 * 60 + MINUTE * 60 + SECOND))
+    R=$(shuf -i 0-"$LEN" -n1)
+
+    echo "$RF,$R,$LEN" >> /tmp/brainrot.edl
+    echo "$RF,0,$R" >> /tmp/brainrot.edl
+  fi
+done
+
+mpv --loop /tmp/brainrot.edl

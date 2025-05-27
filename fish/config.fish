@@ -10,6 +10,8 @@ else
   abbr reboot sudo reboot
 end
 
+export XDG_CURRENT_DESKTOP=wlr
+
 export TZ=Europe/Bucharest
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8

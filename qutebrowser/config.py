@@ -18,6 +18,7 @@ config.set('fonts.default_size', '8pt')
 
 config.bind('i', 'spawn --userscript qute_japan_translate', mode='caret')  
 config.bind('o', 'spawn --userscript qute_deutsch_translate', mode='caret')  
+config.bind('<Ctrl-a>', 'nop')
 config.bind('T', 'tab-next')
 config.bind('F', 'spawn --userscript german')  
 config.bind('F', 'spawn --userscript german', mode='caret')  

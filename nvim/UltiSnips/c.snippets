@@ -472,12 +472,7 @@ endsnippet
 
 snippet reads
 void reads(FILE *__restrict file, char *__restrict s, uint32_t *__restrict sl) {
-<<<<<<< HEAD
 	fscanf(file, "%s", s); return;
-=======
-  fscanf(file, "%s", s);
-	/*
->>>>>>> 86b2eb4f08556026ce279f75d550207d6662cb61
   uint32_t t;
   if (sl == NULL) { sl = &t; }
   *sl = 0;
