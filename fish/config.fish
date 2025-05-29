@@ -50,6 +50,7 @@ abbr pac sudo pacman -S
 abbr odas doas
 abbr daos doas
 abbr pip3 doas pip3 install --break-system-packages
+abbr gc git clone --depth=1
 
 abbr lw libreoffice
 abbr pf 'ps aux | rg -i'

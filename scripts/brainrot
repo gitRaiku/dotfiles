@@ -1,13 +1,13 @@
 #!/bin/bash
-
-DEFAULT="/home/raiku/Misc/Downloads/1HourBrainrot.webm"
 if [ ! -z "$1" ]; then
-  DEFAULT=""
+  readarray -t FILES <<< $(printf "%s\n" "${@}" | shuf)
+else
+  FILES=("/home/raiku/Misc/Downloads/1HourBrainrot.webm")
 fi
 
 echo "# mpv EDL v0" > /tmp/brainrot.edl
 
-for F in "${@}" "$DEFAULT"; do
+for F in "${FILES[@]}"; do
   if [ ! -z "$F" ]; then
     RF=$(realpath "$F")
     DUR=$(ffmpeg -i "$RF" 2>&1 | rg -i DURATION | tail -1)
