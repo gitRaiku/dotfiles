@@ -2,7 +2,7 @@
 
 if [ "$SSH_CLIENT" != "" ]
   export DISPLAY=:0
-  export WAYLAND_DISPLAY=wayland-0
+  # export WAYLAND_DISPLAY=wayland-0
   abbr poweroff poweroff_ssh_guard
   abbr reboot reboot_ssh_guard
 else
@@ -36,7 +36,7 @@ fish_add_path ~/.nix-profile/bin
 # export LIBSEAT_BACKEND=logind
 # export WLR_NO_HARDWARE_CURSORS=1
 # export NO_AT_BRIDGE=1
-# export QT_QPA_PLATFORM=xcb
+export QT_QPA_PLATFORM=xcb
 # export GDK_BACKEND=wayland
 
 source ~/.config/fish/ls_colours
