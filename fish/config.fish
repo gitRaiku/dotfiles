@@ -10,7 +10,7 @@ else
   abbr reboot sudo reboot
 end
 
-export XDG_CURRENT_DESKTOP=wlr
+export XDG_CURRENT_DESKTOP=sway
 
 export TZ=Europe/Bucharest
 export LANGUAGE=en_US.UTF-8
@@ -36,7 +36,7 @@ fish_add_path ~/.nix-profile/bin
 # export LIBSEAT_BACKEND=logind
 # export WLR_NO_HARDWARE_CURSORS=1
 # export NO_AT_BRIDGE=1
-export QT_QPA_PLATFORM=xcb
+export QT_QPA_PLATFORM=wayland
 # export GDK_BACKEND=wayland
 
 source ~/.config/fish/ls_colours
