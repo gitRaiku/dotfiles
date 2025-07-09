@@ -3,7 +3,7 @@
 p=$(pwd)
 
 for i in fish nvim sxiv mpv sioyek foot kicad qutebrowser; do
-  if [ -e "~/.config/$i" ]; then
+  if [ -e ~/.config/$i ]; then
     echo "~/.config/$i exists. Delete? y/N"
     read i
     if [ "$i" = "y" -o "$i" = "Y" ]; then
