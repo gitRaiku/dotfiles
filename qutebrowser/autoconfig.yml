@@ -32,6 +32,7 @@ settings:
     https://www.fortinet.com: false
     https://www.speedtest.net: false
     https://www.suruga-ya.jp: false
+    https://www.wizzair.com: false
   content.javascript.clipboard:
     global: access
   content.media.audio_capture:
