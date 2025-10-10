@@ -1,0 +1,47 @@
+#!/bin/sh
+
+if [ $1 = "--help" ]; then
+  echo "Rotate pdf documents"
+  echo "Usage: rotatepdf (options) INPUTPDF [all|odd|even]"
+  echo "options:"
+  echo "  --help: display this message and quit"
+  exit
+fi
+
+if [ $(file -b --mime-type $1) != "application/pdf" ]; then
+  echo "Input file has to be a pdf document"
+  exit
+fi
+
+convert $1 SCRIPT_ROTATEIMAGE.png
+
+S=0
+
+for f in $(ls SCRIPT_ROTATEIMAGE*.png); do
+
+  if [ $S -eq 0 ]; then
+    S=1
+  else
+    S=0
+  fi
+
+  if [ "$2" = "odd" ]; then
+    if [ $S -eq 1 ]; then
+      convert $f -rotate 180 $f
+    fi
+  elif [ "$2" = "even" ]; then
+    if [ $S -eq 0 ]; then
+      convert $f -rotate 180 $f
+    fi
+  else 
+    convert $f -rotate 180 $f
+  fi
+
+  echo $f
+done
+
+ENDNAME="${1%.*}_rotated.pdf"
+echo $ENDNAME
+convert SCRIPT_ROTATEIMAGE* $ENDNAME
+
+rm SCRIPT_ROTATEIMAGE*.png

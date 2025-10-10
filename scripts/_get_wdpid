@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# There has to be a better way of doing this
+
+if [ $1 == "wpa0" ]; then
+  ps aux | rg -i ".*[w]pa.*wlan0.*" | awk 'NR==1{print $2}'
+elif [ $1 == "wpa1" ]; then
+  ps aux | rg -i ".*[w]pa.*wlan1.*" | awk 'NR==1{print $2}'
+elif [ $1 == "dhcp0" ]; then
+  ps aux | rg -i ".*[d]hcpcd.*wlan0.*" | awk 'NR==1{print $2}'
+elif [ $1 == "dhcp1" ]; then
+  ps aux | rg -i ".*[d]hcpcd.*wlan1.*" | awk 'NR==1{print $2}'
+fi

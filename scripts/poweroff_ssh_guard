@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$SSH_CLIENT" != "" ]; then
+  echo "Trying to initiate a poweroff from SSH!"
+  echo ""
+  echo "To complete the poweroff:"
+  echo -e "\033[1;31mPlease enter the hostname of the current machine\033[0m"
+  read hinput
+  if [ "$hinput" == "$(hostname)" ]; then
+    sudo poweroff
+  else
+    echo "Wrong hostname, you're welcome"
+  fi
+fi

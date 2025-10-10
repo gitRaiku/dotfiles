@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /home/arch/Misc/SynthV/SynthV/
+/home/arch/Misc/SynthV/SynthV/synthv-studio

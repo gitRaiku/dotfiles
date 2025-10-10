@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if ! pgrep wl-gammarelay &> /dev/null ; then
+  wl-gammarelay & disown
+  sleep 1
+fi
+busctl --user -- set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q $1
+

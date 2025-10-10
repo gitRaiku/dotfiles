@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export ARMEEC=1
+foot fish

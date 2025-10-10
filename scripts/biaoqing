@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /home/raiku/Git/biaoqing/img/
+ls | shuf | sxiv -i

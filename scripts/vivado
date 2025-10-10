@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+cd /tmp
+/home/raiku/Misc/Vivado/Vivado/2024.2/bin/vivado $@
+
+

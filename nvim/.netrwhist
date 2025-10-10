@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/raiku/Git/dwm-connor'
+let g:netrw_dirhist_5='/home/raiku/Git/st-luke'
+let g:netrw_dirhist_4='/home/raiku/Git/dwm-connor'
+let g:netrw_dirhist_3='/usr/local/bin'
+let g:netrw_dirhist_2='/home/raiku/JetBrains/CLionProjects/2DGE/jurojin/cmake-build-debug'
+let g:netrw_dirhist_1='/home/raiku/JetBrains/CLionProjects/r2k/.git'
+let g:netrw_dirhist_0='/home/raiku/Misc/mama'
+let g:netrw_dirhist_9='/home/raiku/.config/nvim/plugins/pgmnt.vim/autoload/pgmnt'
+let g:netrw_dirhist_8='/home/raiku'
+let g:netrw_dirhist_7='/home/raiku/Misc/School/Fiz/2021.04.26'

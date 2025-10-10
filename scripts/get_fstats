@@ -1,0 +1,10 @@
+#!/bin/sh
+
+RPM=$(sensors | rg -i "cpu_fan")
+RPM=${RPM% RPM*}
+RPM=${RPM##* }
+TEMP=$(sensors | rg -i "temp1")
+TEMP=${TEMP#*+}
+TEMP=${TEMP%%°*}
+D=$(date +"%s")
+echo "$D $TEMP $RPM"

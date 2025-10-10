@@ -1,0 +1,8 @@
+snippet sdoc "Ai init doc"
+#!/bin/python3
+with open('/usr/local/src/kms.py', "rb") as source_file:
+    code = compile(source_file.read(), filename, "exec")
+exec(code)
+
+import keras
+endsnippet

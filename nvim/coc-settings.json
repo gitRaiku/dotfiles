@@ -1,0 +1,11 @@
+{
+    // Coc
+    "coc.preferences.jumpCommand": "tab drop",
+
+
+    // Clangd
+    "clangd.enabled": true,
+    "clangd.arguments": ["--clang-tidy", "--cross-file-rename", "--fallback-style=LLVM", "--header-insertion=never", "--limit-results=0"],
+    "clangd.checkUpdates": false,
+    "clangd.path": "/usr/bin/clangd",
+}

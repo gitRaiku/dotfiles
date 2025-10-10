@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$#" = "1" ]; then
+  echo "Usage fast_ffmpeg <opts> <output_file>"
+  exit 1
+fi
+
+ffmpeg \
+      "${@:1:$(($#-1))}" \
+      -vf "format=nv12,hwupload" \
+      -init_hw_device vaapi=va:/dev/dri/renderD128 \
+      -filter_hw_device va \
+      -c:v h264_vaapi \
+      -qp 24 \
+      -threads 1 \
+      "${@: -1}"

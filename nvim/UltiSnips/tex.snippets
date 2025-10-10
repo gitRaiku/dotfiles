@@ -1,0 +1,317 @@
+global !p
+greek_letters = {
+'a': '\\alpha',
+'A': '\\Alpha',
+'b': '\\beta',
+'d': '\\delta',
+'D': '\\Delta',
+'g': '\\gamma',
+'G': '\\Gamma',
+'ep': '\\epsilon',
+'z': '\\zeta',
+'et': '\\eta',
+'th': '\\theta',
+'Th': '\\Theta',
+'i': '\\iota',
+'l': '\\lambda',
+'L': '\\Lambda',
+'m': '\\mu',
+'n': '\\nu',
+'x': '\\xi',
+'X': '\\Xi',
+'pi': '\\pi',
+'Pi': '\\Pi',
+'r': '\\rho',
+'s': '\\sigma',
+'S': '\\Sigma',
+'ta': '\\tau',
+'ph': '\\phi',
+'Ph': '\\Phi',
+'c': '\\chi',
+'ps': '\\psi',
+'Ps': '\\Psi',
+'o': '\\omega',
+'O': '\\Omega',
+}
+endglobal
+
+snippet sdoc "Creates the boilerplate for a LaTeX document"
+\documentclass{article}
+
+\title{$1}
+\author{Pintilie Sebastian}
+\date{`LANG=en_GB.UTF-8 LC_ALL=en_GB.UTF-8 LANGUAGE=en_GB.UTF-8 date "+%d %b %Y"`}
+
+
+\begin{document}
+\maketitle
+$0
+
+\end{document}
+endsnippet
+
+snippet beg "Creates an environment"
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet enum "Creates an enumerated environment"
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet item "Creates an itemized environment"
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet center "Creates a center environment"
+\begin{center}
+	$0
+\end{center}
+endsnippet
+
+snippet tab "Creates a tabular environment"
+\begin{tabular}{$1}
+	$0
+\end{tabular}
+endsnippet
+
+snippet sub "Creates a subsection"
+\subsection{$1}
+$0
+endsnippet
+
+snippet subsub "Creates a subsubsection"
+\subsubsection{$1}
+$0
+endsnippet
+
+snippet sec "Creates a section"
+\section{$1}
+$0
+endsnippet
+
+snippet pkg "Use a package"
+\usepackage[$1]{$2}
+$0
+endsnippet
+
+snippet simg "Add image functionaliti (Create ./Images)"
+\usepackage{graphicx}
+\graphicspath{ {./Images/} }
+`mkdir Images`
+endsnippet
+
+snippet img "Image"
+\includegraphics{$1}
+$0
+endsnippet
+
+snippet ma "Math" 
+\[ $1 \]
+$0
+endsnippet
+
+snippet "(mi)" "Inline Math" r
+$$1$$0
+endsnippet
+
+snippet "(fr)" "Fraction" r
+\frac{$1}{$2}$0
+endsnippet
+
+snippet flr "Flush Right"
+\begin{flushright}
+	$0
+\end{flushright}
+endsnippet
+
+snippet i "Item in a list"
+\item $0
+endsnippet
+
+snippet "(Om)" "Ohm symbol" r
+\Omega $0
+endsnippet
+snippet "(om)" "ohm symbol" r
+\omega $0
+endsnippet
+
+snippet "(\*)" "Star to cdot" r
+\cdot $0
+endsnippet
+
+snippet "(ul)" "Underlined text" r
+\underline{$1}$0
+endsnippet
+
+snippet "(bf)" "Boldface text" r
+\textbf{$1}$0
+endsnippet
+
+snippet "(mf)" "Boldface math" r
+\mathbf{$1}$0
+endsnippet
+
+snippet bib "Add bibliography support"
+\usepackage[backend=biber]{biblatex}
+\addbibresource{bibliography.bib}`touch bibliography.bib`
+endsnippet
+
+snippet "(cite)" "Cite from the bibliography" r
+\cite{$1}$0
+endsnippet
+
+snippet "(vec)" "Vector" r
+\vec{$1}$0
+endsnippet
+
+snippet "(gr)" "Greek letter" r
+${1}$0`!p 
+try:
+	if len(t[1]) <= 2 and t[1][0] != '\\':
+		if len(t[1]) == 2 and (t[1][0].lower() == 'e' or t[1][0].lower() == 'p' or t[1][0].lower() == 't'):
+			t[1] = greek_letters[t[1][0:2]]
+		else:
+			t[1] = greek_letters[t[1][0]]
+except:
+	pass
+`
+endsnippet
+
+snippet "(tan)" "Tangent" r
+\tan$0
+endsnippet
+
+snippet "(sin)" "Sine" r
+\sin$0
+endsnippet
+
+snippet "(log)" "Log" r
+\log$0
+endsnippet
+
+snippet "(cos)" "Cosine" r
+\cos$0
+endsnippet
+
+snippet "(<)" "Less than" r
+\textless$0
+endsnippet
+
+snippet "(>)" "Greater than" r
+\textgreated$0
+endsnippet
+
+snippet "(sq)" "Square root" r
+\sqrt{$1}$0
+endsnippet
+
+snippet cl "Centered line"
+\begin{center}$1\end{center}
+$0
+endsnippet
+
+snippet "(na)" "Nable" r
+\nabla$0
+endsnippet
+
+snippet sprop "Prop"
+\newcommand{\prop}[1]{$/^{#1}$}
+endsnippet
+
+snippet eq "Equation"
+\begin{equation}
+	$0
+\end{equation}
+endsnippet
+
+snippet line "Line"
+\par\noindent\rule{\textwidth}{0.4pt}
+endsnippet
+
+snippet sum
+\sum_{$1}^{$2}$0
+endsnippet
+
+snippet int
+\int_{$1}^{$2}$0
+endsnippet
+
+snippet lint
+\int_{$1}$0
+endsnippet
+
+snippet "(dd)" "Double dot" r
+\ddot{$1}$0
+endsnippet
+
+snippet "(dot)" "Single dot" r
+\dot{$1}$0
+endsnippet
+
+snippet lst "Lstlisting for code"
+\begin{lstlisting}
+$0
+\end{lstlisting}
+endsnippet
+
+snippet "(down)" "Down arrow" r
+\downarrow$0
+endsnippet
+
+snippet "(up)" "Up arrow" r
+\uparrow$0
+endsnippet
+
+snippet "(D)" "Delta" r
+\Delta$0
+endsnippet
+
+snippet to "Chem arrow"
+\uparrow$0
+endsnippet
+
+snippet ce "Chemistry"
+\ce{$1}$0
+endsnippet
+
+snippet -> "Fuck"
+$\to$$0
+endsnippet
+
+snippet "(inn)" "kms" r
+\int $0
+endsnippet
+
+snippet "P.*" "Super" r
+`!p 
+res = match[0][1:len(match[0])]
+if len(res) == 1:
+	snip.rv = f'^{res}'
+else:
+	snip.rv = f'^{{{res}}}'
+`
+endsnippet
+
+snippet "S.*" "Sub" r
+`!p 
+res = match[0][1:len(match[0])]
+if len(res) == 1:
+	snip.rv = f'_{res}'
+else:
+	snip.rv = f'_{{{res}}}'
+`
+endsnippet
+
+#endif
+
+# snippet ebib "Edit the bibliography"
+# `!v 
+# rightbelow split "bibliography.bib"
+# `
+# endsnippet
