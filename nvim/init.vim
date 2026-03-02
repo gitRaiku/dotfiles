@@ -37,6 +37,7 @@ autocmd TermOpen * nnoremap <Return> A<CR>
 if exists('g:terminalfunk')
   autocmd TermClose * :q!
 else
+  tnoremap <Esc> <C-\><C-n>
   normal :TransparentDisable
 endif
 " autocmd TermOpen * set modifiable=on
@@ -68,6 +69,8 @@ augroup remember_folds
   autocmd BufWinLeave *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md,lograpoarte,*.py,*.txt mkview
   autocmd BufWinEnter *.tex,*.v,*.vh,*.c,*.h,*.cpp,*.rs,*.kt,*.kts,*.java,*.md,lograpoarte,*.py,*.txt silent! loadview
 augroup END
+
+nnoremap gC :bot :10new<CR>:term<CR>Aexec calc<CR>
 
 " augroup user_colors
   " autocmd!
@@ -217,3 +220,4 @@ lua <<EOF
 EOF
 " autocmd BufWritePost *.v,*.sv lua vim.lsp.buf.format({ async = false })
 nnoremap <A-S-Return> <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <C-m> :!make run<CR>

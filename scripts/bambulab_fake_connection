@@ -1,0 +1,67 @@
+#!/bin/env python
+# This script was generously donated by 
+# https://gist.github.com/patrikalienus/549fcf76be41097545fe61da88e4dafe
+# Much love
+
+# My computer is on ethernet and the Bambu printer is on WLAN. These two networks can communicate with
+# eachother, but OrcaSlicer is still not able to discover the printer. This will "trick" Orca into
+# discovering the printer and connect to its IP. I've tested this extensively and working as expected.
+# I have full control over the printer that is in LAN only mode. I have to have it in LAN only mode
+# because I don't want to install their coming update which will decrease the usability of the printer
+# if you're using Orca - and so many are.
+# 
+# Change the parameters to fit your environment and run it after launching Orca.
+
+import socket
+from datetime import datetime
+
+# Parameters
+PRINTER_IP = "192.168.53.165"  # IP address of your BambuLab Printer
+TARGET_IP = "192.168.51.224"  # IP address of your PC running BambuStudio
+PRINTER_USN = "03919D521501660"  # Enter your own Printer Serial Number here
+
+# PRINTER_DEV_MODEL: https://github.com/bambulab/BambuStudio/tree/master/resources/printers
+# X1C    : "3DPrinter-X1-Carbon"
+# X1     : "3DPrinter-X1"
+# X1E    : "C13"
+# P1P    : "C11"
+# P1S    : "C12"
+# A1 mini: "N1"
+# A1     : "N2S"
+PRINTER_DEV_MODEL = "N2S"  # Set this to your model
+PRINTER_DEV_NAME = "Flos"  # Whatever you want
+PRINTER_DEV_SIGNAL = "-44"  # Good Signal (Artificial)
+PRINTER_DEV_CONNECT = "lan"  # LAN Mode
+PRINTER_DEV_BIND = "free"  # Not bound to a Cloud user-account
+
+# Port settings
+remoteudpport = 2021  # port to send to
+sourceudpport = 0  # SourcePort, 0 means any available port
+
+# Message to send
+message = (
+    f"HTTP/1.1 200 OK\r\n"
+    f"Server: Buildroot/2018.02-rc3 UPnP/1.0 ssdpd/1.8\r\n"
+    f"Date: {datetime.now().strftime('%a, %d %b %Y %H:%M:%S GMT')}\r\n"
+    f"Location: {PRINTER_IP}\r\n"
+    f"ST: urn:bambulab-com:device:3dprinter:1\r\n"
+    f"EXT:\r\n"
+    f"USN: {PRINTER_USN}\r\n"
+    f"Cache-Control: max-age=1800\r\n"
+    f"DevModel.bambu.com: {PRINTER_DEV_MODEL}\r\n"
+    f"DevName.bambu.com: {PRINTER_DEV_NAME}\r\n"
+    f"DevSignal.bambu.com: {PRINTER_DEV_SIGNAL}\r\n"
+    f"DevConnect.bambu.com: {PRINTER_DEV_CONNECT}\r\n"
+    f"DevBind.bambu.com: {PRINTER_DEV_BIND}\r\n\r\n"
+)
+
+# Create UDP socket
+udp_client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+udp_client.bind(('', sourceudpport))
+
+# Send message
+byte_buffer = message.encode('ascii')
+udp_client.sendto(byte_buffer, (TARGET_IP, remoteudpport))
+
+# Close the socket
+udp_client.close()

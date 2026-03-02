@@ -1,34 +1,4 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR __fish_initialized:3800
-SETUVAR fish_color_autosuggestion:555\x1ebrblack
-SETUVAR fish_color_cancel:\x2dr
-SETUVAR fish_color_command:e9e2e1
-SETUVAR fish_color_comment:868e8a
-SETUVAR fish_color_cwd:e9e2e1
-SETUVAR fish_color_cwd_root:cb475c
-SETUVAR fish_color_end:AAB3AE
-SETUVAR fish_color_error:f93863
-SETUVAR fish_color_escape:5793ae
-SETUVAR fish_color_history_current:\x2d\x2dbold
-SETUVAR fish_color_host:C29695
-SETUVAR fish_color_host_remote:C29695
-SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
-SETUVAR fish_color_normal:a6c2e8
-SETUVAR fish_color_operator:8ce1f1
-SETUVAR fish_color_param:a6c2e8
-SETUVAR fish_color_quote:66d700
-SETUVAR fish_color_redirection:ff00ff
-SETUVAR fish_color_search_match:white\x1e\x2d\x2dbackground\x3dbrblack
-SETUVAR fish_color_selection:000000
-SETUVAR fish_color_seraiku_match:000000
-SETUVAR fish_color_status:c86060
-SETUVAR fish_color_user:ffb2bf
-SETUVAR fish_color_valid_path:\x2d\x2dunderline
-SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR fish_pager_color_completion:normal
-SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
-SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
-SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR __fish_initialized:4300
 SETUVAR fish_user_paths:/home/raiku/Misc/Vivado/Vitis_HLS/2024\x2e2/bin\x1e/home/raiku/Misc/Vivado/Vitis/2024\x2e2/bin\x1e/home/raiku/Misc/Vivado/Model_Composer/2024\x2e2/bin\x1e/home/raiku/Misc/Vivado/DocNav\x1e/home/raiku/Misc/Vivado/Vivado/2024\x2e2/bin\x1e/home/arch/\x2elocal/bin

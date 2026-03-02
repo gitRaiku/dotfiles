@@ -45,10 +45,10 @@
   },
   "input": {
     "auto_pan": false,
-    "auto_pan_acceleration": 5,
-    "center_on_zoom": true,
+    "auto_pan_acceleration": 10,
+    "center_on_zoom": false,
     "focus_follow_sch_pcb": false,
-    "horizontal_pan": false,
+    "horizontal_pan": true,
     "hotkey_feedback": true,
     "immediate_actions": true,
     "mouse_left": -1,
@@ -61,7 +61,7 @@
     "scroll_modifier_zoom": 0,
     "warp_mouse_on_move": true,
     "zoom_acceleration": false,
-    "zoom_speed": 1,
+    "zoom_speed": 10,
     "zoom_speed_auto": true
   },
   "meta": {

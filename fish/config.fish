@@ -29,7 +29,7 @@ export CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse
 
 export GTK_THEME=Snow:dark 
 export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc 
-export QT_STYLE_OVERRIDE=Snow-Dark
+export QT_STYLE_OVERRIDE=kvantum-dark
 export _JAVA_AWT_WM_NONREPARENTING=1
 fish_add_path ~/.nix-profile/bin
 
@@ -45,9 +45,11 @@ end
 
 source ~/.config/fish/ls_colours
 
-for i in chmod chown fdisk chgrp mount umount modprobe rmmod ip kill killall connect_milena wg-quick tcpdump iw cpupower wg chattr
+for i in chmod chown fdisk chgrp mount umount modprobe rmmod ip kill killall connect_milena wg-quick tcpdump iw cpupower wg chattr iptables nft
   abbr $i sudo $i
 end
+
+abbr octave octave --persist
 
 abbr sys sudo systemctl
 abbr pac sudo pacman -S
@@ -86,8 +88,9 @@ abbr nim nvim
 abbr nvmi nvim
 abbr memo nvim ~/.config/memo
 abbr aur git clone --depth=1 https://aur.archlinux.org
-abbr gd 'gott add -A && gott commit -m ""'
+abbr gd 'gott add -A && gott commit -s -m ""'
 abbr gp gott push
+abbr l ls
 abbr s sxiv
 abbr z sioyek
 abbr pig ping google.com
