@@ -1,0 +1,30 @@
+snippet sdoc "Start document"
+#set page(columns: 2)
+#set text(font: "Titillium Web")
+
+#set math.mat(delim: "[")
+endsnippet
+
+snippet ma "Math"
+$ $1 $
+$0
+endsnippet
+
+# snippet "(B)" "Bold" r
+# bold($1)$0
+# endsnippet
+
+snippet "B.*" "Bold" r
+`!p 
+res = match[0][1:len(match[0])]
+snip.rv = f'bold({res})'
+`
+endsnippet
+
+snippet spm "Sugi pula muie"
+#align(center, {
+$$1$
+  h(1cm)
+$$2$
+})
+endsnippet
