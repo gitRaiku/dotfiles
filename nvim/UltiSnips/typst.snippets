@@ -1,9 +1,30 @@
 snippet sdoc "Start document"
-#set page(columns: 2)
 #set text(font: "Titillium Web")
 
 #set math.mat(delim: "[")
 endsnippet
+
+snippet 2doc
+#set page(columns: 2)
+endsnippet
+
+snippet title
+#align(center, text(weight: "bold", size: 1.5em)[$1])
+endsnippet
+
+snippet subtitle
+#align(center, text(weight: "bold", size: 1em)[$1])
+endsnippet
+
+snippet img
+#figure(
+  image("$1", width: 80%),
+  caption: [
+    $2
+  ],
+)
+endsnippet
+
 
 snippet ma "Math"
 $ $1 $
@@ -15,10 +36,20 @@ endsnippet
 # endsnippet
 
 snippet "B.*" "Bold" r
-`!p 
-res = match[0][1:len(match[0])]
-snip.rv = f'bold({res})'
-`
+`!p res = match[0][1:len(match[0])]; snip.rv = f'bold({res})'`
+endsnippet
+snippet "U.*" "Underline" r
+`!p res = match[0][1:len(match[0])]; snip.rv = f'underline({res})'`
+endsnippet
+snippet "I.*" "Italic" r
+`!p res = match[0][1:len(match[0])]; snip.rv = f'italic({res})'`
+endsnippet
+priority 2
+snippet "Up.*" "Upright" r
+`!p res = match[0][2:len(match[0])]; snip.rv = f'upright({res})'`
+endsnippet
+snippet "S.*" "Sub" r
+`!p res = match[0][1:len(match[0])]; snip.rv = f'_({res})'`
 endsnippet
 
 snippet spm "Sugi pula muie"

@@ -43,6 +43,7 @@ endif
 " autocmd TermOpen * set modifiable=on
 set shell=/bin/fish
 
+
 noremap <Space> <Nop>
 
 noremap j gj
@@ -54,10 +55,14 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+nnoremap g<C-v> :set virtualedit=block<CR><C-v>
+nnoremap <C-v> :set virtualedit=none<CR><C-v>
+
 noremap x "_x
 noremap X "_X
 
 nnoremap <C-c> :noh<CR>
+nnoremap <C-m> :!make run<CR>
 
 " nnoremap F :set foldmethod=syntax<CR>zc
 " vnoremap F <esc>:set foldmethod=manual<CR>gvzf
@@ -148,8 +153,8 @@ nnoremap <silent> <C-y> :call ToggleConcealLevel()<CR>
 function MakeVerilogReadable()
   setlocal conceallevel=1
   hi Conceal ctermbg=None ctermfg=14 guifg='#e2637f'
-  call matchadd('Conceal', 'begin',    10, -1, {'conceal':'{'})
-  call matchadd('Conceal', 'end',      10, -1, {'conceal':'}'})
+  call matchadd('Conceal', '\<begin\>',    10, -1, {'conceal':'{'})
+  call matchadd('Conceal', '\<end\>',      10, -1, {'conceal':'}'})
   " call matchadd('Conceal', 'begin ',    10, -1, {'conceal':'{'})
   " call matchadd('Conceal', 'begin$',    10, -1, {'conceal':'{'})
   " call matchadd('Conceal', 'end ',      10, -1, {'conceal':'}'})
@@ -178,19 +183,28 @@ function MakeUltisnipsUnderstandHVsCPP()
   UltiSnipsAddFiletypes h
 endfunction
 
-
-
-" augroup betterVerilog
-  " autocmd!
-  " autocmd FileType verilog
-" augroup END
-
 " Lua
+
+" Old verible
+" lua <<EOF
+" require('lspconfig').verible.setup {
+"    cmd = {'/usr/local/bin/verible-verilog-ls', '--rules_config_search'},
+"  }
+" EOF
+
 lua <<EOF
-  require('lspconfig').verible.setup {
-    cmd = {'/usr/local/bin/verible-verilog-ls', '--rules_config_search'},
-  }
+  local lspconfutil = require 'lspconfig/util'
+  local root_pattern = lspconfutil.root_pattern("veridian.yml", ".git")
+
+  require('lspconfig').veridian.setup({
+    cmd = { "veridian" },
+    root_dir = function(fname)
+        return root_pattern(filename) or lspconfutil.path.dirname(filename)
+    end;
+  })
 EOF
+
+
 lua <<EOF
   vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -205,19 +219,6 @@ lua <<EOF
           apply = true
       })
   end
-  --[[
-  vim.keymap.set('n', '<Space>bs', function() 
-    --  os.execute("./build.sh synthesis") 
-    local job = vim.fn.jobstart(
-    'echo hello', {
-        on_exit = function(pula) print(pula) end,
-        on_stdout = function(pula) print(pula) end,
-        on_stderr =function(pula) print(pula) end
-    }
-    )
-  end, {})
-  --]]
 EOF
 " autocmd BufWritePost *.v,*.sv lua vim.lsp.buf.format({ async = false })
 nnoremap <A-S-Return> <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <C-m> :!make run<CR>
