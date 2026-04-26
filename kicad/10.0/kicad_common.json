@@ -1,0 +1,272 @@
+{
+  "api": {
+    "enable_server": false,
+    "interpreter_path": "/usr/bin/python3"
+  },
+  "appearance": {
+    "grid_striping": false,
+    "hicontrast_dimming_factor": 0.8,
+    "icon_theme": 2,
+    "show_scrollbars": false,
+    "text_editor_zoom": 0,
+    "toolbar_icon_size": 24,
+    "use_custom_cursors": true,
+    "use_icons_in_menus": true,
+    "zoom_correction_factor": 1.0
+  },
+  "auto_backup": {
+    "enabled": true,
+    "limit_total_size": 104857600
+  },
+  "dialog": {
+    "controls": {
+      "Choose Power Symbol": {
+        "__geometry": {
+          "h": 765,
+          "w": 990,
+          "x": 0,
+          "y": 0
+        },
+        "wxCheckBox_0": false,
+        "wxCheckBox_1": true,
+        "wxPanel_0wxSplitterWindow_0": 518,
+        "wxPanel_0wxSplitterWindow_0wxPanel_0wxHtmlWindow_0": 0,
+        "wxPanel_0wxSplitterWindow_0wxSplitterWindow_0": 495,
+        "wxPanel_0wxSplitterWindow_0wxSplitterWindow_0wxPanel_0wxPanel_0wxSearchCtrl_0": "5v"
+      },
+      "Choose Symbol": {
+        "__geometry": {
+          "h": 765,
+          "w": 990,
+          "x": 0,
+          "y": 0
+        },
+        "wxCheckBox_0": false,
+        "wxCheckBox_1": true,
+        "wxPanel_0wxSplitterWindow_0": 495,
+        "wxPanel_0wxSplitterWindow_0wxPanel_0wxPanel_0wxHtmlWindow_0": 0,
+        "wxPanel_0wxSplitterWindow_0wxPanel_0wxPanel_0wxSearchCtrl_0": "R",
+        "wxPanel_0wxSplitterWindow_0wxPanel_1wxPanel_1wxOwnerDrawnComboBox_0": 0
+      },
+      "Edit Value Field": {
+        "__geometry": {
+          "h": 285,
+          "w": 750,
+          "x": 0,
+          "y": 0
+        },
+        "wxCheckBox_0": true,
+        "wxCheckBox_1": false,
+        "wxCheckBox_2": true,
+        "wxCheckBox_3": false,
+        "wxCheckBox_4": false,
+        "wxChoice_0": -1,
+        "wxOwnerDrawnComboBox_0": 0,
+        "wxOwnerDrawnComboBox_0wxTextCtrl_0": "Default Font",
+        "wxTextCtrl_0": "",
+        "wxTextCtrl_1": 12700,
+        "wxTextCtrl_2": 1092200,
+        "wxTextCtrl_3": 676274
+      },
+      "Label Properties": {
+        "__geometry": {
+          "h": 380,
+          "w": 932,
+          "x": 0,
+          "y": 0
+        },
+        "wxCheckBox_0": false,
+        "wxComboCtrl_0": "5v",
+        "wxComboCtrl_0wxPopupTransientWindow_0wxPanel_0wxTextCtrl_0": "",
+        "wxComboCtrl_0wxTextCtrl_0": "5v",
+        "wxStaticBox_0wxGrid_0": "0 1 2 3 4 5 6 7",
+        "wxStaticBox_1wxRadioButton_0": true,
+        "wxStaticBox_1wxRadioButton_1": false,
+        "wxStaticBox_1wxRadioButton_2": false,
+        "wxStaticBox_1wxRadioButton_3": false,
+        "wxStaticBox_1wxRadioButton_4": false,
+        "wxStaticBox_1wxRadioButton_5": false,
+        "wxStaticBox_1wxRadioButton_6": false,
+        "wxStaticBox_1wxRadioButton_7": false,
+        "wxStaticBox_1wxRadioButton_8": false,
+        "wxStaticBox_2wxCheckBox_0": false,
+        "wxStaticBox_2wxOwnerDrawnComboBox_0": 0,
+        "wxStaticBox_2wxOwnerDrawnComboBox_0wxTextCtrl_0": "Default Font",
+        "wxStaticBox_2wxTextCtrl_0": 12700,
+        "wxTextCtrl_0": "",
+        "wxTextCtrl_1": ""
+      },
+      "Preferences": {
+        "__geometry": {
+          "h": 655,
+          "w": 980,
+          "x": 0,
+          "y": 0
+        },
+        "wxPanel_0wxTreebook_0wxPanel_0wxSearchCtrl_0": "",
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_0": true,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_1": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_10": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_11": true,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_2": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_3": true,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_4": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_5": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_6": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_7": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_8": true,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxCheckBox_9": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxChoice_0": 2,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxPanel_2wxChoice_0": 0,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxPanel_2wxSpinCtrl_0": 91,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_0": true,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_1": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_10": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_11": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_12": true,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_2": true,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_3": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_4": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_5": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_6": true,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_7": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_8": true,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxRadioButton_9": false,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxSpinCtrl_0": 9,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxSpinCtrl_1": 100,
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxTextCtrl_0": "/usr/bin/nvim",
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxTextCtrl_1": "",
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxTextCtrl_2": "",
+        "wxPanel_0wxTreebook_0wxPanel_1wxPanel_0wxTextCtrl_3": "80",
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxCheckBox_0": true,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxCheckBox_1": true,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxCheckBox_2": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxCheckBox_3": true,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxCheckBox_4": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxCheckBox_5": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxCheckBox_6": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxChoice_0": 1,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxChoice_1": 0,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxChoice_2": 0,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxChoice_3": 0,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_0": true,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_1": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_10": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_11": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_2": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_3": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_4": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_5": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_6": true,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_7": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_8": false,
+        "wxPanel_0wxTreebook_0wxPanel_2wxPanel_0wxRadioButton_9": true,
+        "wxPanel_0wxTreebook_0wxPanel_55wxCheckBox_0": false,
+        "wxPanel_0wxTreebook_0wxPanel_55wxFilePickerCtrl_0wxTextCtrl_0": "/usr/bin/python3",
+        "wxPanel_0wxTreebook_0wxPanel_56wxSpinCtrl_0": 30
+      },
+      "Projektvorlagenauswahl": {
+        "__geometry": {
+          "h": 557,
+          "w": 740,
+          "x": 0,
+          "y": 0
+        },
+        "wxPanel_0wxScrolledWindow_0": 0,
+        "wxPanel_1wxChoice_0": 0,
+        "wxPanel_1wxScrolledWindow_0": 0,
+        "wxPanel_1wxSearchCtrl_0": ""
+      },
+      "Symbol wählen": {
+        "__geometry": {
+          "h": 765,
+          "w": 990,
+          "x": 0,
+          "y": 0
+        },
+        "wxCheckBox_0": false,
+        "wxCheckBox_1": true,
+        "wxPanel_0wxSplitterWindow_0": 495,
+        "wxPanel_0wxSplitterWindow_0wxPanel_0wxPanel_0wxHtmlWindow_0": 0,
+        "wxPanel_0wxSplitterWindow_0wxPanel_0wxPanel_0wxSearchCtrl_0": "ntc",
+        "wxPanel_0wxSplitterWindow_0wxPanel_1wxPanel_1wxOwnerDrawnComboBox_0": 0
+      }
+    }
+  },
+  "do_not_show_again": {
+    "data_collection_prompt": true,
+    "env_var_overwrite_warning": false,
+    "scaled_3d_models_warning": false,
+    "update_check_prompt": true,
+    "zone_fill_warning": false
+  },
+  "environment": {
+    "vars": null
+  },
+  "git": {
+    "authorEmail": "",
+    "authorName": "",
+    "enableGit": true,
+    "repositories": null,
+    "updatInterval": 5,
+    "useDefaultAuthor": true
+  },
+  "graphics": {
+    "antialiasing_mode": 2,
+    "canvas_type": 1
+  },
+  "input": {
+    "auto_pan": true,
+    "auto_pan_acceleration": 5,
+    "center_on_zoom": true,
+    "focus_follow_sch_pcb": false,
+    "horizontal_pan": false,
+    "hotkey_feedback": true,
+    "immediate_actions": true,
+    "motion_pan_modifier": 0,
+    "mouse_left": -1,
+    "mouse_middle": 2,
+    "mouse_right": 2,
+    "reverse_scroll_pan_h": false,
+    "reverse_scroll_zoom": false,
+    "scroll_modifier_pan_h": 308,
+    "scroll_modifier_pan_v": 306,
+    "scroll_modifier_zoom": 0,
+    "warp_mouse_on_move": true,
+    "zoom_acceleration": false,
+    "zoom_speed": 1,
+    "zoom_speed_auto": true
+  },
+  "meta": {
+    "version": 5
+  },
+  "package_manager": {
+    "sash_pos": 380
+  },
+  "session": {
+    "pinned_design_block_libs": [],
+    "pinned_fp_libs": [],
+    "pinned_symbol_libs": [],
+    "remember_open_files": false
+  },
+  "spacemouse": {
+    "pan_speed": 5,
+    "reverse_pan_x": false,
+    "reverse_pan_y": false,
+    "reverse_rotate": false,
+    "reverse_zoom": false,
+    "rotate_speed": 5
+  },
+  "system": {
+    "clear_3d_cache_interval": 30,
+    "file_explorer": "",
+    "file_history_size": 9,
+    "language": "Default",
+    "local_history_debounce": 5,
+    "local_history_enabled": true,
+    "pdf_viewer_name": "",
+    "text_editor": "/usr/bin/nvim",
+    "use_system_pdf_viewer": true,
+    "working_dir": "/home/raiku/Misc/KiCad/Venus/Venus"
+  }
+}

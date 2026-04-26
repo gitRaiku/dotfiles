@@ -24,6 +24,8 @@ settings:
     global: 256
   colors.webpage.preferred_color_scheme:
     global: dark
+  content.autoplay:
+    global: false
   content.desktop_capture:
     https://euro.pruefster.com: true
   content.geolocation:
@@ -73,6 +75,7 @@ settings:
     https://mail.google.com?extsrc=mailto&url=%25s: false
     https://mail.proton.me#mailto=%25s: false
     https://outlook.live.com?mailtouri=%25s: false
+    https://outlook.office.com?mailtouri=%25s: false
   downloads.location.directory:
     global: /home/raiku/
   downloads.prevent_mixed_content:

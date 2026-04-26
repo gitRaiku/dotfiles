@@ -44,12 +44,13 @@ endif
 set shell=/bin/fish
 
 
-noremap <Space> <Nop>
+" noremap <Space> <Nop>
 
 noremap j gj
 noremap k gk
 noremap J j
 noremap K k
+noremap <CS-j> J
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -104,7 +105,7 @@ call plug#begin('~/.config/nvim/plugins')
 
 Plug 'xiyaowong/transparent.nvim'
 
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
 Plug 'bluz71/vim-moonfly-colors'
 
@@ -121,6 +122,8 @@ Plug 'mickael-menu/zk-nvim'
 Plug 'neovim/nvim-lspconfig'
 
 Plug 'samjwill/nvim-unception'
+
+Plug 'stevearc/oil.nvim'
 
 call plug#end()
 
@@ -193,6 +196,10 @@ endfunction
 " EOF
 
 lua <<EOF
+  require("oil").setup()
+EOF
+
+lua <<EOF
   local lspconfutil = require 'lspconfig/util'
   local root_pattern = lspconfutil.root_pattern("veridian.yml", ".git")
 
@@ -204,13 +211,36 @@ lua <<EOF
   })
 EOF
 
+lua <<EOF
+vim.g.user = {
+  leaderkey = ' ',
+  transparent = false,
+  event = 'UserGroup',
+  config = {
+    undodir = vim.fn.stdpath('cache') .. '/undo',
+  },
+}
+
+vim.api.nvim_create_augroup(vim.g.user.event, {})
+
+vim.api.nvim_create_autocmd('BufReadPost', {
+  group = vim.g.user.event,
+  callback = function(args)
+    local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line('$')
+    local not_commit = vim.b[args.buf].filetype ~= 'commit'
+
+    if valid_line and not_commit then
+      vim.cmd([[normal! g`"]])
+    end
+  end,
+})
+EOF
+
 
 lua <<EOF
-  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-      update_in_insert = true,
-    }
-  )
+  vim.diagnostic.config({
+    update_in_insert = true,
+  })
   local opts = { noremap=true, silent=true }
   local function quickfix()
       vim.diagnostic.goto_next()

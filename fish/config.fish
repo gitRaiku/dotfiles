@@ -13,13 +13,13 @@ end
 # export XDG_CURRENT_DESKTOP=sway
 
 export TZ=Europe/Amsterdam
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+if [ "$(cat /etc/hostname)" = "Eridanus" ]
+  export LANGUAGE=de_DE.UTF-8
+  export LANG=de_DE.UTF-8
+  export LC_ALL=de_DE.UTF-8
+end
 export SDL_AUDIODRIVER=pipewire
-export GNULIB_SRCDIR="~/Git/gnulib"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
-export ZK_NOTEBOOK_DIR="/home/arch/Misc/Zk/"
 export EDITOR=/usr/bin/nvim
 
 export CFLAGS="-O3 -march=native -mtune=native -fmodulo-sched"
