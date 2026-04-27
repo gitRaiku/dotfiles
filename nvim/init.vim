@@ -231,6 +231,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 
     if valid_line and not_commit then
       vim.cmd([[normal! g`"]])
+      vim.cmd([[normal! zz"]])
     end
   end,
 })
@@ -252,3 +253,4 @@ lua <<EOF
 EOF
 " autocmd BufWritePost *.v,*.sv lua vim.lsp.buf.format({ async = false })
 nnoremap <A-S-Return> <cmd>lua vim.lsp.buf.code_action()<CR>
+norm zz
